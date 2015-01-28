@@ -127,8 +127,8 @@ it will use the ctor.name to check whether inherited from superCtorName.
 
 mixin all superCtors to ctor.
 
++ duplication mixin or inheritance check
 + the methods in mixins could super() across mixin classes.
-+ duplication mixin check
 
 ``` coffee
 
