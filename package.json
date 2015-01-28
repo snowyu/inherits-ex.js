@@ -2,11 +2,20 @@
   "name": "inherits-ex",
   "description": "Browser-friendly enhanced inheritance fully compatible with standard node.js and coffee-script",
   "homepage": "https://github.com/snowyu/inherits-ex.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Riceball LEE",
     "email": "snowyu.lee@gmail.com"
   },
+  "files": [
+    "README.md",
+    "LICENSE-MIT",
+    "*.js",
+    "*.coffee",
+    "test",
+    "src",
+    "lib"
+  ],
   "keywords": [
     "inheritance",
     "class",
