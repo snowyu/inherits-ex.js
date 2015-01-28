@@ -76,7 +76,7 @@ function mixin(ctor, superCtor) {
   }
   var v  = ctor.super_;
   var result = false;
-  if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor)) {
+  if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
     var mixinCtor = ctor.mixinCtor_;
     var mixinCtors = ctor.mixinCtors_;
     if (!mixinCtor) {
@@ -86,9 +86,7 @@ function mixin(ctor, superCtor) {
     if (!mixinCtors) mixinCtors = ctor.mixinCtors_ = [];
     mixinCtors.push(superCtor);//quickly check in isMixinedFrom.
     clonePrototype(mixinCtor, superCtor);
-    ctor.super_ = mixinCtor;
-    ctor.__super__ = mixinCtor.prototype; //for coffeeScirpt super keyword.
-    ctor.prototype = newPrototype(mixinCtor, ctor);
+    inheritsDirectly(ctor, mixinCtor);
     result = true;
   }
   return result;

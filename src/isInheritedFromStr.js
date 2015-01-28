@@ -1,4 +1,10 @@
 module.exports = function(ctor, superStr, throwError) {
+  if (ctor.name === superStr) {
+    if (throwError)
+      throw new Error("Circular inherits found!");
+    else
+      return true;
+  }
   var result  =  ctor.super_ != null && ctor.super_.name === superStr;
   var checkeds = [];
   checkeds.push(ctor);

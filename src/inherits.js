@@ -23,9 +23,9 @@ function inherits(ctor, superCtor) {
     v = ctor.super_;
   }
   var result = false;
-  if (!isInheritedFrom(ctor, superCtor)) {
+  if (!isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor);
-    while (v != null && (superCtor !== v)) {
+    while (v != null && superCtor !== v) {
       ctor = superCtor;
       superCtor = v;
       inheritsDirectly(ctor, superCtor);

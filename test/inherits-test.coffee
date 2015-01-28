@@ -4,12 +4,12 @@ sinonChai       = require 'sinon-chai'
 assert          = chai.assert
 should          = chai.should()
 
-inherits        = require '../lib/inherits'
-inheritsDirectly= require '../lib/inheritsDirectly'
-inheritsObject  = require '../lib/inheritsObject'
-mixin           = require '../lib/mixin'
-isInheritedFrom = require '../lib/isInheritedFrom'
-isMixinedFrom   = require '../lib/isMixinedFrom'
+inherits        = require '../src/inherits'
+inheritsDirectly= require '../src/inheritsDirectly'
+inheritsObject  = require '../src/inheritsObject'
+mixin           = require '../src/mixin'
+isInheritedFrom = require '../src/isInheritedFrom'
+isMixinedFrom   = require '../src/isMixinedFrom'
 
 
 log             = console.log.bind console
@@ -78,6 +78,13 @@ describe "inherits", ->
     o = new A1()
     assert.equal o.rootMethod, Root::rootMethod
     assert.deepEqual getProtoChain(A1), [ 'Root', 'A', 'A1' ]
+  it "should not inheritances dead circular", ->
+    class C1
+    class C2
+    class C3
+    assert.equal inherits(C1, C2), true
+    assert.equal inherits(C2, C3), true
+    assert.equal inherits(C3, C1), false
   it "should multi-inheritances", ->
     class C
     class D

@@ -2,6 +2,12 @@ var isInheritedFromStr = require('./isInheritedFromStr');
 
 module.exports = function(ctor, superCtor, throwError) {
   if ('string' === typeof superCtor) return isInheritedFromStr(ctor, superCtor, throwError);
+  if (ctor === superCtor) {
+    if (throwError)
+      throw new Error("Circular inherits found!");
+    else
+      return true;
+  }
   var result  = ctor.super_ === superCtor;
   var checkeds = [];
   checkeds.push(ctor);
