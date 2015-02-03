@@ -9,13 +9,18 @@
  *  }"
  */
 var isArray = Array.isArray;
+var isString = function(v){return "string" === typeof v;};
+var isObject = function(v){return v && "object" === typeof v;};
 
 module.exports = function(name, args, body, scope, values) {
   if (arguments.length === 1) return Function("function "+name+"(){}\nreturn "+name+";")();
-  if (typeof args == "string")
+  if (isString(args)) {
       values = scope, scope = body, body = args, args = [];
+  } else if (args == null) {
+    args = [];
+  }
   if (!isArray(scope) || !isArray(values)) {
-      if (typeof scope == "object") {
+      if (isObject(scope)) {
           var keys = Object.keys(scope);
           values = keys.map(function(k) { return scope[k]; });
           scope = keys;
