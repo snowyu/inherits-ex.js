@@ -13,6 +13,12 @@ module.exports = function (aClass, aConstructor) {
   var result;
   if (Object.create) { //typeof Object.create === 'function'
     result = Object.create(aClass.prototype, {
+      Class: {
+        value: aConstructor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      },
       constructor: {
         value: ctor,
         enumerable: false,
@@ -21,7 +27,7 @@ module.exports = function (aClass, aConstructor) {
       }
     });
   } else {
-    var Obj = function obj() {this.constructor = ctor};
+    var Obj = function obj() {this.constructor = ctor;this.Class = aConstructor;};
     Obj.prototype = aClass.prototype;
     result = new Obj();
   }

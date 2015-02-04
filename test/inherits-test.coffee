@@ -10,6 +10,8 @@ inheritsObject  = require '../src/inheritsObject'
 mixin           = require '../src/mixin'
 isInheritedFrom = require '../src/isInheritedFrom'
 isMixinedFrom   = require '../src/isMixinedFrom'
+createObject    = require('../src/createObject')
+createObjectWith= require('../src/createObjectWith')
 
 
 log             = console.log.bind console
@@ -164,12 +166,12 @@ describe "inherits", ->
     assert.equal isInheritedFrom(C11, C), C2, "C11 > C"
 
   describe "createObject", ->
-    createObject = require('../lib/createObject')
 
     it 'should call the parent\'s constructor method if it no constructor', ->
       A12 = ->
       assert.equal inherits(A12, A1), true
       a = createObject(A12)
+      assert.equal a.Class, A12
       assert.instanceOf a, A12
       assert.instanceOf a, A1
       assert.instanceOf a, A
@@ -180,6 +182,7 @@ describe "inherits", ->
       A2 = ->
       assert.equal inherits(A2, A), true
       a = createObject(A2)
+      assert.equal a.Class, A2
       assert.instanceOf a, A2
       assert.instanceOf a, A
       assert.instanceOf a, Root
@@ -206,12 +209,11 @@ describe "inherits", ->
       should.not.exist a.other
 
   describe "createObjectWith", ->
-    createObject = require('../lib/createObjectWith')
 
     it 'should call the parent\'s constructor method if it no constructor', ->
       class A12
       assert.equal inherits(A12, A1), true
-      a = createObject(A12)
+      a = createObjectWith(A12)
       assert.instanceOf a, A12
       assert.instanceOf a, A1
       assert.instanceOf a, A
@@ -221,37 +223,49 @@ describe "inherits", ->
     it 'should call the root\'s constructor method if its parent no constructor yet', ->
       class A2
       assert.equal inherits(A2, A), true
-      a = createObject(A2)
+      a = createObjectWith(A2)
       assert.instanceOf a, A2
       assert.instanceOf a, A
       assert.instanceOf a, Root
       assert.equal a.inited, "Root"
+    ### known issue:
+    # the prototype is copy from parent class, so child class do not known the 
+    # parent's changes.
+    #   : aClass.prototype = Object.create(aParentClass.prototype)
+    it 'should inherits a parent class after', ->
+      class A1
+      class A2
+      assert.equal inherits(A2, A1), true
+      inherits(A1, A)
+      a = new A2()
+      assert.equal isInheritedFrom(A2, A), A1
+      assert.instanceOf a, A
+    ###
     it 'should pass the correct arguments to init', ->
       class A2
       assert.equal inherits(A2, A), true
-      a = createObject(A2, ["hiFirst", 1881])
+      a = createObjectWith(A2, ["hiFirst", 1881])
       assert.instanceOf a, A2
       assert.instanceOf a, A
-      assert.instanceOf a, Root
       assert.equal a.inited, "hiFirst"
       assert.equal a.other, 1881
     it 'should pass the correct arguments to constructor', ->
       class A2
         constructor: (@first, @second)->
       assert.equal inherits(A2, A), true
-      a = createObject(A2, ["hiFirst", 1881])
+      a = createObjectWith(A2, ["hiFirst", 1881])
       assert.instanceOf a, A2
       assert.instanceOf a, A
       assert.instanceOf a, Root
       assert.equal a.first, "hiFirst"
       assert.equal a.second, 1881
-      should.not.exist a.inited
-      should.not.exist a.other
+      a.should.not.have.ownProperty 'inited'
+      a.should.not.have.ownProperty 'other'
     it 'should pass the correct arguments to init for internal arguments', ->
       class A2
         constructor: ->
           if not (this instanceof A2)
-            return createObject(A2, arguments)
+            return createObjectWith(A2, arguments)
           super
       assert.equal inherits(A2, A), true
       a = A2("hiFirst~", 1181)
