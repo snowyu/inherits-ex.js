@@ -60,5 +60,8 @@
   ],
   "scripts": {
     "test": "grunt test"
+  },
+  "dependencies": {
+    "xtend": "^4.0.0"
   }
 }
