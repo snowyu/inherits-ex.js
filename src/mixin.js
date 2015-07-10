@@ -29,19 +29,48 @@ var getOwnPropertyNames = Object.getOwnPropertyNames;
  *      method.__mixin_prototype__ = C.prototype
  *  B11 -> MixinCtor -> B1 -> B -> Root
  *
-class Root
-   m: -> console.log 'root'
-class C
-   m: ->
-     console.log "c"
-     super
-class B
-class B11
-   m: -> 
-     console.log 'b11'
-     super
+mixin the exists method: the new mixin method will oerwrite the old one.
 
+```coffee
+class Root
+  m: ->
+    console.log 'root'
+    console.log '----'
+class C
+  inherits C, Root
+  m: ->
+    console.log "c"
+    super
+class B
+  inherits B, Root
+  m: ->
+    console.log "b"
+    super
+class B11
+  inherits B11, B
+  m: -> 
+    console.log 'b11'
+    super
+
+b = new B11
+b.m()
 mixin B11, C
+b = new B11
+b.m() 
+
+# The console results:
+# b11
+# b
+# root
+# ----
+# b11
+# c
+# root
+# ----
+
+```
+
+
  *
  */
 
