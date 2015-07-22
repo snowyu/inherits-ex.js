@@ -36,17 +36,17 @@ compareProtoChain = (o, list) ->
   true
 
 describe "inherits", ->
-  
+
   aMethod = ->
     "aMethod"
   a1Method = ->
     "a1Method"
 
-  class Root 
+  class Root
     constructor: (@inited="Root", @other)->"Root"
     rootMethod: ->
 
-  class B 
+  class B
     constructor: (@inited="B")->"B"
     bMethod: ->
 
@@ -207,6 +207,11 @@ describe "inherits", ->
       assert.equal a.second, 1881
       should.not.exist a.inited
       should.not.exist a.other
+    it 'should add new "Class" property to the class prototype', ->
+      class A2
+      a = createObject A2
+      assert.instanceOf a, A2
+      a.should.have.property 'Class', A2
 
   describe "createObjectWith", ->
 
@@ -229,7 +234,7 @@ describe "inherits", ->
       assert.instanceOf a, Root
       assert.equal a.inited, "Root"
     ### known issue:
-    # the prototype is copy from parent class, so child class do not known the 
+    # the prototype is copy from parent class, so child class do not known the
     # parent's changes.
     #   : aClass.prototype = Object.create(aParentClass.prototype)
     it 'should inherits a parent class after', ->
@@ -274,6 +279,11 @@ describe "inherits", ->
       assert.instanceOf a, Root
       assert.equal a.inited, "hiFirst~"
       assert.equal a.other, 1181
+    it 'should add new "Class" property to the class prototype', ->
+      class A2
+      a = createObjectWith A2
+      assert.instanceOf a, A2
+      a.should.have.property 'Class', A2
 
 
 describe "mixin", ->
