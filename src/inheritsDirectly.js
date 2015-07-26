@@ -4,6 +4,5 @@ var newPrototype = require('./newPrototype');
 module.exports = function(ctor, superCtor) {
   ctor.super_ = superCtor;
   ctor.__super__ = superCtor.prototype; //for coffeeScirpt super keyword.
-  ctor.prototype = newPrototype(superCtor, ctor);      
-}
-
+  ctor.prototype = newPrototype(superCtor, ctor);
+};

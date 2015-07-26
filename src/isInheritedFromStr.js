@@ -1,7 +1,7 @@
 module.exports = function(ctor, superStr, throwError) {
   if (ctor.name === superStr) {
     if (throwError)
-      throw new Error("Circular inherits found!");
+      throw new Error('Circular inherits found!');
     else
       return true;
   }
@@ -11,7 +11,7 @@ module.exports = function(ctor, superStr, throwError) {
   while (!result && ((ctor = ctor.super_) != null)) {
     if (checkeds.indexOf(ctor) >= 0) {
       if (throwError)
-        throw new Error("Circular inherits found!");
+        throw new Error('Circular inherits found!');
       else
         return true;
     }
@@ -25,5 +25,4 @@ module.exports = function(ctor, superStr, throwError) {
   }
 
   return result;
-}
-
+};

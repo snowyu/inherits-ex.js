@@ -1,7 +1,6 @@
-var inheritsDirectly= require('./inheritsDirectly');
-var isInheritedFrom = require('./isInheritedFrom');
-var isMixinedFrom   = require('./isMixinedFrom');
-var newPrototype    = require('./newPrototype');
+var inheritsDirectly  = require('./inheritsDirectly');
+var isInheritedFrom   = require('./isInheritedFrom');
+var isMixinedFrom     = require('./isMixinedFrom');
 
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 
@@ -75,7 +74,8 @@ b.m()
 
 
 function isSuperInFunction(aMethod) {
-  return ('function' === typeof aMethod) && aMethod.__mixin_super__ && aMethod.toString().indexOf('__super__')>=0;
+  return (typeof aMethod === 'function') && aMethod.__mixin_super__ &&
+    aMethod.toString().indexOf('__super__') >= 0;
 }
 
 function mixin(ctor, superCtor) {
@@ -83,7 +83,7 @@ function mixin(ctor, superCtor) {
     var sp = src.prototype;
     var dp = dest.prototype;
     var names = getOwnPropertyNames(sp);
-    function _mixin_GenMethod(origM, newM, src) {
+    function _mixin_gen_method(origM, newM, src) {
       var oldSuper = src.__super__;
       return function() {
         src.__super__ = origM.__mixin_super__;
@@ -97,9 +97,9 @@ function mixin(ctor, superCtor) {
       var method = sp[k];
       var originalMethod = dp[k];
       if (isSuperInFunction(originalMethod) && sp !== originalMethod.__mixin_super__) {
-        method = _mixin_GenMethod(originalMethod, method, src);
+        method = _mixin_gen_method(originalMethod, method, src);
       }
-      if ('function' === typeof method) method.__mixin_super__ = sp;
+      if (typeof method === 'function') method.__mixin_super__ = sp;
       dp[k] = method;
     }
   }
@@ -122,7 +122,7 @@ function mixin(ctor, superCtor) {
 }
 
 module.exports = function(ctor, superCtors, options) {
-  if ('function' === typeof superCtors) return mixin(ctor, superCtors, options);
+  if (typeof superCtors === 'function') return mixin(ctor, superCtors, options);
   for (var i = 0; i < superCtors.length; i++) {
     var superCtor = superCtors[i];
     if (!mixin(ctor, superCtor, options)) return false;

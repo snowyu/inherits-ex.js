@@ -1,7 +1,7 @@
 var defineProperty = Object.defineProperty;
 
 module.exports = function(aClass, aArguments) {
-  args = [aClass];
+  var args = [aClass];
   if (aArguments)
     args = args.concat(Array.prototype.slice.call(aArguments));
   var result = new (Function.prototype.bind.apply(aClass, args));
@@ -16,5 +16,4 @@ module.exports = function(aClass, aArguments) {
       aClass.prototype.constructor.apply(result, aArguments);
   }
   return result;
-}
-
+};

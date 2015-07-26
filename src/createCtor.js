@@ -1,5 +1,5 @@
 var createFunction = require('./createFunction');
-var isString = function(v){return "string" === typeof v};
+var isString = function(v){return typeof v === 'string';};
 
 //create a contructor function dynamically.
 module.exports = function(name, args, body) {
@@ -7,6 +7,6 @@ module.exports = function(name, args, body) {
     body = args;
     args = [];
   }
-  if (body == null) body = "return " + name + ".__super__.constructor.apply(this, arguments);"
+  if (body == null) body = 'return ' + name + '.__super__.constructor.apply(this, arguments);'
   return createFunction(name, args, body);
-}
+};

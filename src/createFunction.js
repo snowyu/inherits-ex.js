@@ -9,26 +9,29 @@
  *  }"
  */
 var isArray = Array.isArray;
-var isString = function(v){return "string" === typeof v;};
-var isObject = function(v){return v && "object" === typeof v;};
+var isString = function(v){return typeof v === 'string';};
+var isObject = function(v){return v && typeof v === 'object';};
 
 module.exports = function(name, args, body, scope, values) {
-  if (arguments.length === 1) return Function("function "+name+"(){}\nreturn "+name+";")();
+  if (arguments.length === 1) return Function('function ' + name + '(){}\nreturn ' + name + ';')();
   if (isString(args)) {
-      values = scope, scope = body, body = args, args = [];
+    values = scope;
+    scope = body;
+    body = args;
+    args = [];
   } else if (args == null) {
     args = [];
   }
   if (!isArray(scope) || !isArray(values)) {
-      if (isObject(scope)) {
-          var keys = Object.keys(scope);
-          values = keys.map(function(k) { return scope[k]; });
-          scope = keys;
-      } else {
-          values = [];
-          scope = [];
-      }
+    if (isObject(scope)) {
+      var keys = Object.keys(scope);
+      values = keys.map(function(k) { return scope[k]; });
+      scope = keys;
+    } else {
+      values = [];
+      scope = [];
+    }
   }
-  return Function(scope, "function "+name+"("+args.join(", ")+") {\n"+body+"\n}\nreturn "+name+";").apply(null, values);
-}
-
+  return Function(scope,
+    'function ' + name + '(' + args.join(', ') + ') {\n' + body + '\n}\nreturn ' + name + ';').apply(null, values);
+};

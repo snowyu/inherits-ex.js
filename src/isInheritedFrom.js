@@ -1,10 +1,10 @@
 var isInheritedFromStr = require('./isInheritedFromStr');
 
 module.exports = function(ctor, superCtor, throwError) {
-  if ('string' === typeof superCtor) return isInheritedFromStr(ctor, superCtor, throwError);
+  if (typeof superCtor === 'string') return isInheritedFromStr(ctor, superCtor, throwError);
   if (ctor === superCtor) {
     if (throwError)
-      throw new Error("Circular inherits found!");
+      throw new Error('Circular inherits found!');
     else
       return true;
   }
@@ -14,7 +14,7 @@ module.exports = function(ctor, superCtor, throwError) {
   while (!result && ((ctor = ctor.super_) != null)) {
     if (checkeds.indexOf(ctor) >= 0) {
       if (throwError)
-        throw new Error("Circular inherits found!");
+        throw new Error('Circular inherits found!');
       else
         return true;
     }
@@ -29,4 +29,3 @@ module.exports = function(ctor, superCtor, throwError) {
 
   return result;
 }
-
