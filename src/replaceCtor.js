@@ -1,16 +1,5 @@
-var getPrototypeOf = Object.getPrototypeOf;
-if (!getPrototypeOf) {
-  getPrototypeOf = function(obj) {
-    return obj.__proto__;
-  };
-}
-
-var setPrototypeOf = Object.setPrototypeOf;
-if (!setPrototypeOf) {
-  setPrototypeOf = function(obj, prototype) {
-    obj.__proto__ = prototype;
-  };
-}
+var getPrototypeOf = require('./getPrototypeOf');
+var setPrototypeOf = require('./setPrototypeOf');
 var defineProperty = Object.defineProperty;
 
 //just replace the object's constructor
