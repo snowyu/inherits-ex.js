@@ -1,6 +1,6 @@
 var getConstructor = require('./getConstructor');
 var isEmptyFunction = require('./isEmptyFunction');
-var _extend = require('xtend/mutable');
+var extend = require('xtend/mutable');
 
 module.exports = function (aClass, aConstructor) {
   //Object.create(prototype) only for ES5
@@ -31,6 +31,6 @@ module.exports = function (aClass, aConstructor) {
     Obj.prototype = aClass.prototype;
     result = new Obj();
   }
-  _extend(result, aConstructor.prototype);
+  extend(result, aConstructor.prototype);
   return result;
-}
+};

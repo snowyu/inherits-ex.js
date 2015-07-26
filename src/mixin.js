@@ -1,4 +1,3 @@
-var inherits        = require('./inherits');
 var inheritsDirectly= require('./inheritsDirectly');
 var isInheritedFrom = require('./isInheritedFrom');
 var isMixinedFrom   = require('./isMixinedFrom');
@@ -48,7 +47,7 @@ class B
     super
 class B11
   inherits B11, B
-  m: -> 
+  m: ->
     console.log 'b11'
     super
 
@@ -56,7 +55,7 @@ b = new B11
 b.m()
 mixin B11, C
 b = new B11
-b.m() 
+b.m()
 
 # The console results:
 # b11
@@ -84,20 +83,21 @@ function mixin(ctor, superCtor) {
     var sp = src.prototype;
     var dp = dest.prototype;
     var names = getOwnPropertyNames(sp);
+    function _mixin_GenMethod(origM, newM, src) {
+      var oldSuper = src.__super__;
+      return function() {
+        src.__super__ = origM.__mixin_super__;
+        var result = newM.apply(this, arguments);
+        src.__super__ = oldSuper;
+        return result;
+      };
+    }
     for (var i = 1; i < names.length; i++ ) { //i = 1 to skip constructor property
       var k = names[i];
       var method = sp[k];
       var originalMethod = dp[k];
       if (isSuperInFunction(originalMethod) && sp !== originalMethod.__mixin_super__) {
-        method = (function(origM, newM, src) {
-          var oldSuper = src.__super__;
-          return function() {
-            src.__super__ = origM.__mixin_super__;
-            var result = newM.apply(this, arguments);
-            src.__super__ = oldSuper;
-            return result;
-          };
-        })(originalMethod, method, src);
+        method = _mixin_GenMethod(originalMethod, method, src);
       }
       if ('function' === typeof method) method.__mixin_super__ = sp;
       dp[k] = method;
@@ -128,4 +128,4 @@ module.exports = function(ctor, superCtors, options) {
     if (!mixin(ctor, superCtor, options)) return false;
   }
   return true;
-}
+};
