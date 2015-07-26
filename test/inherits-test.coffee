@@ -167,6 +167,21 @@ describe "inherits", ->
 
   describe "createObject", ->
 
+    it 'should create plain object', ->
+      result = createObject Object
+      result.should.be.instanceof Object
+      Object.should.not.have.ownProperty 'Class'
+    it 'should create Array object', ->
+      result = createObject Array, 12,34
+      result.should.be.instanceof Array
+      result.should.be.deep.equal [12,34]
+      Object.should.not.have.ownProperty 'Class'
+    it 'should create RegExp object', ->
+      result = createObject RegExp, '^as.*', 'i'
+      result.should.be.instanceof RegExp
+      result.source.should.be.equal '^as.*'
+      result.ignoreCase.should.be.true
+      Object.should.not.have.ownProperty 'Class'
     it 'should call the parent\'s constructor method if it no constructor', ->
       A12 = ->
       assert.equal inherits(A12, A1), true
