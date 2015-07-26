@@ -38,6 +38,7 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "~1.10.0",
+    "coffee-coverage": "^0.6.2",
     "grunt": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-coffee": "*",
@@ -49,6 +50,7 @@
     "grunt-newer": "*",
     "grunt-release": "*",
     "grunt-saucelabs": "*",
+    "istanbul": "^0.3.17",
     "mocha": "~2.1.0",
     "pre-commit": "0.0.11",
     "sinon": "~1.12.2",
@@ -59,7 +61,8 @@
     "test"
   ],
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "test-cov": "istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter dot"
   },
   "dependencies": {
     "xtend": "^4.0.0"
