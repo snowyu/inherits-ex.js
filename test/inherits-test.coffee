@@ -321,6 +321,8 @@ describe "mixin", ->
     isInheritedFrom(A, Root).should.be.equal A, "A is inherits from Root"
     isMixinedFrom(A, B1).should.be.equal true, "A is mixined from B1"
     isMixinedFrom(A, B2).should.be.equal true, "A is mixined from B2"
+    isMixinedFrom(A, 'B1').should.be.equal true, "A is mixined from B1"
+    isMixinedFrom(A, 'B2').should.be.equal true, "A is mixined from B2"
 
   it "should first mixin class then inherits", ->
     class Root
