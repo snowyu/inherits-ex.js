@@ -59,13 +59,14 @@ class Root
 class A
   inherits A, Root
   m: ->
-  log('A')
-  super
+    log('A')
+    super
 
 class B
   inherits B, Root
-  m: -> log('B')
-  super
+  m: ->
+    log('B')
+    super
 
 class MyClass
   # MyClass -> A -> Root
@@ -89,12 +90,13 @@ class Root
 
 class A
   m: ->
-  log('A')
-  super
+    log('A')
+    super
 
 class B
-  m: -> log('B')
-  super
+  m: ->
+    log('B')
+    super
 
 class MyClass
   # create inheritances chain:
