@@ -13,7 +13,6 @@ isMixinedFrom   = require '../src/isMixinedFrom'
 createObject    = require('../src/createObject')
 createObjectWith= require('../src/createObjectWith')
 
-
 log             = console.log.bind console
 
 chai.use(sinonChai)
@@ -63,6 +62,8 @@ describe "inherits", ->
     assert.equal inherits(B, Root), true
     assert.equal inherits(A1, A), true
     assert.equal A1.super_, A
+    assert.notOk A1.propertyIsEnumerable('super_')
+    assert.notOk A1.propertyIsEnumerable('__super__')
     assert.equal A1::a1Method, a1Method
     assert.equal A::aMethod, aMethod
     assert.equal A1::constructor, A1
@@ -313,6 +314,10 @@ describe "mixin", ->
     inherits(A, Root).should.be.equal true
     isInheritedFrom(A, Root).should.be.equal A, "A is inherits from Root"
     mixin(A, [B1, B2]).should.be.equal true
+    assert.ok A.hasOwnProperty('mixinCtor_')
+    assert.ok A.hasOwnProperty('mixinCtors_')
+    assert.notOk A.propertyIsEnumerable('mixinCtor_')
+    assert.notOk A.propertyIsEnumerable('mixinCtors_')
     a = new A()
     a.should.have.property 'b1Method'
     a.should.have.property 'b2Method'

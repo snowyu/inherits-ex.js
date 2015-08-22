@@ -1,6 +1,7 @@
 var inheritsDirectly  = require('./inheritsDirectly');
 var isInheritedFrom   = require('./isInheritedFrom');
 var isMixinedFrom     = require('./isMixinedFrom');
+var defineProperty    = require('./defineProperty');
 
 var getOwnPropertyNames = Object.getOwnPropertyNames;
 
@@ -109,10 +110,14 @@ function mixin(ctor, superCtor) {
     var mixinCtor = ctor.mixinCtor_;
     var mixinCtors = ctor.mixinCtors_;
     if (!mixinCtor) {
-      mixinCtor = ctor.mixinCtor_ = function MixinCtor_(){};
+      mixinCtor = function MixinCtor_(){};
+      defineProperty(ctor, 'mixinCtor_', mixinCtor);
       if (v) inheritsDirectly(mixinCtor, v);
     }
-    if (!mixinCtors) mixinCtors = ctor.mixinCtors_ = [];
+    if (!mixinCtors) {
+      mixinCtors = [];
+      defineProperty(ctor, 'mixinCtors_', mixinCtors);
+    }
     mixinCtors.push(superCtor);//quickly check in isMixinedFrom.
     clonePrototype(mixinCtor, superCtor);
     inheritsDirectly(ctor, mixinCtor);
