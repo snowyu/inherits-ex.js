@@ -43,6 +43,10 @@ The enhanced `inherits` implementation.
 + inherits at anytime.
   * you can not declare method/property before inherits in the standard way for it will replace the prototype object.
 + duplication inheritance check
++ add the `super_` property(the super ctor) to the ctor.
++ add the `__super__` property(the super's prototype) to the ctor for the coffeeScirpt `super` keyword.
++ add the `Class` property(point to the current class) to the object's prototype.
+  * just be care: the ctor may not be the current class.
 
 ### usage
 
