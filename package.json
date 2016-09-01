@@ -52,7 +52,7 @@
     "grunt-saucelabs": "*",
     "istanbul": "^0.3.17",
     "mocha": "~2.1.0",
-    "pre-commit": "0.0.11",
+    "pre-commit": "1.1.3",
     "sinon": "~1.12.2",
     "sinon-chai": "~2.6.0",
     "source-map-support": "*"

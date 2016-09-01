@@ -188,7 +188,7 @@ All mixins will be added to `MixinCtor_`.
 
 ## createObject(ctor, args...)
 
-the helper function to create object.
+The helper function to create the object dynamically.
 
 ```js
   var createObject = require('inherits-ex/lib/createObject')
@@ -214,9 +214,44 @@ assert.equal obj.b "b"
 ```
 ## createObjectWith(ctor, [args...])
 
-the helper function to create object.
+The helper function to create the object dynamically.
 
 ```js
   var createObjectWith = require('inherits-ex/lib/createObjectWith')
 ```
 
+## createFunction(name, [args,] body[, scope[, values]])
+
+* arguments:
+  * `name` *(String)*: the function name
+  * `args` *(Array)*: the function argument list. it's optional.
+  * `body` *(String)*: the function body.
+  * ``scope` *(Object|Array)*: the optional function scope.
+    * ignore the `values`  if it's an object.
+    * the `value` is requierd if it's an array. It's the key's name list
+  * `value` *(Array)*: the optional function scope's value list. only for the `scope` is the Array.
+
+The helper function to create the function dynamically.
+
+```js
+  var createFunction = require('inherits-ex/lib/createFunction')
+```
+
+### usage
+
+```coffee
+
+class RefObject
+  constructor: -> @initialize.apply @, arguments
+class MyObject
+  inherits MyObject, RefObject
+  initialize: (@a,@b)->
+    super
+
+obj = createObject(MyObject, "a", "b")
+#obj = new MyObject("a", "b") # it will have no property a and b.
+assert.equal obj.a "a"
+assert.equal obj.b "b"
+
+
+```

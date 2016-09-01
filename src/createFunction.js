@@ -7,6 +7,9 @@
  * "function yourFuncName(arg1, arg2) {
  *    return log(arg1+arg2);
  *  }"
+ * here use a tricky to apply the scope:
+ * Function(aArguments, aBody)
+ * Function(scopeNames, aFunctionCloureBody).apply(null, scopeValues)
  */
 var isArray = Array.isArray;
 var isString = function(v){return typeof v === 'string';};
