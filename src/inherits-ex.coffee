@@ -14,6 +14,7 @@ The enhanced dynamical `inherits` implementation.
 + load the class via dynamical name.
 * requireClass *(Function)*:
 * scope *(Object|Array)*: collects the register classes.
+  * the inherits ctor will be added into the scope automatically.
 
 The default requireClass is `getClassByName`.
 
@@ -32,20 +33,38 @@ inherits        = require './inherits'
 
 isFunction      = (value)->typeof value is 'function'
 isString        = (value)->typeof value is 'string'
+isObject        = (value)-> typeof value is 'object'
 isArray         = Array.isArray
 
 module.exports  = class InheritsEx
   @requireClass: getClassByName
+  @scope: {}
+  @setScope: (aScope)->
+    if isArray aScope
+      for k in aScope
+        vName = k.name
+        throw TypeError 'No Scope Name for ' + k unless vName?
+        InheritsEx.scope[vName] = k
+    else if isObject aScope
+      InheritsEx.scope = aScope
+    return
+  # get the class from scope.
+  @getClass: (aClassName, aScope, aValues)->
+    requireClass = InheritsEx.requireClass
+    result = requireClass(aClassName, aScope, aValues) if aScope?
+    result = requireClass(aClassName, aScope) if !result and aScope = InheritsEx.scope
+    result
   @execute = (ctor, superCtors, aScope, aValues)->
-    requireClass  = InheritsEx.requireClass
-    aScope        = InheritsEx.scope unless aScope?
-    ctor          = requireClass ctor, aScope, aValues if isString ctor
+    getClass  = InheritsEx.getClass
+    ctor      = getClass ctor, aScope, aValues if isStrCtor = isString ctor
     if isString superCtors
-      superCtors    = requireClass superCtors, aScope, aValues
+      superCtors    = getClass superCtors, aScope, aValues
     else if isArray superCtors
       superCtors = for i in superCtors
-        if isString(i) then requireClass(i, aScope, aValues) else i
-    inherits ctor, superCtors
+        if isString(i) then getClass(i, aScope, aValues) else i
+    result = inherits ctor, superCtors
+    InheritsEx.scope[ctor.name] = ctor if result and !isStrCtor
+    result
   constructor: (aDefaultRequire)->
     InheritsEx.requireClass = aDefaultRequire if isFunction aDefaultRequire
     return InheritsEx.execute

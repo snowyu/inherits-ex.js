@@ -25,15 +25,29 @@ describe "inheritsEx", ->
     isInheritedFrom(A, B, false).should.be.equal A
     isInheritedFrom(A, Root, false).should.be.equal B
     isInheritedFrom(B, 'A', false).should.be.equal false
-  it "should inherits with scope", ->
+  it "should inherits with scope array", ->
     class A
     class B
     class Root
-    InheritsEx.scope = [A, B, Root]
+    InheritsEx.setScope [A, B, Root]
     try
       inherits('A', ['B', 'Root']).should.be.true
       isInheritedFrom(A, B, false).should.be.equal A
       isInheritedFrom(A, Root, false).should.be.equal B
       isInheritedFrom(B, 'A', false).should.be.equal false
     finally
-      InheritsEx.scope = null
+      InheritsEx.scope = {}
+  it "should inherits with scope object", ->
+    class A
+    class B
+    class Root
+    InheritsEx.setScope B:B, Root:Root
+    try
+      inherits(A, ['B', 'Root']).should.be.true
+      isInheritedFrom(A, B, false).should.be.equal A
+      isInheritedFrom(A, Root, false).should.be.equal B
+      isInheritedFrom(B, 'A', false).should.be.equal false
+      InheritsEx.scope.should.has.property 'A', A
+    finally
+      InheritsEx.scope = {}
+
