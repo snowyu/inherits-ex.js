@@ -13,7 +13,7 @@ The enhanced dynamical `inherits` implementation.
 
 + load the class via dynamical name.
 * requireClass *(Function)*:
-* scope *(Object|Array)*: collects the register classes.
+* scope *(Object)*: collects the register classes.
   * the inherits ctor will be added into the scope automatically.
 
 The default requireClass is `getClassByName`.
@@ -21,9 +21,18 @@ The default requireClass is `getClassByName`.
 usage:
 
 ```coffee
-  requireClass = (aClassName)->
+  requireClass = (aClassName, aScope)->
     getClassViaName aClassName
-  inheritsEx = require('inherits-ex/lib/inherits-ex')(requireClass)
+  InheritsEx = require('inherits-ex/lib/inherits-ex')
+  inherits   = InheritsEx(requireClass)
+
+  class RootClass
+  class Parent
+  InheritsEx.setScope RootClass:RootClass, Parent:Parent
+
+  class MyClass3
+    inherits MyClass3, RootClass
+
 ```
 
 ###
