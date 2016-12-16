@@ -1,4 +1,4 @@
-exports = module.exports = require('./lib/inherits')
+var exports = module.exports = require('./lib/inherits')
 exports.directly = require('./lib/inheritsDirectly')
 exports.is = require('./lib/isInheritedFrom')
 exports.mixin = require('./lib/mixin')
