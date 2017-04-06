@@ -66,5 +66,8 @@
   },
   "dependencies": {
     "xtend": "^4.0.0"
+  },
+  "browser": {
+    "./lib/isEmptyFunction.js": "./lib/isEmptyFunction-cli.js"
   }
 }
