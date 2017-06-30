@@ -42,6 +42,7 @@ describe "inherits", ->
     "a1Method"
 
   class Root
+    @test: 1
     constructor: (@inited="Root", @other)->"Root"
     rootMethod: ->
 
@@ -61,6 +62,10 @@ describe "inherits", ->
     assert.equal inherits(A, Root), false
     assert.equal inherits(B, Root), true
     assert.equal inherits(A1, A), true
+    assert.equal A.test, 1
+    assert.equal B.test, 1
+    assert.equal A1.test, 1
+    assert.ok Root.isPrototypeOf A1
     assert.equal A1.super_, A
     assert.notOk A1.propertyIsEnumerable('super_')
     assert.notOk A1.propertyIsEnumerable('__super__')

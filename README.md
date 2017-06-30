@@ -19,6 +19,7 @@ browsers with no `Object.create` support.
 Differs from the standard implementation is:
 
 + coffee-script supports
++ static inheritance
 + multi-inheritances(inheritance chain) supports
 + inherits at anytime.
   * you can not declare method/property before inherits in the standard way for it will replace the prototype object.
@@ -90,6 +91,7 @@ and the following codes do same thing:
 ```coffee
 
 class Root
+  @static: 1
   m: -> log('root')
 
 class A
@@ -110,7 +112,7 @@ class MyClass
 assert.ok isInheritedFrom(MyClass, A)
 assert.ok isInheritedFrom(MyClass, Root)
 assert.ok isInheritedFrom(MyClass, B)
-
+assert.equal MyClass.static, 1
 ```
 
 ## inheritsDirectly(ctor, superCtor)
