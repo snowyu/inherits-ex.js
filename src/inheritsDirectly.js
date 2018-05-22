@@ -7,6 +7,7 @@ module.exports = function(ctor, superCtor, staticInherit) {
   defineProperty(ctor, 'super_', superCtor);
   defineProperty(ctor, '__super__', superCtor.prototype);//for coffeeScirpt super keyword.
   ctor.prototype = newPrototype(superCtor, ctor);
+  setPrototypeOf(ctor.prototype, superCtor.prototype);
   if (staticInherit !== false) {
     setPrototypeOf(ctor, superCtor);//additional static inheritance
   }
