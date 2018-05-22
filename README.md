@@ -31,7 +31,9 @@ of casue it's the coffee-script supports and browser-friendly.
 
 # API
 
-## inherits(ctor, superCtor|[superCtor, ...])
+## inherits(ctor, superCtor|superCtor[], staticInherit = true)
+
+* `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
 ```js
   var inherits = require('inherits-ex/lib/inherits')
@@ -114,12 +116,6 @@ assert.ok isInheritedFrom(MyClass, Root)
 assert.ok isInheritedFrom(MyClass, B)
 assert.equal MyClass.static, 1
 ```
-
-## inherits(ctor, superCtor, staticInherit = true)
-
-Inherit the prototype methods from one constructor into another.
-
-* `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
 ## inheritsDirectly(ctor, superCtor, staticInherit = true)
 
