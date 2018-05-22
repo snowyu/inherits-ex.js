@@ -24,6 +24,7 @@ Differs from the standard implementation is:
 + inherits at anytime.
   * you can not declare method/property before inherits in the standard way for it will replace the prototype object.
 + duplication inheritance check
++ Es6 Class supports
 + more helper functions
 
 The standard `inherits` implementation is in `inherits-ex/lib/inheritsDirectly`,
