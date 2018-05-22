@@ -115,7 +115,15 @@ assert.ok isInheritedFrom(MyClass, B)
 assert.equal MyClass.static, 1
 ```
 
-## inheritsDirectly(ctor, superCtor)
+## inherits(ctor, superCtor, staticInherit = true)
+
+Inherit the prototype methods from one constructor into another.
+
+* `staticInherit` (*boolean*): whether static inheritance,defaults to true.
+
+## inheritsDirectly(ctor, superCtor, staticInherit = true)
+
+* `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
 ```js
   var inheritsDirectly = require('inherits-ex/lib/inheritsDirectly')

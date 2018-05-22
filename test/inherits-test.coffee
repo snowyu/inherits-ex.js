@@ -57,6 +57,19 @@ describe "inherits", ->
     constructor: (@inited="A1")->"A1"
     a1Method: a1Method
 
+  it "test inherits with none static inheritance", ->
+    class R
+      @test: 1
+      constructor: (@inited="R", @other)->"R"
+      rootMethod: ->
+
+    class R1
+      constructor: (@inited="B")->"B"
+      bMethod: ->
+
+    assert.equal inherits(R1, R, false), true
+    assert.isUndefined R1.test
+
   it "test inherits and isInheritedFrom", ->
     assert.equal inherits(A, Root), true
     assert.equal inherits(A, Root), false

@@ -14,8 +14,9 @@ var inheritsDirectly  = require('./inheritsDirectly');
  * @param {function} ctor Constructor function which needs to inherit the
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
+ * @param {boolean} staticInherit whether static inheritance,defaults to true.
  */
-function inherits(ctor, superCtor) {
+function inherits(ctor, superCtor, staticInherit) {
   var v  = ctor.super_;
   var mixinCtor = ctor.mixinCtor_;
   if (mixinCtor && v === mixinCtor) {
@@ -24,11 +25,11 @@ function inherits(ctor, superCtor) {
   }
   var result = false;
   if (!isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
-    inheritsDirectly(ctor, superCtor);
+    inheritsDirectly(ctor, superCtor, staticInherit);
     while (v != null && superCtor !== v) {
       ctor = superCtor;
       superCtor = v;
-      inheritsDirectly(ctor, superCtor);
+      inheritsDirectly(ctor, superCtor, staticInherit);
       v = ctor.super_;
     }
     result = true;
@@ -36,10 +37,10 @@ function inherits(ctor, superCtor) {
   return result;
 }
 
-module.exports = function(ctor, superCtors) {
-  if (!isArray(superCtors)) return inherits(ctor, superCtors);
+module.exports = function(ctor, superCtors, staticInherit) {
+  if (!isArray(superCtors)) return inherits(ctor, superCtors, staticInherit);
   for (var i = superCtors.length - 1; i >= 0; i--) {
-    if (!inherits(ctor, superCtors[i])) return false;
+    if (!inherits(ctor, superCtors[i], staticInherit)) return false;
   }
   return true;
 }
