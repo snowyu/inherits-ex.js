@@ -3,4 +3,4 @@
 --ui bdd
 --growl
 --colors
-test/**/*-test.coffee
+test/**/*-test.{coffee,js}

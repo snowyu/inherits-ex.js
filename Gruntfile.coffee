@@ -37,7 +37,7 @@ module.exports = (grunt) ->
           require: 'coffee-script/register'
           reporter: 'dot'
           check: ['src/**/*.coffee', 'test/**/*.js', 'test/**/*.coffee']
-        src: ['test/**/*.coffee']
+        src: ['test/**/*.coffee', 'test/**/*.js']
 
     watch:
       options:
@@ -52,7 +52,7 @@ module.exports = (grunt) ->
           'src/**/*.js'
           'test/*.coffee'
         ]
-    
+
 
   #grunt.loadTasks('tasks')
 
