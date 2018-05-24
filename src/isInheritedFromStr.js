@@ -1,3 +1,5 @@
+var getPrototypeOf     = require('./getPrototypeOf');
+
 module.exports = function(ctor, superStr, throwError) {
   if (ctor.name === superStr) {
     if (throwError)
@@ -5,10 +7,12 @@ module.exports = function(ctor, superStr, throwError) {
     else
       return true;
   }
-  var result  =  ctor.super_ != null && ctor.super_.name === superStr;
+  var ctorSuper = ctor.super_ || getPrototypeOf(ctor);
+  var result  =  ctorSuper != null && ctorSuper.name === superStr;
   var checkeds = [];
   checkeds.push(ctor);
-  while (!result && ((ctor = ctor.super_) != null)) {
+  while (!result && ((ctor = ctorSuper) != null)) {
+    ctorSuper = ctor.super_ || getPrototypeOf(ctor);
     if (checkeds.indexOf(ctor) >= 0) {
       if (throwError)
         throw new Error('Circular inherits found!');
@@ -16,7 +20,7 @@ module.exports = function(ctor, superStr, throwError) {
         return true;
     }
     checkeds.push(ctor);
-    result = ctor.super_ != null && ctor.super_.name === superStr;
+    result = ctorSuper != null && ctorSuper.name === superStr;
   }
   if (result) {
     result = ctor;

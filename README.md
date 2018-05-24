@@ -140,7 +140,17 @@ else return false.
 
 it will use the ctor.name to check whether inherited from superCtorName.
 
-## mixin(ctor, superCtor|[superCtor, ...])
+## mixin(ctor, superCtor|superCtor[], options:{ filter: number|function})
+
+* options:
+  * filter: defaults to 0.
+    * `0`: copy all properties(methods)
+    * `1`: raise error if found a method using `super`
+    * `2`: skip these methods which using `super`
+    * `string[]`: only name in the array of string will be copied.
+    * `function(name, value){return value}` the callback function of filter.
+      * name: the property name
+      * value: the property value.
 
 ```js
   var mixin = require('inherits-ex/lib/mixin')
@@ -149,33 +159,41 @@ it will use the ctor.name to check whether inherited from superCtorName.
 mixin all superCtors to ctor.
 
 + duplication mixin or inheritance check
-+ the methods in mixins could super() across mixin classes.
++ **NOTE[WARNING]:**:the methods in mixins using `super()`.
+  * the `coffescript@1.x` code the `super` hardcorely: `A.__super__`
+    * so the super will return the original mixin class.
+  * but the es6 `super` will be the current class' super.
+* The mixined properties(methods) are cloned(copied) from superCtors
+* The all mixined properties(methods) are the first parent's ctor(`MixinCtor_`)
+  * eg, `ctor -> MixinCtor_ -> original parents`
 
 ``` coffee
-
+## Coffee@2.x
 mCallOrder = []
 class Root
-class C
+
+class C extends Root
   m: ->
     mCallOrder.push 'C'
     super
+
 class A
   m: ->
     mCallOrder.push 'A'
-class A1
+
+class A1 extends A
   m: ->
     mCallOrder.push 'A1'
     super
+
 class B
   inherits B, Root
-class B1
+
+class B1 extends B
   m: ->
     mCallOrder.push 'B1'
     super
 
-inherits(C, Root).should.be.equal true, "C should inherits from Root"
-inherits(B1, B).should.be.equal true, "B1 should inherits from B"
-inherits(A1, A).should.be.equal true, "A1 should inherits from A"
 mixin(B1, [A1, C]).should.be.equal true, 'mixin'
 o = new B1()
 o.m("a", 12) # call chain: B1::m -> C::m -> A1::m -> A::m

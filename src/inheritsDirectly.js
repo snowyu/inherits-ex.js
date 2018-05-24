@@ -9,6 +9,7 @@ module.exports = function(ctor, superCtor, staticInherit) {
   ctor.prototype = newPrototype(superCtor, ctor);
   setPrototypeOf(ctor.prototype, superCtor.prototype);
   if (staticInherit !== false) {
+    // NOTE: ES6 use this to keep superCtor.
     setPrototypeOf(ctor, superCtor);//additional static inheritance
   }
 };

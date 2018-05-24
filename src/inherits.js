@@ -1,6 +1,9 @@
 var isArray           = Array.isArray;
 var isInheritedFrom   = require('./isInheritedFrom');
 var inheritsDirectly  = require('./inheritsDirectly');
+var getPrototypeOf    = require('./getPrototypeOf');
+
+var objectSuperCtor = getPrototypeOf(Object);
 /**
  * Inherit the prototype methods from one constructor into another.
  *
@@ -17,20 +20,21 @@ var inheritsDirectly  = require('./inheritsDirectly');
  * @param {boolean} staticInherit whether static inheritance,defaults to true.
  */
 function inherits(ctor, superCtor, staticInherit) {
-  var v  = ctor.super_;
+  var v  = ctor.super_ || getPrototypeOf(ctor);
   var mixinCtor = ctor.mixinCtor_;
   if (mixinCtor && v === mixinCtor) {
     ctor = mixinCtor;
-    v = ctor.super_;
+    v = ctor.super_ || getPrototypeOf(ctor);
   }
   var result = false;
   if (!isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor, staticInherit);
-    while (v != null && superCtor !== v) {
+    // patch the missing prototype chain if exists ctor.super.
+    while (v != null && v !== objectSuperCtor && superCtor !== v) {
       ctor = superCtor;
       superCtor = v;
       inheritsDirectly(ctor, superCtor, staticInherit);
-      v = ctor.super_;
+      v = ctor.super_ || getPrototypeOf(ctor);
     }
     result = true;
   }

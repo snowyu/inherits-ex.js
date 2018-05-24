@@ -1,4 +1,5 @@
 var isInheritedFromStr = require('./isInheritedFromStr');
+var getPrototypeOf     = require('./getPrototypeOf');
 
 module.exports = function(ctor, superCtor, throwError) {
   if (typeof superCtor === 'string') return isInheritedFromStr(ctor, superCtor, throwError);
@@ -8,10 +9,12 @@ module.exports = function(ctor, superCtor, throwError) {
     else
       return true;
   }
-  var result  = ctor.super_ === superCtor;
+  var ctorSuper = ctor.super_ || getPrototypeOf(ctor);
+  var result  = ctorSuper === superCtor;
   var checkeds = [];
   checkeds.push(ctor);
-  while (!result && ((ctor = ctor.super_) != null)) {
+  while (!result && ((ctor = ctorSuper) != null)) {
+    ctorSuper = ctor.super_ || getPrototypeOf(ctor);
     if (checkeds.indexOf(ctor) >= 0) {
       if (throwError)
         throw new Error('Circular inherits found!');
@@ -19,7 +22,7 @@ module.exports = function(ctor, superCtor, throwError) {
         return true;
     }
     checkeds.push(ctor);
-    result = ctor.super_ === superCtor;
+    result = ctorSuper === superCtor;
   }
   if (result) {
     result = ctor;

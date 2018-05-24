@@ -2,6 +2,7 @@ chai            = require 'chai'
 sinon           = require 'sinon'
 sinonChai       = require 'sinon-chai'
 assert          = chai.assert
+expect          = chai.expect
 should          = chai.should()
 
 inherits        = require '../src/inherits'
@@ -368,9 +369,9 @@ describe "mixin", ->
     isMixinedFrom(A, B2).should.be.equal true, "A is mixined from B2"
 
   it "should call super function in a mixined class", ->
-    mCallOrder = []
     class Root
-      m: sinon.spy()
+      m: sinon.spy ->
+        mCallOrder.push 'Root'
     class C
       m: ->
         mCallOrder.push 'C'
@@ -392,10 +393,93 @@ describe "mixin", ->
     inherits(B1, B).should.be.equal true, "B1 should inherits from B"
     inherits(A1, A).should.be.equal true, "A1 should inherits from A"
     mixin(B1, [A1, C]).should.be.equal true, 'mixin'
+
+    mCallOrder = []
     o = new B1()
-    o.m("a", 12) # call chain: B1::m -> C::m -> A1::m -> A::m
-    A::m.should.have.been.calledOnce
-    A::m.should.have.been.calledWith "a", 12
-    mCallOrder.should.be.deep.equal ['B1', 'C', 'A1', 'A']
+    o.m("a", 12) # call chain: B1::m -> C::m -> Root::m
+    Root::m.should.have.been.calledOnce
+    Root::m.should.have.been.calledWith "a", 12
+    mCallOrder.should.be.deep.equal ['B1', 'C', 'Root']
+
+  it "should throw error when super function in a mixined class", ->
+    class A
+      m: -> super
+    class B
+
+    expect(mixin.bind(null, B, A, filter: mixin.filterOpts.errSuper)).to.throw('method: should not use super');
+
+  it "should throw error when filter option value error in a mixined class", ->
+    class A
+      m: -> super
+    class B
+
+    expect(mixin.bind(null, B, A, filter: 9999)).to.throw('filter option value error');
+
+  it "should skip super method when super function in a mixined class", ->
+    class A
+      m: -> super
+      m1: ->
+    class B
+
+    mixin(B, A, filter: mixin.filterOpts.skipSuper).should.be.equal true, 'mixin'
+    B.prototype.should.have.not.property 'm'
+    B.prototype.should.have.property 'm1'
+
+  it "should allow properties in the filter array only in a mixined class", ->
+    class A
+      m: ->
+      m1: ->
+      nosuch: 1
+      got: 2
+    class B
+
+    mixin(B, A, filter: ['m', 'got']).should.be.equal true, 'mixin'
+    B.prototype.should.have.not.property 'm1'
+    B.prototype.should.have.not.property 'nosuch'
+    B.prototype.should.have.property 'm'
+    B.prototype.should.have.property 'got'
+
+  it "should call super function in a mixined class and no mixined method in itself", ->
+    class Root
+      m: sinon.spy ->
+        mCallOrder.push 'Root'
+    class C
+      m: ->
+        mCallOrder.push 'C'
+        super
+    class A
+      m: ->
+        mCallOrder.push 'A'
+        super
+    class A1
+      m: ->
+        mCallOrder.push 'A1'
+        super
+    class B
+    class B1
+
+    inherits(C, Root).should.be.equal true, "C should inherits from Root"
+    inherits(B1, B).should.be.equal true, "B1 should inherits from B"
+    inherits(A1, [A, Root]).should.be.equal true, "A1 should inherits from A"
+    mixin(B1, A1).should.be.equal true, 'mixin'
+
+    mCallOrder = []
+    o = new B1()
+    o.m("a", 12) # call chain:  A1::m -> A::m
+    mCallOrder.should.be.deep.equal ['A1', 'A', 'Root']
+
+    mCallOrder = []
+    mixin(B1, C).should.be.equal true, 'mixin'
+    mixin(B1, [A1, C]).should.be.equal false, 'dup mixin'
+    mixin(B1, A1).should.be.equal false, 'dup mixin A1'
+    mixin(B1, C).should.be.equal false, 'dup mixin C'
+    # log(getProtoChain(B1))
+
+    o = new B1()
+    o.m("a", 12) # call chain:  C::m -> Root::m
+    mCallOrder.should.be.deep.equal ['C', 'Root']
+
+    Root::m.should.have.been.calledTwice
+    Root::m.should.have.been.calledWith "a", 12
 
 
