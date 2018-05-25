@@ -20,11 +20,11 @@ var objectSuperCtor = getPrototypeOf(Object);
  * @param {boolean} staticInherit whether static inheritance,defaults to true.
  */
 function inherits(ctor, superCtor, staticInherit) {
-  var v  = ctor.super_ || getPrototypeOf(ctor);
+  var v  = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
   var mixinCtor = ctor.mixinCtor_;
   if (mixinCtor && v === mixinCtor) {
     ctor = mixinCtor;
-    v = ctor.super_ || getPrototypeOf(ctor);
+    v = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
   }
   var result = false;
   if (!isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
@@ -34,7 +34,7 @@ function inherits(ctor, superCtor, staticInherit) {
       ctor = superCtor;
       superCtor = v;
       inheritsDirectly(ctor, superCtor, staticInherit);
-      v = ctor.super_ || getPrototypeOf(ctor);
+      v = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
     }
     result = true;
   }

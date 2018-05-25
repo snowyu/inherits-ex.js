@@ -100,12 +100,16 @@ b.m()
  *
  */
 function isSuperInFunction(aMethod) {
-  return aMethod.toString().indexOf('__super__') >= 0;
+  var vStr = aMethod.toString();
+  return vStr.indexOf('__super__') >= 0 || /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(vStr);
 }
+// function isSuperInFunction(aMethod) {
+//   return aMethod.toString().indexOf('__super__') >= 0;
+// }
 
-function isES6SuperInFunction(aMethod) {
-  return /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(aMethod.toString());
-}
+// function isES6SuperInFunction(aMethod) {
+//   return /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(aMethod.toString());
+// }
 
 //TODO: cant use async function. MUST make chain too.
 function _mixinGenMethod(aMixinSuper, aMethod, src) {
@@ -224,38 +228,24 @@ function clonePrototype(dest, src, ctor, filter) {
   }
 }
 
-function getProtoChain(ctor) {
-  result = []
-  while (ctor){
-    if (ctor === Object) {
-      name = "Base"
-    } else {
-      name = ctor.name
-    }
-    ctor = ctor.super_
-    result.push(name)
-  }
-  return result.reverse()
-}
+// function shadowCloneCtor(ctor) {
+//   var result = createCtor('Clone__' + ctor.name, '');
+//   inheritsDirectly(result, ctor);
+//   return result;
+// }
 
-function shadowCloneCtor(ctor) {
-  var result = createCtor('Clone__' + ctor.name, '');
-  inheritsDirectly(result, ctor);
-  return result;
-}
-
-function findLastClonedCtor(ctor) {
-  var result;
-  while (ctor && ctor.name.indexOf('Clone__') === 0) {
-    result = ctor;
-    ctor = ctor.super_;
-  }
-  return result;
-}
+// function findLastClonedCtor(ctor) {
+//   var result;
+//   while (ctor && ctor.name.indexOf('Clone__') === 0) {
+//     result = ctor;
+//     ctor = ctor.super_;
+//   }
+//   return result;
+// }
 
 var objectSuperCtor = getPrototypeOf(Object);
 function mixin(ctor, superCtor, options) {
-  var v  = ctor.super_ || getPrototypeOf(ctor); // original superCtor
+  var v  = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor); // original superCtor
   var result = false;
   if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
     var mixinCtor = ctor.mixinCtor_;
@@ -264,11 +254,11 @@ function mixin(ctor, superCtor, options) {
       mixinCtor = function MixinCtor_(){};
       defineProperty(ctor, 'mixinCtor_', mixinCtor);
       if (v && v !== objectSuperCtor) inheritsDirectly(mixinCtor, v);
-      defineProperty(mixinCtor, 'chain', shadowCloneCtor(superCtor));
+      // defineProperty(mixinCtor, 'chain', shadowCloneCtor(superCtor));
       // inheritsDirectly(mixinCtor.chain, shadowCloneCtor(superCtor));
-    } else {
-      var lastChainCtor = findLastClonedCtor(mixinCtor.chain);
-      inheritsDirectly(lastChainCtor, shadowCloneCtor(superCtor));
+    // } else {
+    //   var lastChainCtor = findLastClonedCtor(mixinCtor.chain);
+    //   inheritsDirectly(lastChainCtor, shadowCloneCtor(superCtor));
     }
     if (!mixinCtors) {
       mixinCtors = [];

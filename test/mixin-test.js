@@ -25,7 +25,6 @@ try{
 }catch(err){
 }
 
-// console.log('xxxxxxxxxxx', classSupports)
 if (classSupports) describe("mixin es6", function(){
   it("test mixin with super", function(){
     let mCallOrder = [];

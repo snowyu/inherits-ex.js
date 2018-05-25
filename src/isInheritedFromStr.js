@@ -7,12 +7,12 @@ module.exports = function(ctor, superStr, throwError) {
     else
       return true;
   }
-  var ctorSuper = ctor.super_ || getPrototypeOf(ctor);
+  var ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
   var result  =  ctorSuper != null && ctorSuper.name === superStr;
   var checkeds = [];
   checkeds.push(ctor);
   while (!result && ((ctor = ctorSuper) != null)) {
-    ctorSuper = ctor.super_ || getPrototypeOf(ctor);
+    ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
     if (checkeds.indexOf(ctor) >= 0) {
       if (throwError)
         throw new Error('Circular inherits found!');

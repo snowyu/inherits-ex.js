@@ -1,3 +1,5 @@
+var setPrototypeOf    = require('./setPrototypeOf');
+
 var arraySlice = Array.prototype.slice;
 var defineProperty = Object.defineProperty;
 
@@ -10,8 +12,17 @@ module.exports = function(aClass) {
         configurable: true
       });
     }
-    if (aClass !== aClass.prototype.constructor)
-      aClass.prototype.constructor.apply(result, arraySlice.call(arguments, 1));
+    if (aClass !== aClass.prototype.constructor) {
+      try {
+        aClass.prototype.constructor.apply(result, arraySlice.call(arguments, 1));
+      } catch(err) {
+        if (err instanceof TypeError && err.toString().lastIndexOf("invoked without 'new'") !== -1) {
+          result = new aClass.prototype.constructor(...arraySlice.call(arguments, 1));
+          setPrototypeOf(result, aClass.prototype);
+        }
+        else throw err
+      }
+    }
   }
   return result;
 }

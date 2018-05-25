@@ -159,10 +159,7 @@ it will use the ctor.name to check whether inherited from superCtorName.
 mixin all superCtors to ctor.
 
 + duplication mixin or inheritance check
-+ **NOTE[WARNING]:**:the methods in mixins using `super()`.
-  * the `coffescript@1.x` code the `super` hardcorely: `A.__super__`
-    * so the super will return the original mixin class.
-  * but the es6 `super` will be the current class' super.
++ **NOTE:**:the methods in mixins using `super()` will jump to the old class(not stay on the class).
 * The mixined properties(methods) are cloned(copied) from superCtors
 * The all mixined properties(methods) are the first parent's ctor(`MixinCtor_`)
   * eg, `ctor -> MixinCtor_ -> original parents`
@@ -196,10 +193,10 @@ class B1 extends B
 
 mixin(B1, [A1, C]).should.be.equal true, 'mixin'
 o = new B1()
-o.m("a", 12) # call chain: B1::m -> C::m -> A1::m -> A::m
+o.m("a", 12) # call chain: B1::m -> C::m
 A::m.should.have.been.calledOnce
 A::m.should.have.been.calledWith "a", 12
-mCallOrder.should.be.deep.equal ['B1', 'C', 'A1', 'A']
+mCallOrder.should.be.deep.equal ['B1', 'C']
 ```
 
 The inheritance chain: `B1 -> MixinCtor_ -> B -> Root`
@@ -218,6 +215,8 @@ The helper function to create the object dynamically.
 ```js
   var createObject = require('inherits-ex/lib/createObject')
 ```
+
+NOTE: DO NOT SUPPORT ES6 Class
 
 ### usage
 
@@ -244,6 +243,9 @@ The helper function to create the object dynamically.
 ```js
   var createObjectWith = require('inherits-ex/lib/createObjectWith')
 ```
+
+NOTE: DO NOT SUPPORT ES6 Class
+
 
 ## createFunction(name, [args,] body[, scope[, values]])
 
