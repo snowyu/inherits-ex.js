@@ -273,7 +273,7 @@ if(classSupports) describe("inheritsES6", function() {
       result.should.be.instanceof(A)
       A.should.not.have.ownProperty('Class')
     })
-    it('should call the parent\'s constructor method if it no constructor', function(){
+    it.skip('should call the parent\'s constructor method if it no constructor', function(){
       function A12() {}
       assert.equal(inherits(A12, A1), true)
       a = createObject(A12)
