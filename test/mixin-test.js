@@ -18,7 +18,7 @@ getProtoChain   = require('../src/getProtoChain')
 log             = console.log.bind(console)
 chai.use(sinonChai)
 
-let classSupports;
+var classSupports;
 try{
   eval('class A{}');
   classSupports = true;

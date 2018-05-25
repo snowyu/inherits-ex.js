@@ -30,7 +30,7 @@ var compareProtoChain = function(o, list){
   return true
 }
 
-let classSupports;
+var classSupports;
 try{
   eval('class A{}');
   classSupports = true;
