@@ -204,9 +204,27 @@ All mixins will be added to `MixinCtor_`.
 
 ## isMixinedFrom(ctor, superCtor|superCtorName)
 
+check the ctor whether is mixined from superCtor.
+
 ```js
   var isMixinedFrom = require('inherits-ex/lib/isMixinedFrom')
 ```
+
+## createCtor(name, args, body)
+
+Create a constructor(class) dynamically.
+
+* `name`(*string*): the class name
+* `args`(*any[]*): the optional constructor's args.
+* `body`(*string*): the optional constructor function body.
+
+```js
+  const createClass = require('inherits-ex/lib/createCtor')
+  const MyClass = createClass('MyClass', ['a', 'b'], 'this.sum = a + b');
+  var my = new MyClass(1, 2);
+  console.log(my.sum);
+```
+
 
 ## createObject(ctor, args...)
 
@@ -214,6 +232,13 @@ The helper function to create the object dynamically.
 
 ```js
   var createObject = require('inherits-ex/lib/createObject')
+  class MyClass {
+    constructor(a,b) {
+      this.sum = a + b;
+    }
+  }
+  var o = creatObject(MyClass, 1, 2)
+  console.log(o.sum)
 ```
 
 NOTE: DO NOT SUPPORT ES6 Class
