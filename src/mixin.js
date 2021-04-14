@@ -50,7 +50,7 @@ var filterOpts = {
  *      method.__mixin_super__ = C.prototype
  *  B11 -> mixinCtor_ -> B1 -> B -> Root
  *
-mixin the exists method: the new mixin method will oerwrite the old one.
+mixin the exists method: the new mixin method will overwrite the old one.
 
 ```coffee
 class Root
@@ -165,12 +165,37 @@ function _getFilterFunc(filter){
   return filter;
 }
 
+function _clone(dest, src, ctor, filter) {
+  // filter = _getFilterFunc(filter);
+
+  var names = getOwnPropertyNames(src);
+
+  for (var i = 0; i < names.length; i++ ) {
+    var k = names[i];
+    // if (k === 'Class' || k === 'constructor') continue;
+    var value = filter(k, src[k]);
+    if (value !== void 0) dest[k] = value;
+  }
+}
+
 //clone src(superCtor) to dest(MixinCtor)
 function clonePrototype(dest, src, ctor, filter) {
-  filter = _getFilterFunc(filter);
+  // filter = _getFilterFunc(filter);
+  var filterFn = function (name, value) {
+    for (var n of [ 'Class', 'constructor' ]) {
+      if (n === name) {
+        value = void 0;
+        break;
+      }
+      if (value !== void 0) value = filter(name, value);
+    }
+    return value;
+  }
 
   var sp = src.prototype;
   var dp = dest.prototype;
+  _clone(dp, sp, ctor, filterFn);
+  /*
   var names = getOwnPropertyNames(sp);
 
   for (var i = 0; i < names.length; i++ ) {
@@ -226,6 +251,7 @@ function clonePrototype(dest, src, ctor, filter) {
     // }
     // dp[k] = method;
   }
+  */
 }
 
 // function shadowCloneCtor(ctor) {
@@ -265,7 +291,8 @@ function mixin(ctor, superCtor, options) {
       defineProperty(ctor, 'mixinCtors_', mixinCtors);
     }
     mixinCtors.push(superCtor);//quickly check in isMixinedFrom.
-    clonePrototype(mixinCtor, superCtor, ctor, options && options.filter);
+    var filterFn = _getFilterFunc(options && options.filter);
+    clonePrototype(mixinCtor, superCtor, ctor, filterFn);
     inheritsDirectly(ctor, mixinCtor);
     result = true;
   }
