@@ -330,6 +330,7 @@ describe "mixin", ->
       b1Method: ->
     class B2
       b2Method: ->
+    B1.staticMethod = ->
     inherits(A, Root).should.be.equal true
     isInheritedFrom(A, Root).should.be.equal A, "A is inherits from Root"
     mixin(A, [B1, B2]).should.be.equal true
@@ -337,6 +338,7 @@ describe "mixin", ->
     assert.ok A.hasOwnProperty('mixinCtors_')
     assert.notOk A.propertyIsEnumerable('mixinCtor_')
     assert.notOk A.propertyIsEnumerable('mixinCtors_')
+    A.should.have.property 'staticMethod'
     a = new A()
     a.should.have.property 'b1Method'
     a.should.have.property 'b2Method'
