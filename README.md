@@ -142,6 +142,8 @@ it will use the ctor.name to check whether inherited from superCtorName.
 
 ## mixin(ctor, superCtor|superCtor[], options:{ filter: number|function})
 
+Mixin the methods and properties of the SuperCtor: Clone(Copy) all `superCtor`'s properties(methods) to ctor.
+
 * options:
   * filter: defaults to 0.
     * `0`: copy all properties(methods)
@@ -158,9 +160,9 @@ it will use the ctor.name to check whether inherited from superCtorName.
 
 mixin all superCtors to ctor.
 
-+ duplication mixin or inheritance check
-+ **NOTE:**:the methods in mixins using `super()` will jump to the old class(not stay on the class).
-* The mixined properties(methods) are cloned(copied) from superCtors
+* duplication mixin or inheritance check
+* **NOTE:**:the methods in mixins using `super()` will jump to the old class(not stay on the class).
+* The mixined properties(methods) are cloned(copied) from superCtors(includes the static members)
 * The all mixined properties(methods) are the first parent's ctor(`MixinCtor_`)
   * eg, `ctor -> MixinCtor_ -> original parents`
 
