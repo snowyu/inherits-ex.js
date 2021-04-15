@@ -51,13 +51,12 @@ module.exports = function(grunt) {
         nospawn: true
       },
       all: {
-        files: ['Gruntfile.coffee', 'tasks/*.coffee', 'src/**/*.coffee', 'src/**/*.coffee.md', 'src/**/*.nools', 'src/**/*.js', 'test/*.coffee']
+        files: ['Gruntfile.js', 'tasks/*.coffee', 'src/**/*.coffee', 'src/**/*.coffee.md', 'src/**/*.nools', 'src/**/*.js', 'test/*.coffee']
       }
     }
   });
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-release');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-clean');
