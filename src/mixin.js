@@ -178,6 +178,20 @@ function _clone(dest, src, ctor, filter) {
   }
 }
 
+function cloneCtor(dest, src, ctor, filter) {
+  var filterFn = function (name, value) {
+    for (var n of [ 'length', 'name', 'arguments', 'caller', 'prototype' ]) {
+      if (n === name) {
+        value = void 0;
+        break;
+      }
+      if (value !== void 0) value = filter(name, value);
+    }
+    return value;
+  }
+  _clone(dest, src, ctor, filterFn);
+}
+
 //clone src(superCtor) to dest(MixinCtor)
 function clonePrototype(dest, src, ctor, filter) {
   // filter = _getFilterFunc(filter);
@@ -292,6 +306,7 @@ function mixin(ctor, superCtor, options) {
     }
     mixinCtors.push(superCtor);//quickly check in isMixinedFrom.
     var filterFn = _getFilterFunc(options && options.filter);
+    cloneCtor(mixinCtor, superCtor, ctor, filterFn);
     clonePrototype(mixinCtor, superCtor, ctor, filterFn);
     inheritsDirectly(ctor, mixinCtor);
     result = true;
