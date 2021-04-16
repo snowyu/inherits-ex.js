@@ -61,9 +61,7 @@
     "test": "grunt test",
     "test-cov": "istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter dot"
   },
-  "dependencies": {
-    "xtend": "^4.0.2"
-  },
+  "dependencies": {},
   "browser": {
     "./lib/isEmptyFunction.js": "./lib/isEmptyFunction-cli.js"
   }
