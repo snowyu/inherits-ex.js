@@ -1,4 +1,4 @@
-### Inherits-Ex [![npm](https://img.shields.io/npm/v/inherits-ex.svg)](https://npmjs.org/package/inherits-ex)
+# Inherits-Ex [![npm](https://img.shields.io/npm/v/inherits-ex.svg)](https://npmjs.org/package/inherits-ex)
 
 [![Join the chat at https://gitter.im/snowyu/inherits-ex.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/snowyu/inherits-ex.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -10,7 +10,7 @@
 
 Browser-friendly enhanced inheritance fully compatible with standard node.js
 [inherits](http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor)
-and coffee-script.
+with dynamic inheritance or creation.
 
 This package modifies and enhances the standard `inherits` from node.js
 `util` module in node environment. It also has a shim for old
@@ -26,13 +26,20 @@ Differs from the standard implementation is:
 + duplication inheritance check
 + Es6 Class supports
 + more helper functions
+  * `isInheritedFrom(ctor, superCtor|superCtorName)` Check the ctor whether inherited from superCtor
+  * `mixin(ctor, superCtor|superCtor[])` Mixin the methods and properties of the SuperCtor:
+    * Clone(Copy) all superCtor's properties(methods) to ctor.
+  * `isMixinedFrom(ctor, superCtor|superCtorName)` Whether mixined from superCtor
+  * `createCtor(name, args, body)` Create Ctor(Class) dynamically
+  * `createObject(ctor, args...)` Create Object instance dynamically
+  * `createFunction(name, [args,] body[, scope[, values]])` Create Function dynamically
 
 The standard `inherits` implementation is in `inherits-ex/lib/inheritsDirectly`,
-of casue it's the coffee-script supports and browser-friendly.
+of cause it's the coffee-script supports and browser-friendly.
 
-# API
+## API
 
-## inherits(ctor, superCtor|superCtor[], staticInherit = true)
+### inherits(ctor, superCtor|superCtor[], staticInherit = true)
 
 * `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
@@ -52,7 +59,7 @@ The enhanced `inherits` implementation.
 + add the `Class` property(point to the current class) to the object's prototype.
   * just be care: the ctor may not be the current class.
 
-### usage
+#### usage
 
 ```coffee
 
@@ -118,7 +125,7 @@ assert.ok isInheritedFrom(MyClass, B)
 assert.equal MyClass.static, 1
 ```
 
-## inheritsDirectly(ctor, superCtor, staticInherit = true)
+### inheritsDirectly(ctor, superCtor, staticInherit = true)
 
 * `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
@@ -129,7 +136,7 @@ assert.equal MyClass.static, 1
 The standard `inherits` implementation in node.js environment with coffee-script supports
 and browser-friendly.
 
-## isInheritedFrom(ctor, superCtor|superCtorName, raiseError=false)
+### isInheritedFrom(ctor, superCtor|superCtorName, raiseError=false)
 
 ```js
   var isInheritedFrom = require('inherits-ex/lib/isInheritedFrom')
@@ -140,7 +147,7 @@ else return false.
 
 it will use the ctor.name to check whether inherited from superCtorName.
 
-## mixin(ctor, superCtor|superCtor[], options:{ filter: number|function})
+### mixin(ctor, superCtor|superCtor[], options:{ filter: number|function})
 
 Mixin the methods and properties of the SuperCtor: Clone(Copy) all `superCtor`'s properties(methods) to ctor.
 
@@ -204,7 +211,7 @@ mCallOrder.should.be.deep.equal ['B1', 'C']
 The inheritance chain: `B1 -> MixinCtor_ -> B -> Root`
 All mixins will be added to `MixinCtor_`.
 
-## isMixinedFrom(ctor, superCtor|superCtorName)
+### isMixinedFrom(ctor, superCtor|superCtorName)
 
 check the ctor whether is mixined from superCtor.
 
@@ -212,7 +219,7 @@ check the ctor whether is mixined from superCtor.
   var isMixinedFrom = require('inherits-ex/lib/isMixinedFrom')
 ```
 
-## createCtor(name, args, body)
+### createCtor(name, args, body)
 
 Create a constructor(class) dynamically.
 
@@ -227,10 +234,9 @@ Create a constructor(class) dynamically.
   console.log(my.sum);
 ```
 
+### createObject(ctor, args...)
 
-## createObject(ctor, args...)
-
-The helper function to create the object dynamically.
+The helper function to create the object dynamically and arguments provided individually.
 
 ```js
   var createObject = require('inherits-ex/lib/createObject')
@@ -239,13 +245,32 @@ The helper function to create the object dynamically.
       this.sum = a + b;
     }
   }
-  var o = creatObject(MyClass, 1, 2)
+  var o = createObject(MyClass, 1, 2)
   console.log(o.sum)
 ```
 
-NOTE: DO NOT SUPPORT ES6 Class
+NOTE: It will call the parent constructor if the class is the Empty constructor.
 
-### usage
+```javascript
+var inherits        = require('inherits-ex/lib/inherits')
+var createObject    = require('inherits-ex/lib/createObject')
+
+class Root {
+  constructor() {
+    this.init = 'root'
+  }
+}
+
+class MyClass {
+}
+
+inherits(MyClass, Root)
+
+var obj = createObject(MyClass)
+assert.equal(obj.init, 'root')
+```
+
+Usage:
 
 ```coffee
 
@@ -257,24 +282,23 @@ class MyObject
     super
 
 obj = createObject(MyObject, "a", "b")
-#obj = new MyObject("a", "b") # it will have no property a and b.
+# obj = new MyObject("a", "b") # it will have no property a and b.
 assert.equal obj.a "a"
 assert.equal obj.b "b"
-
-
 ```
-## createObjectWith(ctor, [args...])
 
-The helper function to create the object dynamically.
+### createObjectWith(ctor, [args...])
+
+The helper function to create the object dynamically. provides the arguments as an array (or an array-like object).
 
 ```js
-  var createObjectWith = require('inherits-ex/lib/createObjectWith')
+var createObjectWith = require('inherits-ex/lib/createObjectWith')
+var obj = createObjectWith(MyObject, ['a', 'b'])
 ```
 
-NOTE: DO NOT SUPPORT ES6 Class
+NOTE: It will call the parent constructor if the class is the Empty constructor.
 
-
-## createFunction(name, [args,] body[, scope[, values]])
+### createFunction(name, [args,] body[, scope[, values]])
 
 * arguments:
   * `name` *(String)*: the function name
@@ -291,7 +315,7 @@ The helper function to create the function dynamically.
   var createFunction = require('inherits-ex/lib/createFunction')
 ```
 
-### usage
+Usage:
 
 ```coffee
 
