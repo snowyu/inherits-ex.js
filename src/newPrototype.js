@@ -1,6 +1,6 @@
 var getConstructor = require('./getConstructor');
 var isEmptyFunction = require('./isEmptyFunction');
-var extend = require('xtend/mutable');
+var extend = require('./_extend');
 
 module.exports = function (aClass, aConstructor) {
   //Object.create(prototype) only for ES5
@@ -10,6 +10,7 @@ module.exports = function (aClass, aConstructor) {
   //  Object.prototype = aClass.prototype;
   //  return new Object();
   var ctor = isEmptyFunction(aConstructor) ? getConstructor(aClass) : aConstructor;
+  // console.log('TCL:: ~ file: newPrototype.js ~ line 13 ~ ctor', aClass, ctor);
   var result;
   if (Object.create) { //typeof Object.create === 'function'
     result = Object.create(aClass.prototype, {
@@ -32,5 +33,6 @@ module.exports = function (aClass, aConstructor) {
     result = new Obj();
   }
   extend(result, aConstructor.prototype);
+  // console.log('TCL:: ~ file: newPrototype.js ~ line 36 ~ result', result, aConstructor);
   return result;
 };
