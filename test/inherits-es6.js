@@ -38,7 +38,7 @@ describe("inheritsES6", function() {
   class Root {
     // static test= 1;
     constructor(inited="Root", other) {
-      this.inited= this.inited
+      this.inited= inited
       this.other = other
       return "Root"
     }
@@ -67,6 +67,19 @@ describe("inheritsES6", function() {
   }
   A1.prototype.a1Method = a1Method
   inherits(A1,A)
+
+  it("test inherits and call super parent class", function() {
+    class B {
+      constructor() {
+        var result = new this.constructor.super_()
+        return result;
+      }
+    }
+
+    inherits(B, A1)
+    var obj = new B
+    assert.equal(obj.inited, 'A1')
+  })
 
   it("test inherits with none static inheritance", function() {
     class R{
@@ -266,7 +279,7 @@ describe("inheritsES6", function() {
       result.should.be.instanceof(A)
       A.should.not.have.ownProperty('Class')
     })
-    it.skip('should call the parent\'s constructor method if it no constructor', function(){
+    it('should call the parent\'s constructor method if it no constructor', function(){
       function A12() {}
       assert.equal(inherits(A12, A1), true)
       a = createObject(A12)
@@ -277,7 +290,7 @@ describe("inheritsES6", function() {
       assert.instanceOf(a, Root)
       assert.equal(a.inited, "A1")
     })
-    it.skip('should call the root\'s constructor method if its parent no constructor yet', function(){
+    it('should call the root\'s constructor method if its parent no constructor yet', function(){
       //ES6 Class can not supports this.
       //the class X defined, toString should be 'class X{}', not 'function X(){}'
       function A2(){}

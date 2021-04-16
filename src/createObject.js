@@ -6,23 +6,25 @@ var defineProperty = Object.defineProperty;
 module.exports = function(aClass) {
   var result = new (Function.prototype.bind.apply(aClass, arguments));
   if (aClass !== Object && aClass !== Array && aClass !== RegExp) {
-    if (!aClass.prototype.hasOwnProperty('Class')) {
-      defineProperty(aClass.prototype, 'Class', {
+    var vPrototype = aClass.prototype;
+    if (!vPrototype.hasOwnProperty('Class')) {
+      defineProperty(vPrototype, 'Class', {
         value: aClass,
         configurable: true
       });
     }
-    if (aClass !== aClass.prototype.constructor) {
-      aClass.prototype.constructor.apply(result, arraySlice.call(arguments, 1));
-      // try {
-      //   aClass.prototype.constructor.apply(result, arraySlice.call(arguments, 1));
-      // } catch(err) {
-      //   if (err instanceof TypeError && err.toString().lastIndexOf("invoked without 'new'") !== -1) {
-      //     result = new aClass.prototype.constructor(...arraySlice.call(arguments, 1));
-      //     setPrototypeOf(result, aClass.prototype);
-      //   }
-      //   else throw err
-      // }
+    if (aClass !== vPrototype.constructor) {
+      var args = arraySlice.call(arguments, 1);
+      try {
+        vPrototype.constructor.apply(result, args);
+      } catch(err) {
+        if (err instanceof TypeError && err.toString().lastIndexOf("invoked without 'new'") !== -1) {
+          result = new vPrototype.constructor(...args);
+          // console.log('TCL:: ~ file: createObject.js ~ line 24 ~ vPrototype', vPrototype, result, args);
+          setPrototypeOf(result, vPrototype);
+        }
+        else throw err
+      }
     }
   }
   return result;
