@@ -184,13 +184,15 @@ describe("inheritsES6", function() {
     C.prototype.cMethod = cMethod
     b = new B()
     assert.equal(inheritsObject(b, C), true)
-    bProto = b.__proto__
+    // bProto = b.__proto__
+    bProto = getPrototypeOf(b)
     assert.equal(bProto.cMethod, cMethod)
     assert.equal(bProto.constructor, C)
     assert.equal(C.super_, B)
     b1 = new B()
     assert.equal(inheritsObject(b1, C), true)
-    bProto = b1.__proto__
+    // bProto = b1.__proto__
+    bProto = getPrototypeOf(b1)
     assert.equal(bProto.cMethod, cMethod)
     assert.equal(bProto.constructor, C)
     assert.equal(bProto, C.prototype)
@@ -323,6 +325,78 @@ describe("inheritsES6", function() {
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)
     })
+
+    it.skip('should call correct instance method on the root constructor', function() {
+      class R {
+        constructor() {
+          this.init()
+        }
+
+        init() {
+          return 'R'
+        }
+      }
+      class A2{
+        init() {
+          this.inited = true
+        }
+      }
+      inherits(A2, R)
+      a = createObject(A2)
+      assert.instanceOf(a, A2)
+      a.should.have.property('Class', A2)
+      a.should.have.property('inited', true)
+    })
+
+    it('have to write the constructor to derived class too for ES6 class', function() {
+      class R {
+        constructor() {
+          this.init()
+        }
+
+        init() {
+          return 'R'
+        }
+      }
+      class A2{
+        constructor() {
+          this.init()
+        }
+        init() {
+          const Parent = this.constructor.__super__
+          const result = [Parent.init.apply(this, arguments)];
+          result.push('A2')
+          this.inited = result
+        }
+      }
+      inherits(A2, R)
+      a = createObject(A2)
+      assert.instanceOf(a, A2)
+      a.should.have.property('Class', A2)
+      a.should.have.property('inited')
+      a.inited.should.deep.equal([ 'R', 'A2' ])
+    })
+
+    it('use function Root class instead of ES6 class', function() {
+      function R() {this.init()}
+      R.prototype.init = function() {return 'R'}
+
+      class A2{
+        init() {
+          const Parent = this.Class.__super__
+          const result = [Parent.init.apply(this, arguments)];
+          result.push('A2')
+          this.inited = result
+        }
+      }
+      inherits(A2, R).should.be.ok()
+      a = createObject(A2)
+      assert.instanceOf(a, A2)
+      a.should.have.property('Class', A2)
+      a.should.have.property('inited')
+      a.inited.should.deep.equal([ 'R', 'A2' ])
+    })
+
   })
 })
 
