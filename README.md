@@ -44,7 +44,7 @@ of cause it's the coffee-script supports and browser-friendly.
 * `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
 ```js
-  var inherits = require('inherits-ex/lib/inherits')
+const inherits = require('inherits-ex/lib/inherits')
 ```
 
 The enhanced `inherits` implementation.
@@ -59,10 +59,51 @@ The enhanced `inherits` implementation.
 + add the `Class` property(point to the current class) to the object's prototype.
   * just be care: the ctor may not be the current class.
 
+#### Known Issues
+
+The default constructor chain failed for ES6 Class can not call constructor directly
+
+```javascript
+const inherits = require('inherits-ex/lib/inherits')
+
+// Or use function class instead of ES6 class:
+// function Root() {this.initialize.apply(this, arguments)}
+// Root.prototype.initialize = function initialize() {console.log('Root.init')}
+class Root {
+  constructor() {
+    this.initialize.apply(this, arguments)
+  }
+  initialize() {
+    console.log('Root.init')
+  }
+}
+
+class A {
+  /*
+  // Workaround: must add the constructor in the derived class if you use inherits
+  // Or use function Root instead of ES6 class
+  constructor() {
+    this.initialize.apply(this, arguments)
+  }
+  // */
+
+  initialize() {
+    const ParentPrototype = this.Class.__super__
+    ParentPrototype.init.apply(this, arguments)
+    console.log('A.init')
+  }
+}
+
+inherits(A, Root)
+
+const obj = new A() // Bug: The initialize method can not be executed.
+```
+
 #### usage
 
 ```coffee
 
+# Coffee@1
 assert = require('assert')
 inherits = require('inherits-ex/lib/inherits')
 isInheritedFrom = require('inherits-ex/lib/isInheritedFrom')
@@ -306,7 +347,7 @@ NOTE: It will call the parent constructor if the class is the Empty constructor.
   * `body` *(String)*: the function body.
   * ``scope` *(Object|Array)*: the optional function scope.
     * ignore the `values`  if it's an object.
-    * the `value` is requierd if it's an array. It's the key's name list
+    * the `value` is required if it's an array. It's the key's name list
   * `value` *(Array)*: the optional function scope's value list. only for the `scope` is the Array.
 
 The helper function to create the function dynamically.
@@ -321,6 +362,7 @@ Usage:
 
 class RefObject
   constructor: -> @initialize.apply @, arguments
+
 class MyObject
   inherits MyObject, RefObject
   initialize: (@a,@b)->
