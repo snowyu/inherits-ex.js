@@ -13,13 +13,15 @@ module.exports = function(aClass) {
         configurable: true
       });
     }
-    if (aClass !== vPrototype.constructor) {
+    var vConstructor = vPrototype.constructor
+    if (aClass !== vConstructor) {
       var args = arraySlice.call(arguments, 1);
       try {
-        vPrototype.constructor.apply(result, args);
+        vConstructor.apply(result, args);
       } catch(err) {
         if (err instanceof TypeError && err.toString().lastIndexOf("invoked without 'new'") !== -1) {
-          result = new vPrototype.constructor(...args);
+          // TODO(BUG): Can not pass the result instance to the ES6 constructor
+          result = new vConstructor(...args);
           // console.log('TCL:: ~ file: createObject.js ~ line 24 ~ vPrototype', vPrototype, result, args);
           setPrototypeOf(result, vPrototype);
         }
