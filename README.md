@@ -61,7 +61,7 @@ The enhanced `inherits` implementation.
 
 #### Known Issues
 
-The default constructor chain failed for ES6 Class can not call constructor directly
+The default constructor(empty) chain failed for ES6 Class can not call constructor directly if no `Reflect.construct(target, args, newTarget)` native supports
 
 ```javascript
 const inherits = require('inherits-ex/lib/inherits')
