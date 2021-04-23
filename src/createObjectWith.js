@@ -1,3 +1,5 @@
+var hasNativeReflect = require('./isNativeReflectConstruct').hasNativeReflect
+
 var defineProperty = Object.defineProperty;
 var arraySlice = Array.prototype.slice;
 
@@ -14,8 +16,22 @@ module.exports = function(aClass, aArguments) {
         configurable: true
       });
     }
-    if (aClass !== vPrototype.constructor) {
-      vPrototype.constructor.apply(result, aArguments);
+    var vConstructor = vPrototype.constructor
+    if (aClass !== vConstructor) {
+      try {
+        vConstructor.apply(result, aArguments);
+      } catch(err) {
+        if (err instanceof TypeError && err.toString().lastIndexOf("invoked without 'new'") !== -1) {
+          // TODO(BUG): Can not pass the result instance to the ES6 constructor
+          if (hasNativeReflect) {
+            result = Reflect.construct(vConstructor, aArguments, aClass)
+          } else {
+            result = new vConstructor(...aArguments);
+            setPrototypeOf(result, vPrototype);
+          }
+        }
+        else throw err
+      }
     }
   }
   return result;
