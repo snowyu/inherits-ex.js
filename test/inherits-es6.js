@@ -328,24 +328,30 @@ describe("inheritsES6", function() {
 
     it('should call correct instance method on the root constructor', function() {
       class R {
-        constructor() {
-          this.init()
+        constructor(opt) {
+          this.init(opt)
         }
 
-        init() {
-          return 'R'
+        init(opt) {
+          let result = 'R'
+          if (opt) result += opt
+          return result
         }
       }
       class A2{
-        init() {
-          this.inited = true
+        init(opt) {
+          const result = this.Class.__super__.init(opt)
+          this.inited = result + 'A2'
         }
       }
       inherits(A2, R)
-      a = createObject(A2)
+      let a = createObject(A2, 'Opt')
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)
-      a.should.have.property('inited', true)
+      a.should.have.property('inited', 'ROptA2')
+      a = createObjectWith(A2, ['O2'])
+      a.should.have.property('Class', A2)
+      a.should.have.property('inited', 'RO2A2')
     })
 
     it('have to write the constructor to derived class too for ES6 class', function() {
