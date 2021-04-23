@@ -326,7 +326,7 @@ describe("inheritsES6", function() {
       a.should.have.property('Class', A2)
     })
 
-    it.skip('should call correct instance method on the root constructor', function() {
+    it('should call correct instance method on the root constructor', function() {
       class R {
         constructor() {
           this.init()
