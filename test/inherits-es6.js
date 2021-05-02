@@ -68,6 +68,18 @@ describe("inheritsES6", function() {
   A1.prototype.a1Method = a1Method
   inherits(A1,A)
 
+  it("test inherits with extends parent class", function() {
+    class B extends A1{
+    }
+
+    inherits(B, A1)
+    var obj = new B
+    assert.equal(obj.inited, 'A1')
+    assert.equal(B.super_, A1)
+    assert.equal(B.__super__, A1.prototype)
+    assert.equal(B.prototype.Class, B)
+  })
+
   it("test inherits and call super parent class", function() {
     class B {
       constructor() {

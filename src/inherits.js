@@ -2,6 +2,7 @@ var isArray           = Array.isArray;
 var isInheritedFrom   = require('./isInheritedFrom');
 var inheritsDirectly  = require('./inheritsDirectly');
 var getPrototypeOf    = require('./getPrototypeOf');
+var defineProperty    = require('./defineProperty');
 
 var objectSuperCtor = getPrototypeOf(Object);
 /**
@@ -27,7 +28,8 @@ function inherits(ctor, superCtor, staticInherit) {
     v = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
   }
   var result = false;
-  if (!isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
+  var isInherited = isInheritedFrom(ctor, superCtor)
+  if (!isInherited && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor, staticInherit);
     // patch the missing prototype chain if exists ctor.super.
     while (v != null && v !== objectSuperCtor && superCtor !== v) {
@@ -37,6 +39,15 @@ function inherits(ctor, superCtor, staticInherit) {
       v = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
     }
     result = true;
+  } else if (isInherited) {
+    // additional properties
+    if (!ctor.hasOwnProperty('super_')) {
+      defineProperty(ctor, 'super_', superCtor);
+      defineProperty(ctor.prototype, 'Class', ctor)
+    }
+    if (!ctor.hasOwnProperty('__super__')) {
+      defineProperty(ctor, '__super__', superCtor.prototype);
+    }
   }
   return result;
 }
