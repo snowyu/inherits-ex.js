@@ -48,7 +48,7 @@
     "grunt-mocha-test": "*",
     "grunt-newer": "*",
     "istanbul": "^0.4.5",
-    "mocha": "~2.1.0",
+    "mocha": "~10.1.0",
     "pre-commit": "1.1.3",
     "sinon": "~1.12.2",
     "sinon-chai": "~2.6.0",
