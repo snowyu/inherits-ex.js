@@ -189,19 +189,20 @@ describe("inheritsES6", function() {
   })
 
   it("test inheritsObject", function(){
-    cMethod = ()=> "cMethod"
-    C = function(){return  "C"}
+    var cMethod = ()=> "cMethod"
+    var C = function(){return  "C"}
 
     C.name = "C"
     C.prototype.cMethod = cMethod
-    b = new B()
+    var b = new B()
     assert.equal(inheritsObject(b, C), true)
     // bProto = b.__proto__
     bProto = getPrototypeOf(b)
     assert.equal(bProto.cMethod, cMethod)
     assert.equal(bProto.constructor, C)
     assert.equal(C.super_, B)
-    b1 = new B()
+    var b1 = new B()
+    b1.should.have.property('Class', B)
     assert.equal(inheritsObject(b1, C), true)
     // bProto = b1.__proto__
     bProto = getPrototypeOf(b1)
@@ -210,18 +211,18 @@ describe("inheritsES6", function() {
     assert.equal(bProto, C.prototype)
   })
   it("test inheritsDirectly and isInheritedFrom", function(){
-    cMethod = ()=> "cMethod"
-    R = function(){return  "R"}
+    var cMethod = ()=> "cMethod"
+    var R = function(){return  "R"}
     R.name = "R"
-    C = function(){return  "C"}
+    var C = function(){return  "C"}
     C.name = "C"
     C.prototype.cMethod = cMethod
 
-    C1 = ()=> "C1"
+    var C1 = ()=> "C1"
     C1.name = "C1"
-    C11 = ()=> "C11"
+    var C11 = ()=> "C11"
     C11.name = "C11"
-    C2 = ()=> "C2"
+    var C2 = ()=> "C2"
 
     assert.ok(inherits(C, R), "C inherits from R")
     assert.ok(inherits(C1, C), "C1 inherits from C")

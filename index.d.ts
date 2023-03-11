@@ -1,14 +1,13 @@
 declare namespace inheritsEx {
+  type TScope = {[key: string]: any};
+  type TScopeParam  = Array<string> | TScope;
+  type TValuesParam = Array<any>;
   class InheritsEx {
-    type TScope = [string, any];
-    type TScopeParam  = Array<string> | TScope;
-    type TValuesParam = Array<any>;
-
-    static function requireClass(aClassName: string, aScope?: TScopeParam, aValues?: TValuesParam): Function;
+    static requireClass(aClassName: string, aScope?: TScopeParam, aValues?: TValuesParam): Function;
     static scope: TScope = {};
-    static function setScope(aScope: TScopeParam);
-    static function getClass(aClassName, aScope?: TScopeParam, aValues?: TValuesParam): Function;
-    static function execute(ctor: any, superCtors: any, aScope?: TScopeParam, aValues?: TValuesParam): Function;
+    static setScope(aScope: TScopeParam);
+    static getClass(aClassName, aScope?: TScopeParam, aValues?: TValuesParam): Function;
+    static execute(ctor: any, superCtors: any, aScope?: TScopeParam, aValues?: TValuesParam): Function;
     constructor(aDefaultRequire?: Function);
   }
 }

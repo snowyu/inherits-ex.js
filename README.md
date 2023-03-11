@@ -65,6 +65,7 @@ The default constructor(empty) chain failed for ES6 Class can not call construct
 
 ```javascript
 const inherits = require('inherits-ex/lib/inherits')
+const getPrototypeOf = require('inherits-ex/lib/getPrototypeOf')
 
 // Or use function class instead of ES6 class:
 // function Root() {this.initialize.apply(this, arguments)}
@@ -82,10 +83,16 @@ class A {
   /*
   // Workaround: must add the constructor in the derived class if you use inherits
   // Or use function Root instead of ES6 class
-  constructor() {
-    this.initialize.apply(this, arguments)
-  }
+  // MUST BE EXISTS constructor to call parent constructor if it's ES6 class
   // */
+  constructor() {
+    if (!this.Class) this.Class = getPrototypeOf(this).constructor
+    const Parent = getParentClass(this.Class)
+    // create the instance by calling the parent constructor
+    return Reflect.construct(Parent, arguments, this.Class)
+    // or call initialize method directly
+    // this.initialize.apply(this, arguments)
+  }
 
   initialize() {
     const ParentPrototype = this.Class.__super__

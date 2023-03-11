@@ -18,7 +18,7 @@ var objectSuperCtor = getPrototypeOf(Object);
  * @param {function} ctor Constructor function which needs to inherit the
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
- * @param {boolean} staticInherit whether static inheritance,defaults to true.
+ * @param {boolean} staticInherit whether allow static members inheritance,defaults to true.
  */
 function inherits(ctor, superCtor, staticInherit) {
   var v  = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
