@@ -10,12 +10,12 @@ module.exports = function(ctor, superCtor, staticInherit) {
   ctor.prototype = vPrototype; // ES6 class can not modify prototype!
   if (vPrototype !== ctor.prototype) {
     defineProperty(ctor.prototype, 'constructor', vPrototype.constructor)
-    defineProperty(ctor.prototype, 'Class', vPrototype.Class)
+    defineProperty(ctor.prototype, 'Class', ctor)
   }
   // console.log('TCL:: ~ file: inheritsDirectly.js ~ line 11 ~ ctor.prototype', ctor.prototype, ctor.prototype.constructor, ctor.prototype.Class);
   setPrototypeOf(ctor.prototype, superCtor.prototype);
   if (staticInherit !== false) {
     // NOTE: ES6 use this to keep superCtor.
-    setPrototypeOf(ctor, superCtor); // additional static inheritance
+    setPrototypeOf(ctor, superCtor); // additional static member inheritance
   }
 };
