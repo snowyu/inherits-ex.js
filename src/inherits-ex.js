@@ -39,15 +39,15 @@ usage:
 var getClassByName = require('./get-class-by-name');
 var inherits = require('./inherits');
 
-var isFunction = function(value) {
+function isFunction(value) {
   return typeof value === 'function';
 };
 
-var isString = function(value) {
+function isString(value) {
   return typeof value === 'string';
 };
 
-var isObject = function(value) {
+function isObject(value) {
   return typeof value === 'object';
 };
 
@@ -103,21 +103,28 @@ InheritsEx.requireClass = getClassByName;
 InheritsEx.scope = {};
 
 InheritsEx.setScope = function(aScope) {
-  var j, k, len, vName;
-  if (isArray(aScope)) {
-    for (j = 0, len = aScope.length; j < len; j++) {
-      k = aScope[j];
-      vName = k.name;
+  if (Array.isArray(aScope)) {
+    for (var j = 0; j < aScope.length; j++) {
+      var k = aScope[j];
+      var vName = k.name;
       if (vName == null) {
         throw TypeError('No Scope Name for ' + k);
       }
-      InheritsEx.scope[vName] = k;
+      InheritsEx.addClass(vName, k)
     }
-  } else if (isObject(aScope)) {
+  } else if (isObject(aScope) || isFunction(aScope)) {
     InheritsEx.scope = aScope;
   }
 };
 
+/**
+ * Get the class from class name in scope
+ * @param {*} aClassName the class name to find
+ * @param {Function|string[]|Function[]|{[name: string]: Function}=} aScope  The optional additional scope with all
+ *   registered classes. It'll be called to find the class if the aScope is a `function(className):Function`.
+ * @param {Function[]=} aValues If `aScope` is an array of strings, then `aValues` must exist and can only be an array of corresponding classes.
+ * @returns {Function|undefined} the found class or undefined.
+ */
 InheritsEx.getClass = function(aClassName, aScope, aValues) {
   var requireClass, result;
   requireClass = InheritsEx.requireClass;
@@ -131,8 +138,8 @@ InheritsEx.getClass = function(aClassName, aScope, aValues) {
 };
 
 InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
-  var getClass, i, isStrCtor, result;
-  getClass = InheritsEx.getClass;
+  var isStrCtor;
+  var getClass = InheritsEx.getClass;
   if (isStrCtor = isString(ctor)) {
     ctor = getClass(ctor, aScope, aValues);
   }
@@ -140,10 +147,9 @@ InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
     superCtors = getClass(superCtors, aScope, aValues);
   } else if (isArray(superCtors)) {
     superCtors = (function() {
-      var j, len, results;
-      results = [];
-      for (j = 0, len = superCtors.length; j < len; j++) {
-        i = superCtors[j];
+      var results = [];
+      for (var j = 0; j < superCtors.length; j++) {
+        var i = superCtors[j];
         if (isString(i)) {
           results.push(getClass(i, aScope, aValues));
         } else {
@@ -153,22 +159,29 @@ InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
       return results;
     })();
   }
-  result = inherits(ctor, superCtors);
+  var result = inherits(ctor, superCtors);
   if (result && !isStrCtor) {
-    InheritsEx.addClass(ctor);
+    InheritsEx.addClass(ctor.name, ctor);
   }
   return result;
 };
 
-InheritsEx.addClass = function(ctor) {
+/**
+ * Add the class to the scope
+ *
+ * @internal
+ * @param {string} aName the class name
+ * @param {*} ctor  the class
+ */
+InheritsEx.addClass = function(aName, ctor) {
   var scope;
   scope = InheritsEx.scope;
   switch (typeof scope) {
     case 'function':
-      scope(ctor.name, ctor);
+      scope(aName, ctor);
       break;
     case 'object':
-      scope[ctor.name] = ctor;
+      scope[aName] = ctor;
       break;
   }
 };
