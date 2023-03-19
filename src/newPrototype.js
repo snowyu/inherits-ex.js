@@ -2,7 +2,7 @@ var getConstructor = require('./getConstructor');
 var isEmptyFunction = require('./isEmptyFunction');
 var extend = require('./_extend');
 
-module.exports = function (aClass, aConstructor) {
+module.exports = function newPrototype(aClass, aConstructor) {
   //Object.create(prototype) only for ES5
   //Object.create(prototype, initProps) only for ES6
   //For Browser not support ES5/6:
