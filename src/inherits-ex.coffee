@@ -72,8 +72,20 @@ module.exports  = class InheritsEx
       superCtors = for i in superCtors
         if isString(i) then getClass(i, aScope, aValues) else i
     result = inherits ctor, superCtors
-    InheritsEx.scope[ctor.name] = ctor if result and !isStrCtor
+    InheritsEx.addClass(ctor) if result and !isStrCtor
     result
+
+  @addClass: (ctor)->
+    scope = InheritsEx.scope
+    switch typeof scope
+      when 'function'
+        scope(ctor.name, ctor)
+        break
+      when 'object'
+        scope[ctor.name] = ctor
+        break
+    return
+
   constructor: (aDefaultRequire)->
     InheritsEx.requireClass = aDefaultRequire if isFunction aDefaultRequire
     return InheritsEx.execute
