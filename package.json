@@ -1,6 +1,6 @@
 {
   "name": "inherits-ex",
-  "description": "Browser-friendly enhanced inheritance fully compatible with standard node.js and coffee-script",
+  "description": "Enhanced inheritance for dynamic inheritance and mixin.",
   "homepage": "https://github.com/snowyu/inherits-ex.js",
   "version": "1.3.6",
   "author": {
@@ -43,6 +43,8 @@
     "mocha": "~10.2.0",
     "sinon": "~15.0.2",
     "sinon-chai": "~3.7.0",
+    "typedoc": "^0.23.28",
+    "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^5.0.2"
   },
   "pre-commit": [
@@ -51,6 +53,8 @@
   "scripts": {
     "build": "npm run build.ts && mkdir -p lib && cp src/*.js lib/",
     "build.ts": "tsc",
+    "doc": "typedoc --plugin none --out web",
+    "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs",
     "test": "mocha"
   },
   "browser": {
