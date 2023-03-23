@@ -2,7 +2,15 @@ var getPrototypeOf = require('./getPrototypeOf');
 
 var objectSuperCtor = getPrototypeOf(Object);
 
-function getProtoChain(ctor, depth) {
+/**
+ * Returns an array of the names of constructors in the prototype chain of the given constructor.
+ *
+ * **Note**: the `getProtoChain.maxDepth` for `mixinCtors` is 10, You can change it.
+ *
+ * @param {function} ctor - The constructor to get the prototype chain of.
+ * @throws {Error} When the maximum depth of nesting is reached.
+ * @returns {Array.<string>} An array of the names of constructors in the prototype chain of the given constructor.
+ */function getProtoChain(ctor, depth) {
   if (depth == null) {
     depth = 0;
   }

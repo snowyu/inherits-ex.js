@@ -1,3 +1,7 @@
+/**
+ *  Checks if the current environment supports native Reflect.construct method.
+ *  @returns {boolean} True if the current environment supports native Reflect.construct method, false otherwise.
+ */
 function isNativeReflectConstruct() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
 

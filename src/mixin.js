@@ -6,11 +6,26 @@ var setPrototypeOf    = require('./setPrototypeOf');
 var getPrototypeOf    = require('./getPrototypeOf');
 var createCtor        = require('./createCtor');
 var extendPrototype   = require('./extend');
+var getParentCtor     = require('./getParentClass');
 
 var getOwnPropertyNames = Object.getOwnPropertyNames;
+/**
+ * Enum for filter type
+ * @readonly
+ * @enum {number}
+ */
 var filterOpts = {
+  /**
+   * Include all members from the superCtor
+   */
   'all': 0,
+  /**
+   * Throw error if the method of superCtor using the `super()`
+   */
   'errSuper': 1,
+  /**
+   * Skip the method if the method of superCtor using the `super()`
+   */
   'skipSuper': 2
 };
 
@@ -26,7 +41,7 @@ var filterOpts = {
  *   B11 -> B1 -> B -> Root -> mixinCtor_ -> A_Clone -> C1_Clone -> C -> Root?
  */
 
-/**
+/*
  *  Mixin multi classes to ctor.
  *  mixin(Class, ParentClass1, ParentClass2, ...)
  *  + mixinCtors_ array to keep the mixined super ctors
@@ -52,43 +67,49 @@ var filterOpts = {
  *
 mixin the exists method: the new mixin method will overwrite the old one.
 
-```coffee
-class Root
-  m: ->
+@example
+
+```js
+class Root {
+  m() {
     console.log 'root'
     console.log '----'
-class C
-  inherits C, Root
-  m: ->
-    console.log "c"
-    super
-class B
-  inherits B, Root
-  m: ->
-    console.log "b"
-    super
-class B11
-  inherits B11, B
-  m: ->
-    console.log 'b11'
-    super
+  }
+}
+class C extends Root {
+  m() {
+    console.log("c")
+    super.m()
+  }
+}
+class B extends Root {
+  m() {
+    console.log("b")
+    super.m()
+  }
+}
 
+class B11 extends B {
+  m() {
+    console.log('b11')
+    super.m()
+  }
+}
+
+let b = new B11
+b.m()
+mixin(B11, C)
 b = new B11
 b.m()
-mixin B11, C
-b = new B11
-b.m()
-
-# The console results:
-# b11
-# b
-# root
-# ----
-# b11
-# c
-# root
-# ----
-
+// The console results:
+// b11
+// b
+// root
+// ----
+// b11
+// c
+// root
+// ----
 ```
 
 
@@ -101,7 +122,7 @@ b.m()
  */
 function isSuperInFunction(aMethod) {
   var vStr = aMethod.toString();
-  return vStr.indexOf('__super__') >= 0 || /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(vStr);
+  return vStr.indexOf('.__super__') >= 0 || /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(vStr);
 }
 // function isSuperInFunction(aMethod) {
 //   return aMethod.toString().indexOf('__super__') >= 0;
@@ -113,7 +134,7 @@ function isSuperInFunction(aMethod) {
 
 //TODO: cant use async function. MUST make chain too.
 function _mixinGenMethod(aMixinSuper, aMethod, src) {
-  var oldSuper = src.__super__;
+  // var oldSuper = src.__super__;
   return function() {
     // src.__super__ = aMixinSuper;
     console.error('mx', aMixinSuper, 'src', src, 'aMethod', aMethod);
@@ -174,7 +195,7 @@ function _clone(dest, src, ctor, filter) {
     var k = names[i];
     // if (k === 'Class' || k === 'constructor') continue;
     var value = filter(k, src[k]);
-    if (value !== void 0) dest[k] = value;
+    if (value !== undefined) dest[k] = value;
   }
 }
 
@@ -182,10 +203,10 @@ function cloneCtor(dest, src, ctor, filter) {
   var filterFn = function (name, value) {
     for (var n of [ 'length', 'name', 'arguments', 'caller', 'prototype' ]) {
       if (n === name) {
-        value = void 0;
+        value = undefined;
         break;
       }
-      if (value !== void 0) value = filter(name, value);
+      if (value !== undefined) value = filter(name, value);
     }
     return value;
   }
@@ -198,10 +219,10 @@ function clonePrototype(dest, src, ctor, filter) {
   var filterFn = function (name, value) {
     for (var n of [ 'Class', 'constructor' ]) {
       if (n === name) {
-        value = void 0;
+        value = undefined;
         break;
       }
-      if (value !== void 0) value = filter(name, value);
+      if (value !== undefined) value = filter(name, value);
     }
     return value;
   }
@@ -217,7 +238,7 @@ function clonePrototype(dest, src, ctor, filter) {
     if (k === 'Class' || k === 'constructor') continue;
     var value = filter(k, sp[k]);
     // console.log(k, value)
-    if (value !== void 0) dp[k] = value;
+    if (value !== undefined) dp[k] = value;
     // continue;
 
 
@@ -225,7 +246,7 @@ function clonePrototype(dest, src, ctor, filter) {
     // var mixinedMethod = dp[k]; // the method is already clone into mixinCtor_
 
     // just override the property simply.
-    // if (mixinedMethod !== void 0 && typeof mixinedMethod !== 'function') {
+    // if (mixinedMethod !== undefined && typeof mixinedMethod !== 'function') {
     //  // Already be defined as property in the mixin ctor
     //   continue;
     // }
@@ -284,10 +305,36 @@ function clonePrototype(dest, src, ctor, filter) {
 // }
 
 var objectSuperCtor = getPrototypeOf(Object);
+
+/**
+ * @callback FilterFn
+ * @param {string} name
+ * @param {*} value
+ * @returns {*} include it return value directly or return undefined
+ */
+
+/**
+ *
+ * @param {Function} ctor the class that needs to mixin from the `superCtor` class.
+ * @param {Function} superCtor The super class that the `ctor` needs to inherit from.
+ * @param {FilterFn|string[]|filterOpts=} options.filter (optional) A filter that specifies which members to include
+ *   from the superCtor.
+ *
+ *   * This can be a function that takes a `name` and `value` parameter and returns a value to include or `undefined`
+ *   * an array of strings that represent member names to include
+ *   * or the filter options (`filterOpts`) available (`all`, `errSuper`, or `skipSuper`)
+ *     * `all`: include all members from the superCtor without check whether the method used the `super()`.
+ *     * `errSuper`: Throw error if the method of superCtor using the `super()`
+ *     * `skipSuper`: skip the method if the method of superCtor using the `super()`
+ *
+ * @returns return true if successful
+ */
 function mixin(ctor, superCtor, options) {
-  var v  = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor); // original superCtor
+  var v  = getParentCtor(ctor); // original superCtor
   var result = false;
+  // Check if the two classes are already related in some way to avoid circular or duplicate inheritance
   if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
+    // Create a mixin constructor function for the child class if one doesn't already exist
     var mixinCtor = ctor.mixinCtor_;
     var mixinCtors = ctor.mixinCtors_;
     if (!mixinCtor) {
@@ -314,7 +361,66 @@ function mixin(ctor, superCtor, options) {
   return result;
 }
 
-var mixins = module.exports = function(ctor, superCtors, options) {
+/**
+ * Mixes the methods and properties from one or more classes to the target class.
+ *
+ * By default, all properties and methods from the `superCtors` will be cloned into the internal `mixinCtor_`
+ * constructor of the target class(`ctor`). This can be customized by providing the `options.filter` parameter.
+ *
+ * If the target class does not already have a `mixinCtor_` constructor it'll create the new constructor
+ * `mixinCtor_` which is then inherited by the `ctor`(target class). The `mixinCtor_` is also set as a property of the
+ * `ctor`.
+ *
+ * **Note**:
+ *
+ * 1. If a property or method exists with the same name in both `superCtors` and `ctor`'s `mixinCtor_`, the property
+ *    or method in the `superCtor` takes precedence. The last one will overwrite the previous one.
+ * 2. the `mixin` does not create a prototype chain between "`superCtors`"(just copy the members from `superCtors`), so
+ *    you cannot clone these methods of `superCtor` which use the `super()`. If you need to use `super()` in these
+ *    methods, you should use `inherits` instead of `mixin`.
+ *
+ * @param {Function} ctor the target class that needs to mixin from the `superCtors` class.
+ * @param {Function|Function[]} superCtors The class(es) to be used as sources of properties and methods.
+ * @param {FilterFn|string[]|filterOpts=} options.filter (optional) A filter that specifies which members to include
+ *   from the `superCtor`. If no filter is specified, all properties and methods from `superCtor` will be mixed in.
+ *
+ *   * It could be a function that takes a `name` and `value` parameter and returns a value to include or `undefined`
+ *   * Or an array of strings that represent member names to include
+ *   * Or the filter options (`filterOpts`) available (`all`, `errSuper`, or `skipSuper`)
+ *     * `all`: include all members from the superCtor without check whether the method used the `super()`.
+ *     * `errSuper`: Throw error if the method of superCtor using the `super()`
+ *     * `skipSuper`: skip the method if the method of superCtor using the `super()`
+ *
+ * @returns return true if successful
+ *
+ * @example
+ *
+ * class MixinA {
+ *   methodA() {
+ *     console.log('Method A called');
+ *   }
+ * }
+ *
+ * class MixinB {
+ *   methodB() {
+ *     console.log('Method B called');
+ *   }
+ * }
+ *
+ * class MyClass {
+ *   constructor() {
+ *   }
+ * }
+ *
+ * // mixin both MixinA and MixinB
+ * mixins(MyClass, [MixinA, MixinB]); // == mixins(MyClass, MixinA); mixins(MyClass, MixinB);
+ *
+ * const myObj = new MyClass();
+ *
+ * myObj.methodA(); // logs 'Method A called'
+ * myObj.methodB(); // logs 'Method B called'
+ */
+function mixins(ctor, superCtors, options) {
   if (typeof superCtors === 'function') return mixin(ctor, superCtors, options);
   for (var i = 0; i < superCtors.length; i++) {
     var superCtor = superCtors[i];
@@ -324,3 +430,5 @@ var mixins = module.exports = function(ctor, superCtors, options) {
 };
 
 mixins.filterOpts = filterOpts;
+
+module.exports = mixins

@@ -2,6 +2,12 @@ var getConstructor = require('./getConstructor');
 var isEmptyFunction = require('./isEmptyFunction');
 var extend = require('./_extend');
 
+/**
+ *  Creates a new object with a prototype chain from a given class and constructor function.
+ *  @param {Function} aClass - The class to use as prototype chain.
+ *  @param {Function} [aConstructor] - The constructor function for the new object.
+ *  @returns {Object} - The newly created prototype object.
+ */
 module.exports = function newPrototype(aClass, aConstructor) {
   //Object.create(prototype) only for ES5
   //Object.create(prototype, initProps) only for ES6
@@ -33,6 +39,5 @@ module.exports = function newPrototype(aClass, aConstructor) {
     result = new Obj();
   }
   extend(result, aConstructor.prototype);
-  // console.log('TCL:: ~ file: newPrototype.js ~ line 36 ~ result', result, aConstructor);
   return result;
 };

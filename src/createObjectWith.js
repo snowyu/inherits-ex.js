@@ -3,7 +3,14 @@ var hasNativeReflect = require('./isNativeReflectConstruct').hasNativeReflect
 var defineProperty = Object.defineProperty;
 var arraySlice = Array.prototype.slice;
 
-module.exports = function(aClass, aArguments) {
+/**
+ * Creates a new object instance of the given class, passing the provided arguments to the class constructor.
+ *
+ * @param {function} aClass - The class to create an instance of.
+ * @param {...*} [aArguments] - Arguments to pass to the class constructor.
+ * @returns {object} A new instance of the class.
+ */
+function createObjectWith(aClass, aArguments) {
   var args = [aClass];
   if (aArguments)
     args = args.concat(arraySlice.call(aArguments));
@@ -36,3 +43,5 @@ module.exports = function(aClass, aArguments) {
   }
   return result;
 };
+
+module.exports = createObjectWith

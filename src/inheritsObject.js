@@ -2,10 +2,17 @@ var inherits = require('./inherits');
 var getPrototypeOf = require('./getPrototypeOf');
 var setPrototypeOf = require('./setPrototypeOf');
 
-//make sure the aClass.prototype hook to the aObject instance.
-
-module.exports = function(aObject, aClass, staticInherit) {
-  // ES6: Object.getPrototypeOf / Object.setPrototypeOf
+/**
+ * Sets the prototype of an object to a new prototype, and inherits from a given class.
+ *
+ * make sure the aClass.prototype hook to the aObject instance.
+ *
+ * @param {Object} aObject - The object whose prototype needs to be set.
+ * @param {Function} aClass - The class to inherit from.
+ * @param {boolean} staticInherit - Whether to inherit static properties or not.
+ * @returns {boolean} - Whether the prototype was successfully set or not.
+ */
+function inheritsObject(aObject, aClass, staticInherit) {
   var vOldProto = getPrototypeOf(aObject);
   var result = false;
   if ( vOldProto !== aClass.prototype) {
@@ -15,3 +22,5 @@ module.exports = function(aObject, aClass, staticInherit) {
   }
   return result;
 };
+
+module.exports = inheritsObject

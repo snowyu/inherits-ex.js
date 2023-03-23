@@ -1,4 +1,10 @@
-module.exports = function(vStr) {
+/**
+ * Determines whether the given string represents an empty constructor.
+ *
+ * @param {string} vStr - The string to check.
+ * @returns {boolean} - Returns true if the string represents an empty constructor, otherwise false
+ */
+function isEmptyCtor(vStr) {
   var isClass = /^class\s+/.test(vStr);
   var result
   if (isClass) {
@@ -9,3 +15,5 @@ module.exports = function(vStr) {
   }
   return result;
 };
+
+module.exports = isEmptyCtor

@@ -4,7 +4,7 @@ var hasNativeReflect = require('./isNativeReflectConstruct').hasNativeReflect
 var arraySlice = Array.prototype.slice;
 var defineProperty = Object.defineProperty;
 
-module.exports = function(aClass) {
+function createObject(aClass) {
   var result = new (Function.prototype.bind.apply(aClass, arguments));
   if (aClass !== Object && aClass !== Array && aClass !== RegExp) {
     var vPrototype = aClass.prototype;
@@ -36,3 +36,4 @@ module.exports = function(aClass) {
   return result;
 }
 
+module.exports = createObject
