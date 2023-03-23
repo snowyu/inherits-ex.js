@@ -6,37 +6,37 @@ chai.use(sinonChai);
 
 var createFunction = require('../src/createFunction');
 
+function checkFunc(fn, name, argNames, result, args) {
+  var argLen = (argNames && argNames.length) || 0;
+  expect(fn).to.be.exist;
+  expect(fn).to.have.property('name', name);
+  expect(fn).to.have.length(argLen);
+  if (args === undefined) args = []
+  else if (!Array.isArray(args)) args = [args];
+  expect(fn.apply(undefined, args)).to.equal(result);
+}
+
 describe("createFunction", function() {
   it("should create an empty named function", function() {
     var fn;
     fn = createFunction("myFn");
-    expect(fn).to.be.exist(Function, "fn");
-    expect(fn).to.have.property('name', 'myFn');
-    expect(fn).to.have.length(0);
+    checkFunc(fn, 'myFn')
   });
 
   it("should create an empty named function with args", function() {
     var fn;
     fn = createFunction("myFn", ['arg1', 'arg2']);
-    expect(fn).to.exist(Function, "fn");
-    expect(fn).to.have.property('name', 'myFn');
-    expect(fn).to.have.length(2);
+    checkFunc(fn, 'myFn', ['arg1', 'arg2'])
   });
   it("should create a function", function() {
     var fn;
     fn = createFunction("myFn", ['arg1', 'arg2'], "return arg1+arg2");
-    expect(fn).to.exist(Function, "fn");
-    expect(fn).to.have.property('name', 'myFn');
-    expect(fn).to.have.length(2);
-    expect(fn(10, 2)).to.be.equal(12);
+    checkFunc(fn, 'myFn', ['arg1', 'arg2'], 12, [4, 8]);
   });
   it("should create a function without args", function() {
     var fn;
     fn = createFunction("myFn", "return 'hello!'");
-    expect(fn).to.exist(Function, "fn");
-    expect(fn).to.have.property('name', 'myFn');
-    expect(fn).to.have.length(0);
-    expect(fn()).to.be.equal("hello!");
+    checkFunc(fn, 'myFn', null, 'hello!');
   });
   it("should create a function with specified scope", function() {
     var b, fn;
@@ -44,18 +44,18 @@ describe("createFunction", function() {
     fn = createFunction("myFn", ['arg1', 'arg2'], "return arg1+arg2+b", {
       b: b
     });
-    expect(fn).to.exist(Function, "fn");
-    expect(fn).to.have.property('name', 'myFn');
-    expect(fn).to.have.length(2);
-    expect(fn(10, 2)).to.be.equal(135);
+    checkFunc(fn, 'myFn', ['arg1', 'arg2'], 135, [10,2]);
   });
-  it("should create a function with specified scope value array", function() {
+  it("should create a function with given scope and values array", function() {
     var b, fn;
     b = 123;
     fn = createFunction("myFn", ['arg1', 'arg2'], "return arg1+arg2+b", ['b'], [b]);
-    expect(fn).to.exist(Function, "fn");
-    expect(fn).to.have.property('name', 'myFn');
-    expect(fn).to.have.length(2);
-    expect(fn(10, 2)).to.be.equal(135);
+    checkFunc(fn, 'myFn', ['arg1', 'arg2'], 135, [10,2]);
+  });
+  it('should create a function with the given body', () => {
+    var body = 'console.log("test");';
+    var fn = createFunction('testFunction', [], body);
+    checkFunc(fn, 'testFunction');
+    expect(fn.toString().match(/\{([\s\S]*)\}/)[1].trim()).to.equal(body)
   });
 });

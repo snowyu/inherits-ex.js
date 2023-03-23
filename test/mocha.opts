@@ -1,6 +1,4 @@
---compilers coffee:coffee-script/register
---require ./test/register-istanbul.coffee
 --ui bdd
 --growl
 --colors
-test/**/*-test.{coffee,js}
+test/**/*-test.js

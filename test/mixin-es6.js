@@ -59,13 +59,13 @@ describe("mixin es6", function(){
     expect(o.prop1).to.be.equal(2)
     // o.should.have.property('prop1', 2)
     o.m("a", 12) // call chain:  B1::m -> A1::m -> A::m
-    mCallOrder.should.be.deep.equal ['B1', 'A1', 'A']
+    mCallOrder.should.be.deep.equal(['B1', 'A1', 'A'])
     mCallOrder = []
     o.mo()
-    mCallOrder.should.be.deep.equal ['A1mo']
+    mCallOrder.should.be.deep.equal(['A1mo'])
     mCallOrder = []
     o.m1()
-    mCallOrder.should.be.deep.equal ['A1sm', 'Asm']
+    mCallOrder.should.be.deep.equal(['A1m1', 'A'])
     mCallOrder = []
   })
   it("test mixin static with super", function(){
@@ -86,6 +86,6 @@ describe("mixin es6", function(){
 
     mixin(B1, A1).should.be.equal(true, 'mixin');
     B1.sm()
-    mCallOrder.should.be.deep.equal ['A1sm', 'A']
+    mCallOrder.should.be.deep.equal(['A1sm', 'Asm'])
   })
 })

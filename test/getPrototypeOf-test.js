@@ -21,7 +21,7 @@ describe("getPrototypeOf", function() {
     })();
     obj = new Abc;
     result = getPrototypeOf(obj);
-    expect(result).to.exist();
+    expect(result).to.exist;
     expect(result).to.be.equal(Abc.prototype);
   });
 });

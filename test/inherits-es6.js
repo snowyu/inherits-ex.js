@@ -408,7 +408,7 @@ describe("inheritsES6", function() {
           this.inited = result
         }
       }
-      inherits(A2, R).should.be.ok()
+      inherits(A2, R).should.be.ok
       a = createObject(A2)
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)

@@ -6,22 +6,20 @@ chai.use(sinonChai);
 
 var isEmptyFunction = require("../src/isEmptyFunction");
 
-chai.use(sinonChai);
-
 describe("isEmptyFunction", function() {
   it("should test empty functions", function() {
     var emptyFunc;
     emptyFunc = function() {};
-    expect(isEmptyFunction(emptyFunc)).to.be["true"]("emptyFunc");
+    expect(isEmptyFunction(emptyFunc)).to.equal(true);
     emptyFunc = function(abc, ase) {};
-    expect(isEmptyFunction(emptyFunc)).to.be["true"]("emptyFunc2");
+    expect(isEmptyFunction(emptyFunc)).to.equal(true);
     emptyFunc = Function('arg1', 'arg2', '\n;');
-    expect(isEmptyFunction(emptyFunc)).to.be["true"];
+    expect(isEmptyFunction(emptyFunc)).to.equal(true);
     emptyFunc = Function('arg1', 'arg2', 'arg3', 'abs;');
-    expect(isEmptyFunction(emptyFunc)).to.not.be["true"];
+    expect(isEmptyFunction(emptyFunc)).to.not.equal(true);
   });
   return it("should support istanbul hooked empty function", function() {
     function Test(location){__cov_jOpjHgc_dBxBGFBAhmJ5rg.f['5']++;};
-    expect(isEmptyFunction(Test, true)).to.be["true"]("istanbul");
+    expect(isEmptyFunction(Test, true)).to.equal(true);
   });
 });
