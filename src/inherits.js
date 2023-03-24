@@ -62,12 +62,63 @@ function _inherits(ctor, superCtor, staticInherit) {
  * The function is compatible with both ES5 and ES6, as well as older browsers that do not support these
  * versions of JavaScript. The function also supports CoffeeScript-generated classes.
  *
+ * **Note**:
+ *
+ * * When using the `inherits` function, these two properties are added to the constructor function(`ctor`).
+ *   * The `super_` property refers to the parent constructor.
+ *   * The `__super__` property refers to the parent's prototype object,
+ *     which can be used for the `super` keyword in CoffeeScript.
+ * * In addition, the `Class` property is added to the prototype object of the constructor function (`ctor`).
+ *   * This property points to the current class(`ctor`).
+ *   * This property can also be accessed by instances of the class.
+ *   * It is important to note that for the empty constructor, the instance of `ctor` may not be the current class,
+ *     but the `Class` property is always set to the current class for instance.
+ *
+ *
  * @param {Function} ctor the child class that needs to inherit from the parent class.
  * @param {Function|Function[]} superCtors the parent class that the child class needs to inherit from.
  *   The first class is the parent of child class ctor, the left classes will be chained(inherits) one by one,
  *   if `superCtors` is an array of classes.
  * @param {boolean=true} staticInherit optional indicating whether or not the static properties of the parent class should be inherited as well.
  * @returns {boolean} returns true if inheritance was successful.
+ *
+ * @example
+ *
+ * class Animal {
+ *   constructor(name) {
+ *     this.name = name;
+ *   }
+ *
+ *   speak() {
+ *     console.log(this.name + ' makes a noise.');
+ *   }
+ * }
+ *
+ * class Dog extends Animal {
+ *   constructor(name, breed) {
+ *     super(name);
+ *     this.breed = breed;
+ *   }
+ *
+ *   speak() {
+ *     console.log(this.name + ' barks.');
+ *   }
+ * }
+ *
+ * function Cat(name, breed) {
+ *   this.name = name;
+ *   this.breed = breed;
+ * }
+ *
+ * Cat.prototype.meow = function() {
+ *   console.log(this.name + ' meows.');
+ * };
+ *
+ * inherits(Cat, [Animal]);
+ *
+ * const fluffy = new Cat('Fluffy', 'Siamese');
+ * fluffy.speak(); // Output: Fluffy makes a noise.
+ * fluffy.meow(); // Output: Fluffy meows.
  */
 module.exports = function inherits(ctor, superCtors, staticInherit) {
   if (!isArray(superCtors)) return _inherits(ctor, superCtors, staticInherit);

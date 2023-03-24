@@ -25,6 +25,35 @@ if (!_defineProperty) {
  * @param {function} [aOptions.get] - The getter function.
  * @param {function} [aOptions.set] - The setter function.
  * @returns The object that was passed to the function, with the specified property added or modified.
+ *
+ * @example
+ * // Define a non-enumerable data property.
+ * defineProperty(myObject, "myProperty", 42);
+ *
+ * @example
+ * // Define an enumerable accessor property.
+ * defineProperty(myObject, "myAccessorProperty", null, {
+ *   enumerable: true,
+ *   get: function() {
+ *     return this._myValue;
+ *   },
+ *   set: function(newValue) {
+ *     this._myValue = newValue;
+ *   }
+ * });
+ *
+ * @example
+ * // Define a non-enumerable, read-only data property.
+ * defineProperty(myObject, "myReadOnlyProperty", "hello", {
+ *   writable: false
+ * });
+ *
+ * @example
+ * // Define an enumerable, configurable data property.
+ * defineProperty(myObject, "myConfigurableProperty", 42, {
+ *   enumerable: true,
+ *   configurable: true
+ * });
  */
 module.exports = function defineProperty(object, key, value, aOptions) {
   var descriptor, isAccessor, writable;

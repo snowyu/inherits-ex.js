@@ -30,15 +30,12 @@ var isArray = Array.isArray;
  *
  * @example
  *
- * ```js
  *   var InheritsEx = require('inherits-ex/lib/inherits-ex')
  *   var defaultRequire = InheritsEx.requireClass;
  *   // You should return the proper class(ctor) here.
  *   InheritsEx.requireClass = function(className, scope){return defaultRequire.apply(null, arguments)};
  *   var inherits = InheritsEx()
- * ```
  *
- * ```js
  * const requireClass = (aClassName, aScope) => getClassViaName(aClassName)
  * const InheritsEx = require('inherits-ex/lib/inherits-ex')
  * const inherits   = InheritsEx(requireClass)
@@ -49,8 +46,6 @@ var isArray = Array.isArray;
  *
  * class MyClass3 {}
  * inherits(MyClass3, RootClass)
- *
- * ```
  *
  */
 function InheritsEx(aDefaultRequire) {
