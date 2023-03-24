@@ -309,8 +309,8 @@ var objectSuperCtor = getPrototypeOf(Object);
 /**
  * @callback FilterFn
  * @param {string} name
- * @param {*} value
- * @returns {*} include it return value directly or return undefined
+ * @param {any} value
+ * @returns {any} include it return value directly or return undefined
  */
 
 /**

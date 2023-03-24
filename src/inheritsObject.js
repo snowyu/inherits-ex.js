@@ -12,7 +12,7 @@ var setPrototypeOf = require('./setPrototypeOf');
  * @param {boolean} staticInherit - Whether to inherit static properties or not.
  * @returns {boolean} - Whether the prototype was successfully set or not.
  * @example
- *
+ * ```js
  * class Person {
  *   constructor(name) {
  *     this.name = name;
@@ -31,6 +31,7 @@ var setPrototypeOf = require('./setPrototypeOf');
  *
  * // Now jane's prototype is Person, and she can call sayHello
  * jane.sayHello(); // logs "Hello, my name is Jane"
+ * ```
  */
 function inheritsObject(aObject, aClass, staticInherit) {
   var vOldProto = getPrototypeOf(aObject);
