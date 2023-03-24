@@ -1,7 +1,7 @@
-var defineProperty = Object.defineProperty;
+var _defineProperty = Object.defineProperty;
 
-if (!defineProperty) {
-  defineProperty = function(obj, key, descriptor) {
+if (!_defineProperty) {
+  _defineProperty = function(obj, key, descriptor) {
     var value;
     if (descriptor) {
       value = descriptor.value;
@@ -53,5 +53,5 @@ module.exports = function defineProperty(object, key, value, aOptions) {
     descriptor.writable = writable;
     descriptor.value = value;
   }
-  return defineProperty(object, key, descriptor);
+  return _defineProperty(object, key, descriptor);
 };
