@@ -1,13 +1,11 @@
-var chai            = require('chai')
-var sinon           = require('sinon')
-var sinonChai       = require('sinon-chai')
-var expect          = chai.expect
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const expect = chai.expect;
+chai.use(sinonChai);
 
-var defineProperty  = require('../src/defineProperty')
-
-var log             = console.log.bind(console)
-
-chai.use(sinonChai)
+import {defineProperty} from '../src/defineProperty';
+const log             = console.log.bind(console)
 
 describe('defineProperty', () => {
   it('should define property with key,value argument', () => {

@@ -1,7 +1,8 @@
-var hasNativeReflect = require('./isNativeReflectConstruct').hasNativeReflect
+import {hasNativeReflect} from './isNativeReflectConstruct'
 
-var defineProperty = Object.defineProperty;
-var arraySlice = Array.prototype.slice;
+const defineProperty = Object.defineProperty;
+const arraySlice = Array.prototype.slice;
+const setPrototypeOf = Object.setPrototypeOf;
 
 /**
  * Creates a new instance of the given class using the specified arguments.
@@ -23,20 +24,20 @@ var arraySlice = Array.prototype.slice;
  * const john = createObjectWith(Person, ['John', 30]);
  * console.log(john); // Output: Person { name: 'John', age: 30 }
  */
-function createObjectWith(aClass, aArguments) {
-  var args = [aClass];
+export function createObjectWith(aClass, aArguments) {
+  let args = [aClass];
   if (aArguments)
     args = args.concat(arraySlice.call(aArguments));
-  var result = new (Function.prototype.bind.apply(aClass, args));
+  let result = new (Function.prototype.bind.apply(aClass, args));
   if (aClass !== Object && aClass !== Array && aClass !== RegExp) {
-    var vPrototype = aClass.prototype;
+    const vPrototype = aClass.prototype;
     if (!vPrototype.hasOwnProperty('Class')) {
       defineProperty(vPrototype, 'Class', {
         value: aClass,
         configurable: true
       });
     }
-    var vConstructor = vPrototype.constructor
+    const vConstructor = vPrototype.constructor
     if (aClass !== vConstructor) {
       try {
         vConstructor.apply(result, aArguments);
@@ -46,6 +47,7 @@ function createObjectWith(aClass, aArguments) {
           if (hasNativeReflect) {
             result = Reflect.construct(vConstructor, aArguments, aClass)
           } else {
+            // eslint-disable-next-line new-cap
             result = new vConstructor(...aArguments);
             setPrototypeOf(result, vPrototype);
           }
@@ -57,4 +59,4 @@ function createObjectWith(aClass, aArguments) {
   return result;
 };
 
-module.exports = createObjectWith
+export default createObjectWith

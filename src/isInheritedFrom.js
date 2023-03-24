@@ -1,7 +1,7 @@
-var isInheritedFromStr = require('./isInheritedFromStr');
-var getPrototypeOf     = require('./getPrototypeOf');
+import {isInheritedFromStr} from './isInheritedFromStr';
 
-var objectSuperCtor = getPrototypeOf(Object);
+const getPrototypeOf     = Object.getPrototypeOf;
+const objectSuperCtor = getPrototypeOf(Object);
 
 /**
  *   Determines if a constructor(class) is inherited from a given super constructor(class).
@@ -11,21 +11,22 @@ var objectSuperCtor = getPrototypeOf(Object);
  *   @returns {boolean|Function} - If the constructor is inherited from the super constructor, returns the constructor.
  *   Otherwise, returns false.
  */
-module.exports = function isInheritedFrom(ctor, superCtor, throwError) {
-  if (typeof superCtor === 'string') return isInheritedFromStr(ctor, superCtor, throwError);
+export function isInheritedFrom(ctor, superCtor, throwError) {
+  if (typeof superCtor === 'string')
+return isInheritedFromStr(ctor, superCtor, throwError);
   if (ctor === superCtor) {
     if (throwError)
       throw new Error('Circular inherits found!');
     else
       return true;
   }
-  var ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
-  var result  = ctorSuper === superCtor;
-  var checkeds = [];
+  let ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
+  let result  = ctorSuper === superCtor;
+  const checkeds = [];
   checkeds.push(ctor);
   while (!result && ((ctor = ctorSuper) != null) && ctorSuper !== objectSuperCtor) {
     ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
-    if (checkeds.indexOf(ctor) >= 0) {
+    if (checkeds.includes(ctor)) {
       if (throwError)
         throw new Error('Circular inherits found!');
       else
@@ -37,8 +38,11 @@ module.exports = function isInheritedFrom(ctor, superCtor, throwError) {
   if (result) {
     result = ctor;
     ctor = checkeds[0];
-    if (ctor.mixinCtor_ === result) result = ctor;
+    if (ctor.mixinCtor_ === result)
+result = ctor;
   }
 
   return result;
 }
+
+export default isInheritedFrom;

@@ -1,4 +1,4 @@
-const getPrototypeOf = require('./getPrototypeOf');
+const getPrototypeOf = Object.getPrototypeOf;
 const gCache = new WeakMap();
 
 /**
@@ -28,11 +28,12 @@ const gCache = new WeakMap();
  * const superRabbit = getSuper(rabbit);
  * superRabbit.walk(); // logs 'Animal walks'
  */
-module.exports = function getSuper(instance, cache) {
+export function getSuper(instance, cache) {
   if (typeof instance !== 'object' || instance === null) {
     throw new TypeError('getSuper() can only be used with instances of an object');
   }
-  if (cache === true) cache = gCache
+  if (cache === true)
+cache = gCache
   let proxy = cache && cache.get(instance);
   if (!proxy) {
     const proto = getPrototypeOf(getPrototypeOf(instance));
@@ -44,7 +45,10 @@ module.exports = function getSuper(instance, cache) {
       // disable write access
       set() {}
     });
-    if (cache) cache.set(instance, proxy);
+    if (cache)
+cache.set(instance, proxy);
   }
   return proxy;
 }
+
+export default getSuper

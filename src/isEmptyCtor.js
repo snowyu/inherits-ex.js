@@ -4,9 +4,9 @@
  * @param {string} vStr - The string to check.
  * @returns {boolean} - Returns true if the string represents an empty constructor, otherwise false
  */
-function isEmptyCtor(vStr) {
-  var isClass = /^class\s+/.test(vStr);
-  var result
+export function isEmptyCtor(vStr) {
+  const isClass = /^class\s+/.test(vStr);
+  let result
   if (isClass) {
     result = /^class\s+\S+\s*{\s*}/g.test(vStr);
     if (!result) {
@@ -16,4 +16,4 @@ function isEmptyCtor(vStr) {
   return result;
 };
 
-module.exports = isEmptyCtor
+export default isEmptyCtor

@@ -1,20 +1,19 @@
-var inheritsDirectly  = require('./inheritsDirectly');
-var isInheritedFrom   = require('./isInheritedFrom');
-var isMixinedFrom     = require('./isMixinedFrom');
-var defineProperty    = require('./defineProperty');
-var setPrototypeOf    = require('./setPrototypeOf');
-var getPrototypeOf    = require('./getPrototypeOf');
-var createCtor        = require('./createCtor');
-var extendPrototype   = require('./extend');
-var getParentCtor     = require('./getParentClass');
+import {inheritsDirectly} from './inheritsDirectly';
+import {isInheritedFrom } from './isInheritedFrom';
+import {isMixinedFrom   } from './isMixinedFrom';
+import {getParentClass  } from './getParentClass';
+import {defineProperty} from './defineProperty';
 
-var getOwnPropertyNames = Object.getOwnPropertyNames;
+const setPrototypeOf      = Object.setPrototypeOf;
+const getPrototypeOf      = Object.getPrototypeOf;
+const getOwnPropertyNames = Object.getOwnPropertyNames;
+
 /**
  * Enum for filter type
  * @readonly
  * @enum {number}
  */
-var filterOpts = {
+export const filterOpts = {
   /**
    * Include all members from the superCtor
    */
@@ -121,8 +120,8 @@ b.m()
  *
  */
 function isSuperInFunction(aMethod) {
-  var vStr = aMethod.toString();
-  return vStr.indexOf('.__super__') >= 0 || /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(vStr);
+  const vStr = aMethod.toString();
+  return vStr.includes('.__super__') || /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(vStr);
 }
 // function isSuperInFunction(aMethod) {
 //   return aMethod.toString().indexOf('__super__') >= 0;
@@ -132,7 +131,7 @@ function isSuperInFunction(aMethod) {
 //   return /(\s+|^|[;(\[])super[(]|super[.]\S+[(]/.test(aMethod.toString());
 // }
 
-//TODO: cant use async function. MUST make chain too.
+// TODO: cant use async function. MUST make chain too.
 function _mixinGenMethod(aMixinSuper, aMethod, src) {
   // var oldSuper = src.__super__;
   return function() {
@@ -140,7 +139,7 @@ function _mixinGenMethod(aMixinSuper, aMethod, src) {
     console.error('mx', aMixinSuper, 'src', src, 'aMethod', aMethod);
     // var oldvar = getPrototypeOf(this);
     // setPrototypeOf(this, aMixinSuper);
-    var result = aMethod.apply(this, arguments);
+    const result = aMethod.apply(this, arguments);
     // setPrototypeOf(this, oldvar);
     // src.__super__ = oldSuper;
     return result;
@@ -148,10 +147,10 @@ function _mixinGenMethod(aMixinSuper, aMethod, src) {
 }
 
 function _mixinGenMethodES6(aMixinSuper, aMethod, src) {
-  var oldSuper = getPrototypeOf(src.prototype);
+  const oldSuper = getPrototypeOf(src.prototype);
   return function() {
     setPrototypeOf(src.prototype, aMixinSuper);
-    var result = aMethod.apply(this, arguments);
+    const result = aMethod.apply(this, arguments);
     setPrototypeOf(src.prototype, oldSuper);
     return result;
   };
@@ -163,7 +162,7 @@ function _getFilterFunc(filter){
   } else if (filter === 1) {
     filter = function raiseErrorOnSuper(name, value) {
       if (typeof value === 'function' && isSuperInFunction(value)) {
-        throw new Error(name + ' method: should not use super');
+        throw new Error(`${name  } method: should not use super`);
       }
       return value;
     }
@@ -174,14 +173,14 @@ function _getFilterFunc(filter){
       }
     }
   } else if (Array.isArray(filter) && filter.length) {
-    var inFilter = filter;
+    const inFilter = filter;
     filter = function allowedInFilter(name, value) {
-      if (inFilter.indexOf(name) >= 0) {
+      if (inFilter.includes(name)) {
         return value;
       }
     }
   } else if (typeof filter !== 'function') {
-    throw new Error('filter option value error:' + filter);
+    throw new TypeError(`filter option value error:${  filter}`);
   }
   return filter;
 }
@@ -189,46 +188,49 @@ function _getFilterFunc(filter){
 function _clone(dest, src, ctor, filter) {
   // filter = _getFilterFunc(filter);
 
-  var names = getOwnPropertyNames(src);
+  const names = getOwnPropertyNames(src);
 
-  for (var i = 0; i < names.length; i++ ) {
-    var k = names[i];
+  for (let i = 0; i < names.length; i++ ) {
+    const k = names[i];
     // if (k === 'Class' || k === 'constructor') continue;
-    var value = filter(k, src[k]);
-    if (value !== undefined) dest[k] = value;
+    const value = filter(k, src[k]);
+    if (value !== undefined)
+dest[k] = value;
   }
 }
 
 function cloneCtor(dest, src, ctor, filter) {
-  var filterFn = function (name, value) {
-    for (var n of [ 'length', 'name', 'arguments', 'caller', 'prototype' ]) {
+  const filterFn = function (name, value) {
+    for (const n of [ 'length', 'name', 'arguments', 'caller', 'prototype' ]) {
       if (n === name) {
         value = undefined;
         break;
       }
-      if (value !== undefined) value = filter(name, value);
+      if (value !== undefined)
+value = filter(name, value);
     }
     return value;
   }
   _clone(dest, src, ctor, filterFn);
 }
 
-//clone src(superCtor) to dest(MixinCtor)
+// clone src(superCtor) to dest(MixinCtor)
 function clonePrototype(dest, src, ctor, filter) {
   // filter = _getFilterFunc(filter);
-  var filterFn = function (name, value) {
-    for (var n of [ 'Class', 'constructor' ]) {
+  const filterFn = function (name, value) {
+    for (const n of [ 'Class', 'constructor' ]) {
       if (n === name) {
         value = undefined;
         break;
       }
-      if (value !== undefined) value = filter(name, value);
+      if (value !== undefined)
+value = filter(name, value);
     }
     return value;
   }
 
-  var sp = src.prototype;
-  var dp = dest.prototype;
+  const sp = src.prototype;
+  const dp = dest.prototype;
   _clone(dp, sp, ctor, filterFn);
   /*
   var names = getOwnPropertyNames(sp);
@@ -304,7 +306,7 @@ function clonePrototype(dest, src, ctor, filter) {
 //   return result;
 // }
 
-var objectSuperCtor = getPrototypeOf(Object);
+const objectSuperCtor = getPrototypeOf(Object);
 
 /**
  * @callback FilterFn
@@ -329,18 +331,18 @@ var objectSuperCtor = getPrototypeOf(Object);
  *
  * @returns return true if successful
  */
-function mixin(ctor, superCtor, options) {
-  var v  = getParentCtor(ctor); // original superCtor
-  var result = false;
+export function mixin(ctor, superCtor, options) {
+  const v  = getParentClass(ctor); // original superCtor
+  let result = false;
   // Check if the two classes are already related in some way to avoid circular or duplicate inheritance
   if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
     // Create a mixin constructor function for the child class if one doesn't already exist
-    var mixinCtor = ctor.mixinCtor_;
-    var mixinCtors = ctor.mixinCtors_;
+    let mixinCtor = ctor.mixinCtor_;
+    let mixinCtors = ctor.mixinCtors_;
     if (!mixinCtor) {
       mixinCtor = function MixinCtor_(){};
       defineProperty(ctor, 'mixinCtor_', mixinCtor);
-      if (v && v !== objectSuperCtor) inheritsDirectly(mixinCtor, v);
+      if (v && v !== objectSuperCtor) {inheritsDirectly(mixinCtor, v);}
       // defineProperty(mixinCtor, 'chain', shadowCloneCtor(superCtor));
       // inheritsDirectly(mixinCtor.chain, shadowCloneCtor(superCtor));
     // } else {
@@ -351,8 +353,8 @@ function mixin(ctor, superCtor, options) {
       mixinCtors = [];
       defineProperty(ctor, 'mixinCtors_', mixinCtors);
     }
-    mixinCtors.push(superCtor);//quickly check in isMixinedFrom.
-    var filterFn = _getFilterFunc(options && options.filter);
+    mixinCtors.push(superCtor);// quickly check in isMixinedFrom.
+    const filterFn = _getFilterFunc(options && options.filter);
     cloneCtor(mixinCtor, superCtor, ctor, filterFn);
     clonePrototype(mixinCtor, superCtor, ctor, filterFn);
     inheritsDirectly(ctor, mixinCtor);
@@ -420,15 +422,17 @@ function mixin(ctor, superCtor, options) {
  * myObj.methodA(); // logs 'Method A called'
  * myObj.methodB(); // logs 'Method B called'
  */
-function mixins(ctor, superCtors, options) {
-  if (typeof superCtors === 'function') return mixin(ctor, superCtors, options);
-  for (var i = 0; i < superCtors.length; i++) {
-    var superCtor = superCtors[i];
-    if (!mixin(ctor, superCtor, options)) return false;
+export function mixins(ctor, superCtors, options) {
+  if (typeof superCtors === 'function') {
+    return mixin(ctor, superCtors, options);
+  }
+  for (let i = 0; i < superCtors.length; i++) {
+    const superCtor = superCtors[i];
+    if (!mixin(ctor, superCtor, options)) {return false;}
   }
   return true;
 };
 
 mixins.filterOpts = filterOpts;
 
-module.exports = mixins
+export default mixins

@@ -1,13 +1,12 @@
-var chai            = require('chai')
-var sinon           = require('sinon')
-var sinonChai       = require('sinon-chai')
-var expect          = chai.expect
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const expect = chai.expect;
+chai.use(sinonChai);
 
-var getClassByName  = require('../src/get-class-by-name')
+import {getClassByName} from '../src/get-class-by-name'
 
-var log             = console.log.bind(console)
-
-chai.use(sinonChai)
+const log             = console.log.bind(console)
 
 describe('getClassByName', () => {
   it('should get class directly', () => {

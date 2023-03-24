@@ -1,7 +1,8 @@
-var exports = module.exports = require('./src/inherits')
-exports.directly = require('./src/inheritsDirectly')
-exports.is = require('./src/isInheritedFrom')
-exports.mixin = require('./src/mixin')
-exports.isMixin = require('./src/isMixinedFrom')
-exports.object = require('./src/inheritsObject')
+export * from './src/inherits'
+export * from './src/inheritsDirectly'
+export * from './src/isInheritedFrom'
+export * from './src/mixin'
+export * from './src/isMixinedFrom'
+export * from './src/inheritsObject'
+
 

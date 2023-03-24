@@ -1,22 +1,22 @@
-var chai            = require('chai')
-var sinon           = require('sinon')
-var sinonChai       = require('sinon-chai')
-var assert          = chai.assert
-var expect          = chai.expect
-var should          = chai.should()
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const assert = chai.assert
+const expect = chai.expect;
+const should = chai.should();
+chai.use(sinonChai);
 
-var inherits        = require('../src/inherits')
-var inheritsDirectly= require('../src/inheritsDirectly')
-var inheritsObject  = require('../src/inheritsObject')
-var mixin           = require('../src/mixin')
-var isInheritedFrom = require('../src/isInheritedFrom')
-var isMixinedFrom   = require('../src/isMixinedFrom')
-var createObject    = require('../src/createObject')
-var createObjectWith= require('../src/createObjectWith')
-var getProtoChain   = require('../src/getProtoChain')
+import {inherits}         from '../src/inherits'
+import {inheritsDirectly} from '../src/inheritsDirectly'
+import {inheritsObject}   from '../src/inheritsObject'
+import {mixin}            from '../src/mixin'
+import {isInheritedFrom}  from '../src/isInheritedFrom'
+import {isMixinedFrom}    from '../src/isMixinedFrom'
+import {createObject}     from '../src/createObject'
+import {createObjectWith} from '../src/createObjectWith'
+import {getProtoChain}    from '../src/getProtoChain'
 
-log             = console.log.bind(console)
-chai.use(sinonChai)
+const log             = console.log.bind(console)
 
 describe("mixin es6", function(){
   it("test mixin with super", function(){

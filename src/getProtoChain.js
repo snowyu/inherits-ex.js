@@ -1,6 +1,5 @@
-var getPrototypeOf = require('./getPrototypeOf');
-
-var objectSuperCtor = getPrototypeOf(Object);
+const getPrototypeOf  = Object.getPrototypeOf;
+const objectSuperCtor = getPrototypeOf(Object);
 
 /**
  * Returns an array of the names of constructors in the prototype chain of the given constructor.
@@ -24,19 +23,19 @@ var objectSuperCtor = getPrototypeOf(Object);
  * const protoChain = getProtoChain(Cat);
  * console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
  */
-function getProtoChain(ctor, depth) {
+export function getProtoChain(ctor, depth) {
   if (depth == null) {
     depth = 0;
   }
   if (depth >= getProtoChain.maxDepth) {
     throw new Error('The maximum depth of nesting is reached.');
   }
-  var result = []
-  var lastCtor;
+  const result = []
+  let lastCtor;
   while (ctor && ctor !== objectSuperCtor) {
-    var mCtors, name;
+    let mCtors, name;
     if (lastCtor && (mCtors = lastCtor.mixinCtors_)) {
-      mCtors = mCtors.map(function(m) {
+      mCtors = mCtors.map((m) => {
         return getProtoChain(m, ++depth);
       });
       name = mCtors;
@@ -53,5 +52,5 @@ function getProtoChain(ctor, depth) {
 
 getProtoChain.maxDepth = 10;
 
-module.exports = getProtoChain
+export default getProtoChain
 

@@ -1,9 +1,9 @@
-var isEmptyFunction = require('./isEmptyFunction')
-var getPrototypeOf    = require('./getPrototypeOf');
+import { isEmptyFunction } from './isEmptyFunction'
 
-var objectSuperCtor = getPrototypeOf(Object);
+const getPrototypeOf  = Object.getPrototypeOf
+const objectSuperCtor = getPrototypeOf(Object);
 
-//get latest non-empty constructor function through inherits link
+// get latest non-empty constructor function through inherits link
 
 /**
  * Returns the first(latest) non-empty constructor in the inheritance chain of the given constructor that has own properties.
@@ -11,10 +11,10 @@ var objectSuperCtor = getPrototypeOf(Object);
  * @param {function} ctor - The constructor to get the first non-empty constructor of.
  * @returns {function} The first(latest) non-empty constructor in the inheritance chain of the given constructor.
  */
-function getConstructor(ctor) {
-  var result = ctor;
-  var isEmpty = isEmptyFunction(result);
-  var v  = result.super_ || getPrototypeOf(result);
+export function getConstructor(ctor) {
+  let result = ctor;
+  let isEmpty = isEmptyFunction(result);
+  let v  = result.super_ || getPrototypeOf(result);
   while (isEmpty && v && v !== objectSuperCtor) {
     result  = v;
     v  = result.super_ || getPrototypeOf(result);
@@ -23,4 +23,4 @@ function getConstructor(ctor) {
   return result;
 }
 
-module.exports = getConstructor
+export default getConstructor

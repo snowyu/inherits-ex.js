@@ -1,11 +1,11 @@
-var isArray           = Array.isArray;
-var isInheritedFrom   = require('./isInheritedFrom');
-var inheritsDirectly  = require('./inheritsDirectly');
-var getPrototypeOf    = require('./getPrototypeOf');
-var defineProperty    = require('./defineProperty');
-var getParentCtor     = require('./getParentClass');
+import { isInheritedFrom  } from './isInheritedFrom';
+import { inheritsDirectly } from './inheritsDirectly';
+import { getParentClass } from './getParentClass';
+import {defineProperty} from './defineProperty';
 
-var objectSuperCtor = getPrototypeOf(Object);
+const getPrototypeOf    = Object.getPrototypeOf;
+const isArray           = Array.isArray;
+const objectSuperCtor   = getPrototypeOf(Object);
 
 /**
  * Inherit the prototype properties and methods from one constructor into another.
@@ -16,14 +16,14 @@ var objectSuperCtor = getPrototypeOf(Object);
  * @returns The function returns true if inheritance was successful.
  */
 function _inherits(ctor, superCtor, staticInherit) {
-  var v  = getParentCtor(ctor);
-  var mixinCtor = ctor.mixinCtor_;
+  let v  = getParentClass(ctor);
+  const mixinCtor = ctor.mixinCtor_;
   if (mixinCtor && v === mixinCtor) {
     ctor = mixinCtor;
-    v = getParentCtor(ctor);
+    v = getParentClass(ctor);
   }
-  var result = false;
-  var isInherited = isInheritedFrom(ctor, superCtor)
+  let result = false;
+  const isInherited = isInheritedFrom(ctor, superCtor)
   if (!isInherited && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor, staticInherit);
     // patch the missing prototype chain if exists ctor.super.
@@ -31,7 +31,7 @@ function _inherits(ctor, superCtor, staticInherit) {
       ctor = superCtor;
       superCtor = v;
       inheritsDirectly(ctor, superCtor, staticInherit);
-      v = getParentCtor(ctor);
+      v = getParentClass(ctor);
     }
     result = true;
   } else if (isInherited) {
@@ -120,10 +120,12 @@ function _inherits(ctor, superCtor, staticInherit) {
  * fluffy.speak(); // Output: Fluffy makes a noise.
  * fluffy.meow(); // Output: Fluffy meows.
  */
-module.exports = function inherits(ctor, superCtors, staticInherit) {
-  if (!isArray(superCtors)) return _inherits(ctor, superCtors, staticInherit);
-  for (var i = superCtors.length - 1; i >= 0; i--) {
-    if (!_inherits(ctor, superCtors[i], staticInherit)) return false;
+export function inherits(ctor, superCtors, staticInherit) {
+  if (!isArray(superCtors)) {return _inherits(ctor, superCtors, staticInherit);}
+  for (let i = superCtors.length - 1; i >= 0; i--) {
+    if (!_inherits(ctor, superCtors[i], staticInherit)) {return false;}
   }
   return true;
 }
+
+export default inherits

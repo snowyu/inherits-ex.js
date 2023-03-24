@@ -1,2 +1,3 @@
+require: 'esbuild-register'
 spec:
   - 'test/**/*-test.js' # the positional arguments!

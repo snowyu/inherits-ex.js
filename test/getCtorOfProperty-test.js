@@ -1,55 +1,37 @@
-var chai = require('chai');
-var sinon = require('sinon');
-sinonChai = require('sinon-chai');
-assert = chai.assert;
-should = chai.should();
+import chai from 'chai'
+// import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const expect = chai.expect;
+const should = chai.should();
 chai.use(sinonChai);
 
-var extend = require('../src/inheritsDirectly');
-var getCtorOfProperty = require('../src/getCtorOfProperty');
+import {inheritsDirectly as extend} from '../src/inheritsDirectly';
+import {getCtorOfOwnProperty} from '../src/getCtorOfProperty';
 
 describe("getCtorOfProperty", function() {
   it("should get the constructor which owned the property", function() {
     var A, B, C, result;
-    A = (function() {
-      function A() {}
+    function A() {}
+    A.prototype.a = 1;
+    function B() {
+      return B.__super__.constructor.apply(this, arguments);
+    }
 
-      A.prototype.a = 1;
+    B.prototype.b = 2;
+    extend(B, A);
+    function C() {
+      return C.__super__.constructor.apply(this, arguments);
+    }
 
-      return A;
-
-    })();
-    B = (function(superClass) {
-      extend(B, superClass);
-
-      function B() {
-        return B.__super__.constructor.apply(this, arguments);
-      }
-
-      B.prototype.b = 2;
-
-      return B;
-
-    })(A);
-    C = (function(superClass) {
-      extend(C, superClass);
-
-      function C() {
-        return C.__super__.constructor.apply(this, arguments);
-      }
-
-      C.prototype.c = 3;
-
-      return C;
-
-    })(B);
-    result = getCtorOfProperty(C, 'c');
+    C.prototype.c = 3;
+    extend(C, B);
+    result = getCtorOfOwnProperty(C, 'c');
     result.should.be.equal(C);
-    result = getCtorOfProperty(C, 'b');
+    result = getCtorOfOwnProperty(C, 'b');
     result.should.be.equal(B);
-    result = getCtorOfProperty(C, 'a');
+    result = getCtorOfOwnProperty(C, 'a');
     result.should.be.equal(A);
-    result = getCtorOfProperty(C, 'no');
+    result = getCtorOfOwnProperty(C, 'no');
     should.not.exist(result);
   });
 });

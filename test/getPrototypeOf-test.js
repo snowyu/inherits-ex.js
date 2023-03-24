@@ -1,14 +1,11 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-
-var expect = chai.expect;
-
-should = chai.should();
-
+import chai from 'chai'
+// import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const expect = chai.expect;
+const should = chai.should();
 chai.use(sinonChai);
 
-var getPrototypeOf = require('../src/getPrototypeOf');
+import {getPrototypeOf} from '../src/getPrototypeOf';
 
 describe("getPrototypeOf", function() {
   return it("should get PrototypeOf object", function() {

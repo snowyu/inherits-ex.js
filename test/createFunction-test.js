@@ -1,10 +1,10 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-var expect = chai.expect;
+import chai from 'chai'
+// import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const expect = chai.expect;
 chai.use(sinonChai);
 
-var createFunction = require('../src/createFunction');
+import {createFunction} from '../src/createFunction';
 
 function checkFunc(fn, name, argNames, result, args) {
   var argLen = (argNames && argNames.length) || 0;

@@ -1,6 +1,7 @@
-var inherits = require('./inherits');
-var getPrototypeOf = require('./getPrototypeOf');
-var setPrototypeOf = require('./setPrototypeOf');
+import {inherits} from './inherits';
+
+const getPrototypeOf = Object.getPrototypeOf;
+const setPrototypeOf = Object.setPrototypeOf;
 
 /**
  * Sets the prototype of an object to a new prototype, and inherits from a given class.
@@ -33,9 +34,9 @@ var setPrototypeOf = require('./setPrototypeOf');
  * jane.sayHello(); // logs "Hello, my name is Jane"
  * ```
  */
-function inheritsObject(aObject, aClass, staticInherit) {
-  var vOldProto = getPrototypeOf(aObject);
-  var result = false;
+export function inheritsObject(aObject, aClass, staticInherit) {
+  const vOldProto = getPrototypeOf(aObject);
+  let result = false;
   if ( vOldProto !== aClass.prototype) {
     inherits(aClass, vOldProto.constructor, staticInherit);
     setPrototypeOf(aObject, aClass.prototype);
@@ -44,4 +45,4 @@ function inheritsObject(aObject, aClass, staticInherit) {
   return result;
 };
 
-module.exports = inheritsObject
+export default inheritsObject

@@ -1,10 +1,12 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-var expect = chai.expect;
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const assert = chai.assert
+const expect = chai.expect;
+const should = chai.should();
 chai.use(sinonChai);
 
-var replaceCtor = require('../src/replaceCtor');
+import {replaceCtor} from '../src/replaceCtor';
 
 describe("replaceCtor", function() {
   return it("should replace an object's constructor", function() {

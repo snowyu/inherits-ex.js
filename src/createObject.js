@@ -1,8 +1,8 @@
-var setPrototypeOf    = require('./setPrototypeOf');
-var hasNativeReflect = require('./isNativeReflectConstruct').hasNativeReflect
+import {hasNativeReflect} from './isNativeReflectConstruct'
 
-var arraySlice = Array.prototype.slice;
-var defineProperty = Object.defineProperty;
+const defineProperty  = Object.defineProperty
+const setPrototypeOf  = Object.setPrototypeOf;
+const arraySlice      = Array.prototype.slice;
 
 /**
  * Creates a new instance of the given class using the specified arguments.
@@ -21,19 +21,19 @@ var defineProperty = Object.defineProperty;
  * const john = createObject(Person, 'John', 30);
  * console.log(john); // Output: Person { name: 'John', age: 30 }
  */
-function createObject(aClass) {
-  var result = new (Function.prototype.bind.apply(aClass, arguments));
+export function createObject(aClass) {
+  let result = new (Function.prototype.bind.apply(aClass, arguments));
   if (aClass !== Object && aClass !== Array && aClass !== RegExp) {
-    var vPrototype = aClass.prototype;
+    const vPrototype = aClass.prototype;
     if (!vPrototype.hasOwnProperty('Class')) {
       defineProperty(vPrototype, 'Class', {
         value: aClass,
         configurable: true
       });
     }
-    var vConstructor = vPrototype.constructor
+    const vConstructor = vPrototype.constructor
     if (aClass !== vConstructor) {
-      var args = arraySlice.call(arguments, 1);
+      const args = arraySlice.call(arguments, 1);
       try {
         vConstructor.apply(result, args);
       } catch(err) {
@@ -42,6 +42,7 @@ function createObject(aClass) {
           if (hasNativeReflect) {
             result = Reflect.construct(vConstructor, args, aClass)
           } else {
+            // eslint-disable-next-line new-cap
             result = new vConstructor(...args);
             setPrototypeOf(result, vPrototype);
           }
@@ -53,4 +54,4 @@ function createObject(aClass) {
   return result;
 }
 
-module.exports = createObject
+export default createObject

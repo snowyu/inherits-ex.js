@@ -7,6 +7,8 @@
     "name": "Riceball LEE",
     "email": "snowyu.lee@gmail.com"
   },
+  "main": "./lib/index.js",
+  "module": "./lib/esm/index.mjs",
   "types": "./types",
   "files": [
     "README.md",
@@ -32,15 +34,24 @@
     "coffee-script",
     "browserify"
   ],
-  "main": "./lib/index.js",
   "repository": "git://github.com/snowyu/inherits-ex.js",
   "bugs": {
     "url": "https://github.com/snowyu/inherits-ex.js/issues"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.35.3",
     "chai": "~4.3.7",
+    "esbuild-register": "^3.4.2",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "mkdist": "^1.1.2",
     "mocha": "~10.2.0",
+    "prettier": "^2.8.4",
     "sinon": "~15.0.2",
     "sinon-chai": "~3.7.0",
     "typedoc": "^0.23.28",
@@ -51,7 +62,9 @@
     "test"
   ],
   "scripts": {
-    "build": "npm run build.ts && mkdir -p lib && cp src/*.js lib/",
+    "build": "npm run build.cjs && npm run build.mjs && npm run build.ts",
+    "build.cjs": "mkdist --src=src --pattern=*.js --dist=lib --format=cjs",
+    "build.mjs": "mkdist --src=src --pattern=*.js --dist=lib/esm --format=esm --ext=mjs",
     "build.ts": "tsc",
     "clean": "rm -fr web docs types lib",
     "clean.doc": "rm -fr web docs",

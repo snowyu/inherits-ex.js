@@ -1,4 +1,4 @@
-var _extend = require('./_extend');
+import {_extend} from './_extend';
 
 /**
  * Extends the prototype of the given constructor with the prototypes of one or more super constructors.
@@ -7,9 +7,9 @@ var _extend = require('./_extend');
  * @param {...function} superCtors - The super constructors whose prototypes should be copied onto the extended prototype.
  * @returns {function} The extended constructor `ctor`.
  */
-function extend(ctor, superCtors) {
+export function extend(ctor, superCtors) {
   _extend(ctor.prototype, superCtors.prototype);
   return ctor;
 };
 
-module.exports = extend
+export default extend

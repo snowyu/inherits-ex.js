@@ -1,5 +1,5 @@
-var getClassByName = require('./get-class-by-name');
-var inherits = require('./inherits');
+import { getClassByName } from './get-class-by-name';
+import { inherits } from './inherits';
 
 function isFunction(value) {
   return typeof value === 'function';
@@ -13,7 +13,7 @@ function isObject(value) {
   return typeof value === 'object';
 };
 
-var isArray = Array.isArray;
+const isArray = Array.isArray;
 
 /**
  * The enhanced dynamical `inherits` implementation.
@@ -48,7 +48,7 @@ var isArray = Array.isArray;
  * inherits(MyClass3, RootClass)
  *
  */
-function InheritsEx(aDefaultRequire) {
+export function InheritsEx(aDefaultRequire) {
   if (isFunction(aDefaultRequire)) {
     InheritsEx.requireClass = aDefaultRequire;
   }
@@ -61,11 +61,11 @@ InheritsEx.scope = {};
 
 InheritsEx.setScope = function(aScope) {
   if (Array.isArray(aScope)) {
-    for (var j = 0; j < aScope.length; j++) {
-      var k = aScope[j];
-      var vName = k.name;
+    for (let j = 0; j < aScope.length; j++) {
+      const k = aScope[j];
+      const vName = k.name;
       if (vName == null) {
-        throw TypeError('No Scope Name for ' + k);
+        throw new TypeError(`No Scope Name for ${  k}`);
       }
       InheritsEx.addClass(vName, k)
     }
@@ -83,8 +83,8 @@ InheritsEx.setScope = function(aScope) {
  * @returns {Function|undefined} the found class or undefined.
  */
 InheritsEx.getClass = function(aClassName, aScope, aValues) {
-  var requireClass, result;
-  requireClass = InheritsEx.requireClass;
+  let result;
+  const requireClass = InheritsEx.requireClass;
   if (aScope != null) {
     result = requireClass(aClassName, aScope, aValues);
   }
@@ -95,8 +95,8 @@ InheritsEx.getClass = function(aClassName, aScope, aValues) {
 };
 
 InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
-  var isStrCtor;
-  var getClass = InheritsEx.getClass;
+  let isStrCtor;
+  const getClass = InheritsEx.getClass;
   if (isStrCtor = isString(ctor)) {
     ctor = getClass(ctor, aScope, aValues);
   }
@@ -104,9 +104,9 @@ InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
     superCtors = getClass(superCtors, aScope, aValues);
   } else if (isArray(superCtors)) {
     superCtors = (function() {
-      var results = [];
-      for (var j = 0; j < superCtors.length; j++) {
-        var i = superCtors[j];
+      const results = [];
+      for (let j = 0; j < superCtors.length; j++) {
+        const i = superCtors[j];
         if (isString(i)) {
           results.push(getClass(i, aScope, aValues));
         } else {
@@ -116,7 +116,7 @@ InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
       return results;
     })();
   }
-  var result = inherits(ctor, superCtors);
+  const result = inherits(ctor, superCtors);
   if (result && !isStrCtor) {
     InheritsEx.addClass(ctor.name, ctor);
   }
@@ -131,8 +131,7 @@ InheritsEx.execute = function(ctor, superCtors, aScope, aValues) {
  * @param {*} ctor  the class
  */
 InheritsEx.addClass = function(aName, ctor) {
-  var scope;
-  scope = InheritsEx.scope;
+  const scope = InheritsEx.scope;
   switch (typeof scope) {
     case 'function':
       scope(aName, ctor);
@@ -143,4 +142,4 @@ InheritsEx.addClass = function(aName, ctor) {
   }
 };
 
-module.exports = InheritsEx;
+export default InheritsEx;

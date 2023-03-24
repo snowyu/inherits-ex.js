@@ -1,8 +1,9 @@
-var newPrototype = require('./newPrototype');
-var setPrototypeOf = require('./setPrototypeOf');
-var defineProperty = require('./defineProperty');
+import {newPrototype} from './newPrototype';
+import {defineProperty} from './defineProperty';
 
-//just replace the ctor.super to superCtor,
+const setPrototypeOf = Object.setPrototypeOf;
+
+// just replace the ctor.super to superCtor,
 /**
  * Enables dynamic prototypal inheritance between classes, allowing for flexible and reusable code.
  *
@@ -15,10 +16,10 @@ var defineProperty = require('./defineProperty');
  * @param {Function} superCtor The parent class from which the child class will inherit.
  * @param {boolean=} staticInherit Optional A boolean flag indicating whether the child class should also inherit static properties and methods from the parent class. The default value is `true`.
  */
-module.exports = function inheritsDirectly(ctor, superCtor, staticInherit) {
+export function inheritsDirectly(ctor, superCtor, staticInherit) {
   defineProperty(ctor, 'super_', superCtor);
-  defineProperty(ctor, '__super__', superCtor.prototype);//for coffeeScript super keyword.
-  var vPrototype = newPrototype(superCtor, ctor);
+  defineProperty(ctor, '__super__', superCtor.prototype);// for coffeeScript super keyword.
+  const vPrototype = newPrototype(superCtor, ctor);
   ctor.prototype = vPrototype; // ES6 class can not modify prototype!
   if (vPrototype !== ctor.prototype) {
     defineProperty(ctor.prototype, 'constructor', vPrototype.constructor)
@@ -31,3 +32,5 @@ module.exports = function inheritsDirectly(ctor, superCtor, staticInherit) {
     setPrototypeOf(ctor, superCtor); // additional static member inheritance
   }
 };
+
+export default inheritsDirectly

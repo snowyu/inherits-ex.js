@@ -1,8 +1,8 @@
-var _defineProperty = Object.defineProperty;
+let _defineProperty = Object.defineProperty;
 
 if (!_defineProperty) {
   _defineProperty = function(obj, key, descriptor) {
-    var value;
+    let value;
     if (descriptor) {
       value = descriptor.value;
     }
@@ -32,7 +32,7 @@ if (!_defineProperty) {
  *
  * @example
  * // Define an enumerable accessor property.
- * defineProperty(myObject, "myAccessorProperty", null, {
+ * defineProperty(myObject, "myAccessorProperty", undefined, {
  *   enumerable: true,
  *   get: function() {
  *     return this._myValue;
@@ -55,10 +55,10 @@ if (!_defineProperty) {
  *   configurable: true
  * });
  */
-module.exports = function defineProperty(object, key, value, aOptions) {
-  var descriptor, isAccessor, writable;
-  writable = true;
-  descriptor = {
+export function defineProperty(object, key, value, aOptions) {
+  let isAccessor;
+  let writable = true;
+  const descriptor = {
     configurable: true,
     enumerable: false
   };
@@ -82,5 +82,8 @@ module.exports = function defineProperty(object, key, value, aOptions) {
     descriptor.writable = writable;
     descriptor.value = value;
   }
+
   return _defineProperty(object, key, descriptor);
 };
+
+export default defineProperty

@@ -1,25 +1,23 @@
-var chai            = require('chai')
-var sinon           = require('sinon')
-var sinonChai       = require('sinon-chai')
-var assert          = chai.assert
-var expect          = chai.expect
-var should          = chai.should()
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const assert = chai.assert
+const expect = chai.expect;
+const should = chai.should();
+chai.use(sinonChai);
 
-var inherits        = require('../src/inherits')
-var inheritsDirectly= require('../src/inheritsDirectly')
-var inheritsObject  = require('../src/inheritsObject')
-var mixin           = require('../src/mixin')
-var isInheritedFrom = require('../src/isInheritedFrom')
-var isMixinedFrom   = require('../src/isMixinedFrom')
-var createObject    = require('../src/createObject')
-var createObjectWith= require('../src/createObjectWith')
-var getProtoChain   = require('../src/getProtoChain')
-var getPrototypeOf  = require('../src/getPrototypeOf')
+import {inherits}         from '../src/inherits'
+import {inheritsDirectly} from '../src/inheritsDirectly'
+import {inheritsObject}   from '../src/inheritsObject'
+import {mixin}            from '../src/mixin'
+import {isInheritedFrom}  from '../src/isInheritedFrom'
+import {isMixinedFrom}    from '../src/isMixinedFrom'
+import {createObject}     from '../src/createObject'
+import {createObjectWith} from '../src/createObjectWith'
+import {getProtoChain}    from '../src/getProtoChain'
 
-var log             = console.log.bind(console)
-
-chai.use(sinonChai)
-
+const getPrototypeOf  = Object.getPrototypeOf
+const log             = console.log.bind(console)
 
 var compareProtoChain = function(o, list){
   var p = getProtoChain(o)
@@ -180,7 +178,6 @@ describe("inheritsES6", function() {
     assert.equal(isInheritedFrom(MyClass, 'B'), C)
   })
   it("test isInheritedFrom with class name", function(){
-    isInheritedFrom = isInheritedFrom
     assert.equal(isInheritedFrom(A, 'Root'), A)
     assert.equal(isInheritedFrom(A1, 'Root'), A)
     assert.equal(isInheritedFrom(A1, 'A'), A1)
@@ -365,7 +362,7 @@ describe("inheritsES6", function() {
     })
     it('should add new "Class" property to the class prototype', function() {
       class A2{}
-      a = createObject (A2)
+      a = createObject(A2)
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)
     })

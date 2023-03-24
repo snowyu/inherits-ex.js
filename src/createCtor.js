@@ -1,5 +1,6 @@
-var createFunction = require('./createFunction');
-var isString = function(v){return typeof v === 'string';};
+import { createFunction } from './createFunction'
+
+function isString(v){return typeof v === 'string';};
 
 /**
  * Creates a constructor function dynamically with the given name, arguments, and body.
@@ -11,14 +12,16 @@ var isString = function(v){return typeof v === 'string';};
  * @param {string|null|undefined} body - The body of the constructor function.
  * @returns {Function} - The constructor function.
  */
-function createCtor(name, args, body) {
+export function createCtor(name, args, body) {
   if (isString(args)) {
     body = args;
     args = [];
   }
-  var parentPrototype = '(' + name + '.__super__||Object.getPrototypeOf(' + name + ').prototype)';
-  if (body == null) body = 'var p=' + parentPrototype + ';return p?p.constructor.apply(this, arguments):undefined;'
+  const parentPrototype = `(${  name  }.__super__||Object.getPrototypeOf(${  name  }).prototype)`;
+  if (body == null) {
+    body = `var p=${  parentPrototype  };return p?p.constructor.apply(this, arguments):undefined;`
+  }
   return createFunction(name, args, body);
 };
 
-module.exports = createCtor
+export default createCtor

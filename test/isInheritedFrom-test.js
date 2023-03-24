@@ -1,49 +1,25 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-var expect = chai.expect;
+import chai from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+const assert = chai.assert
+const expect = chai.expect;
+const should = chai.should();
 chai.use(sinonChai);
 
-var isInheritedFrom = require('../src/isInheritedFrom');
+import {isInheritedFrom} from '../src/isInheritedFrom';
 
 describe("isInheritedFrom", function() {
   it("should check self circular", function() {
-    var A;
-    A = (function() {
-      function A() {}
-
-      return A;
-
-    })();
+    function A() {}
     expect(isInheritedFrom(A, A, false)).to.be.equal(true);
     expect(isInheritedFrom(A, 'A', false)).to.be.equal(true);
   });
   it("should check dead circular", function() {
     var A, B, C, D;
-    A = (function() {
-      function A() {}
-
-      return A;
-
-    })();
-    B = (function() {
-      function B() {}
-
-      return B;
-
-    })();
-    C = (function() {
-      function C() {}
-
-      return C;
-
-    })();
-    D = (function() {
-      function D() {}
-
-      return D;
-
-    })();
+    function A() {}
+    function B() {}
+    function C() {}
+    function D() {}
     A.super_ = B;
     B.super_ = C;
     C.super_ = A;

@@ -1,4 +1,4 @@
-var getPrototypeOf = require('./getPrototypeOf');
+const getPrototypeOf = Object.getPrototypeOf;
 
 /**
  * Traverses the prototype chain of a given class to find the class(ctor) that contains a given property, returning the real class that owns the property.
@@ -6,9 +6,9 @@ var getPrototypeOf = require('./getPrototypeOf');
  * @param {string} aPropertyName The name of the property
  * @returns {Function|undefined} return the class of OwnProperty, or undefined if not found
  */
-module.exports = function getCtorOfOwnProperty(aClass, aPropertyName) {
-  var result;
-  var vPrototype = aClass.prototype;
+export function getCtorOfOwnProperty(aClass, aPropertyName) {
+  let result;
+  let vPrototype = aClass.prototype;
 
   while (vPrototype && !vPrototype.hasOwnProperty(aPropertyName)) {
     vPrototype = getPrototypeOf(vPrototype);
@@ -22,3 +22,5 @@ module.exports = function getCtorOfOwnProperty(aClass, aPropertyName) {
   }
   return result;
 };
+
+export default getCtorOfOwnProperty

@@ -1,8 +1,8 @@
-var getPrototypeOf = require('./getPrototypeOf');
-var setPrototypeOf = require('./setPrototypeOf');
-var defineProperty = Object.defineProperty;
+const getPrototypeOf = Object.getPrototypeOf;
+const setPrototypeOf = Object.setPrototypeOf;
+const defineProperty = Object.defineProperty;
 
-//just replace the object's constructor
+// just replace the object's constructor
 
 /**
  * Replace the prototype of an object with the prototype of a given class
@@ -35,11 +35,11 @@ var defineProperty = Object.defineProperty;
  * replaceCtor(mary, Student); // returns true
  * mary.greet(); // logs "Hello, I'm student. My name is Mary"
  */
-module.exports = function replaceCtor(aObject, aClass) {
-  var vOldProto = getPrototypeOf(aObject);
-  var result = false;
+export function replaceCtor(aObject, aClass) {
+  const vOldProto = getPrototypeOf(aObject);
+  let result = false;
   if ( vOldProto && vOldProto !== aClass.prototype) {
-    if (!aClass.prototype.hasOwnProperty('Class')) {
+    if (!Object.prototype.hasOwnProperty.call(aClass.prototype, 'Class')) {
       defineProperty(aClass.prototype, 'Class', {
         value: aClass,
         configurable: true
@@ -51,3 +51,4 @@ module.exports = function replaceCtor(aObject, aClass) {
   return result;
 }
 
+export default replaceCtor;
