@@ -284,6 +284,37 @@ describe("inheritsES6", function() {
     a.m()
     assert.deepEqual(mCallOrder, [ 'R', 'T', 'T1', 'T11' ])
   })
+  it('should ES6 class and function ctor mixed', () => {
+    class Animal {
+      constructor(name) {
+        this.name = name;
+      }
+      speak(sound) {
+        return this.name + ' ' + sound;
+      }
+    }
+    class Dog extends Animal {
+      constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+      }
+      speak(sound) {
+        if (!sound) sound = 'barks';
+        return super.speak(sound);
+      }
+    }
+    function Cat(name, breed) {
+      this.name = name;
+      this.breed = breed;
+    }
+    Cat.prototype.meow = function() {
+      return this.Class.__super__.speak.call(this, 'meows');
+    };
+    assert.equal(inherits(Cat, Animal), true);
+    const fluffy = new Cat('Fluffy', 'Siamese');
+    assert.equal(fluffy.speak('meows.'), 'Fluffy meows.');
+    assert.equal(fluffy.meow('meows'), 'Fluffy meows');
+  });
 
 
   describe("createObject", function(){
