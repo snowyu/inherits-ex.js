@@ -16,7 +16,8 @@
       "outDir": "types"
     },
     "typedocOptions": {
-      "entryPoints": ["src/index.js"],
+      "entryPointStrategy": "expand",
+      // "entryPoints": ["src/*.js"],
       "out": "docs"
     },
     "exclude": ["**/*.spec.js", "**/*.test.js"]
