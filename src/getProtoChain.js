@@ -8,9 +8,23 @@ var objectSuperCtor = getPrototypeOf(Object);
  * **Note**: the `getProtoChain.maxDepth` for `mixinCtors` is 10, You can change it.
  *
  * @param {function} ctor - The constructor to get the prototype chain of.
- * @throws {Error} When the maximum depth of nesting is reached.
- * @returns {Array.<string>} An array of the names of constructors in the prototype chain of the given constructor.
- */function getProtoChain(ctor, depth) {
+ * @throws {Error} If the maximum depth of nesting is reached.
+ * @returns {string[]} An array of the names of constructors in the prototype chain of the given constructor.
+ *   The last element is always the string "Base," which represents the `Object` class that serves as the base for all
+ *   prototype chains.
+ *
+ * @example
+ *
+ * // Define a class hierarchy
+ * class Animal {}
+ * class Mammal extends Animal {}
+ * class Cat extends Mammal {}
+ *
+ * // Get the prototype chain of the Cat class
+ * const protoChain = getProtoChain(Cat);
+ * console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
+ */
+function getProtoChain(ctor, depth) {
   if (depth == null) {
     depth = 0;
   }
