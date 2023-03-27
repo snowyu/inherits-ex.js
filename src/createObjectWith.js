@@ -26,8 +26,11 @@ const setPrototypeOf = Object.setPrototypeOf;
  */
 export function createObjectWith(aClass, aArguments) {
   let args = [aClass];
-  if (aArguments)
+  if (aArguments) {
     args = args.concat(arraySlice.call(aArguments));
+  } else {
+    aArguments = []
+  }
   let result = new (Function.prototype.bind.apply(aClass, args));
   if (aClass !== Object && aClass !== Array && aClass !== RegExp) {
     const vPrototype = aClass.prototype;
