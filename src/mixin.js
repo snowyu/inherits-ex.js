@@ -3,10 +3,10 @@ import {isInheritedFrom } from './isInheritedFrom';
 import {isMixinedFrom   } from './isMixinedFrom';
 import {getParentClass  } from './getParentClass';
 import {defineProperty} from './defineProperty';
+import {_clone}         from './_clone';
 
 const setPrototypeOf      = Object.setPrototypeOf;
 const getPrototypeOf      = Object.getPrototypeOf;
-const getOwnPropertyNames = Object.getOwnPropertyNames;
 
 /**
  * Enum for filter type
@@ -185,6 +185,7 @@ function _getFilterFunc(filter){
   return filter;
 }
 
+/*
 function _clone(dest, src, ctor, filter) {
   // filter = _getFilterFunc(filter);
 
@@ -194,44 +195,47 @@ function _clone(dest, src, ctor, filter) {
     const k = names[i];
     // if (k === 'Class' || k === 'constructor') continue;
     const value = filter(k, src[k]);
-    if (value !== undefined)
-dest[k] = value;
+    if (value !== undefined) {dest[k] = value;}
   }
 }
+*/
 
-function cloneCtor(dest, src, ctor, filter) {
+function cloneCtor(dest, src, filter) {
   const filterFn = function (name, value) {
-    for (const n of [ 'length', 'name', 'arguments', 'caller', 'prototype' ]) {
-      if (n === name) {
-        value = undefined;
-        break;
-      }
-      if (value !== undefined)
-value = filter(name, value);
-    }
+    if ([ 'length', 'name', 'arguments', 'caller', 'prototype'].includes(name)) return;
+    if (value !== undefined) {value = filter(name, value);}
+
+    // for (const n of [ 'length', 'name', 'arguments', 'caller', 'prototype']) {
+    //   if (n === name) {
+    //     value = undefined;
+    //     break;
+    //   }
+    //   if (value !== undefined) {value = filter(name, value);}
+    // }
     return value;
   }
-  _clone(dest, src, ctor, filterFn);
+  _clone(dest, src, filterFn);
 }
 
 // clone src(superCtor) to dest(MixinCtor)
-function clonePrototype(dest, src, ctor, filter) {
+function clonePrototype(dest, src, filter) {
   // filter = _getFilterFunc(filter);
   const filterFn = function (name, value) {
-    for (const n of [ 'Class', 'constructor' ]) {
-      if (n === name) {
-        value = undefined;
-        break;
-      }
-      if (value !== undefined)
-value = filter(name, value);
-    }
+    if (['Class', 'constructor'].includes(name)) return;
+    if (value !== undefined) {value = filter(name, value);}
+    // for (const n of [ 'Class', 'constructor' ]) {
+    //   if (n === name) {
+    //     value = undefined;
+    //     break;
+    //   }
+    //   if (value !== undefined) {value = filter(name, value);}
+    // }
     return value;
   }
 
   const sp = src.prototype;
   const dp = dest.prototype;
-  _clone(dp, sp, ctor, filterFn);
+  _clone(dp, sp, filterFn);
   /*
   var names = getOwnPropertyNames(sp);
 
@@ -355,9 +359,11 @@ export function mixin(ctor, superCtor, options) {
     }
     mixinCtors.push(superCtor);// quickly check in isMixinedFrom.
     const filterFn = _getFilterFunc(options && options.filter);
-    cloneCtor(mixinCtor, superCtor, ctor, filterFn);
-    clonePrototype(mixinCtor, superCtor, ctor, filterFn);
-    inheritsDirectly(ctor, mixinCtor);
+    cloneCtor(mixinCtor, superCtor, filterFn);
+    clonePrototype(mixinCtor, superCtor, filterFn);
+    if (v !== mixinCtor) {
+      inheritsDirectly(ctor, mixinCtor);
+    }
     result = true;
   }
   return result;
