@@ -4,15 +4,22 @@ const gCache = new WeakMap();
 /**
  * Returns a proxy object that provides access to the methods of the given instance's parent class.
  * The returned proxy object behaves like `super` keyword in that it allows accessing parent class instance methods.
+ *
  * @param {object} instance - The instance to get the parent class instance methods from.
  * @param {WeakMap|boolean=} cache - An optional WeakMap object to cache the proxy object for better performance. defaults to false
  * @returns {object} - A proxy object that provides access to the methods of the given instance's parent class.
  * @throws {TypeError} - If the given instance is not an object or is null.
  *
  * @example
- * class Animal {
+ * class Creature {
+ *   walk() {
+ *     console.log('Creature walks');
+ *   }
+ * }
+ * class Animal extends Creature {
  *   walk() {
  *     console.log('Animal walks');
+ *     getSuper(this).walk(); // call the parent's walk method
  *   }
  * }
  *
@@ -20,7 +27,7 @@ const gCache = new WeakMap();
  *   walk() {
  *     console.log('Rabbit hops');
  *     // super.walk();
- *     getSuper(this).walk(); // call the parent's walk method.
+ *     getSuper(this).walk(); // call the parent's walk method
  *   }
  * }
  *
@@ -32,8 +39,7 @@ export function getSuper(instance, cache) {
   if (typeof instance !== 'object' || instance === null) {
     throw new TypeError('getSuper() can only be used with instances of an object');
   }
-  if (cache === true)
-cache = gCache
+  if (cache === true) {cache = gCache}
   let proxy = cache && cache.get(instance);
   if (!proxy) {
     const proto = getPrototypeOf(getPrototypeOf(instance));
@@ -42,11 +48,11 @@ cache = gCache
         // let v = typeof proto[prop] === 'function' ? proto[prop] : target[prop];
         return proto[prop];
       },
+      getPrototypeOf() {return proto},
       // disable write access
       set() {}
     });
-    if (cache)
-cache.set(instance, proxy);
+    if (cache) {cache.set(instance, proxy);}
   }
   return proxy;
 }
