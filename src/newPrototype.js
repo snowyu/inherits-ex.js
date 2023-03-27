@@ -1,6 +1,6 @@
-import {getConstructor} from './getConstructor';
+import {getConstructor}  from './getConstructor';
 import {isEmptyFunction} from './isEmptyFunction';
-import {_extend} from './_extend';
+import {_clone}          from './_clone';
 
 /**
  *  Creates a new object with a prototype chain from a given class and constructor function.
@@ -16,7 +16,6 @@ export function newPrototype(aClass, aConstructor) {
   //  Object.prototype = aClass.prototype;
   //  return new Object();
   const ctor = isEmptyFunction(aConstructor) ? getConstructor(aClass) : aConstructor;
-  // console.log('TCL:: ~ file: newPrototype.js ~ line 13 ~ ctor', aClass, ctor);
   let result;
   if (Object.create) { // typeof Object.create === 'function'
     result = Object.create(aClass.prototype, {
@@ -41,7 +40,10 @@ export function newPrototype(aClass, aConstructor) {
     Obj.prototype = aClass.prototype;
     result = new Obj();
   }
-  _extend(result, aConstructor.prototype);
+  _clone(result, aConstructor.prototype, function(k,v){
+    if (['Class', 'constructor'].includes(k)) return;
+    return v;
+  });
   return result;
 };
 
