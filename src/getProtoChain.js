@@ -1,5 +1,4 @@
-const getPrototypeOf  = Object.getPrototypeOf;
-const objectSuperCtor = getPrototypeOf(Object);
+import getSuperCtor from "./getSuperCtor";
 
 /**
  * Returns an array of the names of constructors in the prototype chain of the given constructor.
@@ -9,8 +8,6 @@ const objectSuperCtor = getPrototypeOf(Object);
  * @param {function} ctor - The constructor to get the prototype chain of.
  * @throws {Error} If the maximum depth of nesting is reached.
  * @returns {string[]} An array of the names of constructors in the prototype chain of the given constructor.
- *   The last element is always the string "Base," which represents the `Object` class that serves as the base for all
- *   prototype chains.
  *
  * @example
  *
@@ -21,7 +18,7 @@ const objectSuperCtor = getPrototypeOf(Object);
  *
  * // Get the prototype chain of the Cat class
  * const protoChain = getProtoChain(Cat);
- * console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
+ * console.log(protoChain); // Output: ["Animal", "Mammal","Cat"]
  */
 export function getProtoChain(ctor, depth) {
   if (depth == null) {
@@ -32,7 +29,7 @@ export function getProtoChain(ctor, depth) {
   }
   const result = []
   let lastCtor;
-  while (ctor && ctor !== objectSuperCtor) {
+  while (ctor && ctor !== Object) {
     let mCtors, name;
     if (lastCtor && (mCtors = lastCtor.mixinCtors_)) {
       mCtors = mCtors.map((m) => {
@@ -40,10 +37,10 @@ export function getProtoChain(ctor, depth) {
       });
       name = mCtors;
     } else {
-      name = ctor === Object ? "Base" : ctor.name;
+      name = ctor.name;
     }
     lastCtor = ctor;
-    ctor = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
+    ctor = getSuperCtor(ctor);
     result.push(name);
   }
 
