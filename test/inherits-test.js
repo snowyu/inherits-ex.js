@@ -391,7 +391,6 @@ describe("inherits", () => {
           return createObjectWith(A2, arguments);
         }
         const Parent = getPrototypeOf(getPrototypeOf(this)).constructor;
-        console.log('TCL:: ~ file: inherits-test.js:394 ~ A2 ~ Parent:', Parent);
         return Parent.apply(this, arguments)
         return Reflect.construct(Parent, arguments, A2)
       }

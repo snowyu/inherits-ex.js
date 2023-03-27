@@ -211,15 +211,15 @@ describe("inheritsES6", function() {
     var cMethod = ()=> "cMethod"
     var R = function(){return  "R"}
     R.name = "R"
-    var C = function(){return  "C"}
+    function C(){return  "C"}
     C.name = "C"
     C.prototype.cMethod = cMethod
 
-    var C1 = ()=> "C1"
+    var C1 = function(){ return "C1"}
     C1.name = "C1"
-    var C11 = ()=> "C11"
+    var C11 = function() {return "C11"}
     C11.name = "C11"
-    var C2 = ()=> "C2"
+    var C2 = function()  {return "C2"}
 
     assert.ok(inherits(C, R), "C inherits from R")
     assert.ok(inherits(C1, C), "C1 inherits from C")

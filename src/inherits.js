@@ -1,11 +1,9 @@
 import { isInheritedFrom  } from './isInheritedFrom';
 import { inheritsDirectly } from './inheritsDirectly';
-import { getParentClass } from './getParentClass';
 import {defineProperty} from './defineProperty';
+import getSuperCtor from './getSuperCtor';
 
-const getPrototypeOf    = Object.getPrototypeOf;
 const isArray           = Array.isArray;
-const objectSuperCtor   = getPrototypeOf(Object);
 
 /**
  * Inherit the prototype properties and methods from one constructor into another.
@@ -16,22 +14,22 @@ const objectSuperCtor   = getPrototypeOf(Object);
  * @returns The function returns true if inheritance was successful.
  */
 function _inherits(ctor, superCtor, staticInherit) {
-  let v  = getParentClass(ctor);
+  let v  = getSuperCtor(ctor);
   const mixinCtor = ctor.mixinCtor_;
   if (mixinCtor && v === mixinCtor) {
     ctor = mixinCtor;
-    v = getParentClass(ctor);
+    v = getSuperCtor(ctor);
   }
   let result = false;
   const isInherited = isInheritedFrom(ctor, superCtor)
   if (!isInherited && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor, staticInherit);
     // patch the missing prototype chain if exists ctor.super.
-    while (v != null && v !== objectSuperCtor && superCtor !== v) {
+    while (v != null && v !== Object && superCtor !== v) {
       ctor = superCtor;
       superCtor = v;
       inheritsDirectly(ctor, superCtor, staticInherit);
-      v = getParentClass(ctor);
+      v = getSuperCtor(ctor);
     }
     result = true;
   } else if (isInherited) {
