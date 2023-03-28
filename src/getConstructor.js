@@ -1,7 +1,5 @@
+import getSuperCtor from './getSuperCtor';
 import { isEmptyFunction } from './isEmptyFunction'
-
-const getPrototypeOf  = Object.getPrototypeOf
-const objectSuperCtor = getPrototypeOf(Object);
 
 // get latest non-empty constructor function through inherits link
 
@@ -14,10 +12,10 @@ const objectSuperCtor = getPrototypeOf(Object);
 export function getConstructor(ctor) {
   let result = ctor;
   let isEmpty = isEmptyFunction(result);
-  let v  = result.super_ || getPrototypeOf(result);
-  while (isEmpty && v && v !== objectSuperCtor) {
+  let v  = getSuperCtor(result);
+  while (isEmpty && v && v !== Object) {
     result  = v;
-    v  = result.super_ || getPrototypeOf(result);
+    v  = getSuperCtor(result);
     isEmpty = isEmptyFunction(result);
   }
   return result;
