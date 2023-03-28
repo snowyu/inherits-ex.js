@@ -14,7 +14,6 @@ describe("createCtor", function() {
     expect(ctor).to.exist;
     expect(typeof ctor).to.equal('function');
     expect(ctor).to.have.property('name', 'MyClass');
-    console.log(ctor.toString())
     expect(ctor.toString()).to.have.string('var p=(MyClass.__super__||Object.getPrototypeOf(MyClass).prototype);return p?p.constructor.apply(this, arguments):undefined;');
     expect(ctor()).not.to.exist;
   });
