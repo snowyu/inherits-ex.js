@@ -35,4 +35,4 @@ Checks whether a given function is empty or not.
 
 #### Defined in
 
-[src/isEmptyFunction.js:9](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isEmptyFunction.js#L9)
+[src/isEmptyFunction.js:9](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/isEmptyFunction.js#L9)

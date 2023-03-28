@@ -36,7 +36,7 @@ class Cat extends Mammal {}
 
 // Get the prototype chain of the Cat class
 const protoChain = getProtoChain(Cat);
-console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
+console.log(protoChain); // Output: ["Animal", "Mammal","Cat"]
 ```
 
 #### Parameters
@@ -51,9 +51,7 @@ console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
 `string`[]
 
 An array of the names of constructors in the prototype chain of the given constructor.
-  The last element is always the string "Base," which represents the `Object` class that serves as the base for all
-  prototype chains.
 
 #### Defined in
 
-[src/getProtoChain.js:27](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getProtoChain.js#L27)
+[src/getProtoChain.js:26](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/getProtoChain.js#L26)

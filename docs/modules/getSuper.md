@@ -62,4 +62,4 @@ superRabbit.walk(); // logs 'Animal walks'
 
 #### Defined in
 
-[src/getSuper.js:31](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getSuper.js#L31)
+[src/getSuper.js:31](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/getSuper.js#L31)

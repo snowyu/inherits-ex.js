@@ -62,4 +62,4 @@ the `inherits` function
 
 #### Defined in
 
-[src/inherits-ex.js:51](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/inherits-ex.js#L51)
+[src/inherits-ex.js:51](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/inherits-ex.js#L51)

@@ -20,6 +20,8 @@
 
 Creates a new object with a prototype chain from a given class and constructor function.
 
+**Note**: Not used more for can not overwrite the prototype of ctor.
+
 #### Parameters
 
 | Name | Type | Description |
@@ -35,4 +37,4 @@ Creates a new object with a prototype chain from a given class and constructor f
 
 #### Defined in
 
-[src/newPrototype.js:11](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/newPrototype.js#L11)
+[src/newPrototype.js:13](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/newPrototype.js#L13)

@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[src/setPrototypeOf.js:1](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/setPrototypeOf.js#L1)
+[src/setPrototypeOf.js:1](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/setPrototypeOf.js#L1)

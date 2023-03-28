@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[src/mixin.js:310](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/mixin.js#L310)
+[src/mixin.js:309](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/mixin.js#L309)
 
 ## Functions
 
@@ -109,4 +109,4 @@ return true if successful
 
 #### Defined in
 
-[src/mixin.js:423](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/mixin.js#L423)
+[src/mixin.js:422](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/mixin.js#L422)

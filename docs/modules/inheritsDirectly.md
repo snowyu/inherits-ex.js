@@ -39,4 +39,4 @@ The function also supports CoffeeScript-generated classes
 
 #### Defined in
 
-[src/inheritsDirectly.js:18](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/inheritsDirectly.js#L18)
+[src/inheritsDirectly.js:19](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/inheritsDirectly.js#L19)

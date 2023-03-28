@@ -47,4 +47,4 @@ A new instance of the class.
 
 #### Defined in
 
-[src/createObjectWith.js:26](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/createObjectWith.js#L26)
+[src/createObjectWith.js:26](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/createObjectWith.js#L26)
