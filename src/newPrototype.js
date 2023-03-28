@@ -1,9 +1,11 @@
 var getConstructor = require('./getConstructor');
 var isEmptyFunction = require('./isEmptyFunction');
-var extend = require('./_extend');
+var _clone = require('./_clone');
 
 /**
  *  Creates a new object with a prototype chain from a given class and constructor function.
+ *
+ * **Note**: Not used more for can not overwrite the prototype of ctor.
  *  @param {Function} aClass - The class to use as prototype chain.
  *  @param {Function} [aConstructor] - The constructor function for the new object.
  *  @returns {Object} - The newly created prototype object.
@@ -38,6 +40,9 @@ module.exports = function newPrototype(aClass, aConstructor) {
     Obj.prototype = aClass.prototype;
     result = new Obj();
   }
-  extend(result, aConstructor.prototype);
+  _clone(result, aConstructor.prototype, function(k,v){
+    if (['Class', 'constructor'].includes(k)) return;
+    return v;
+  });
   return result;
 };
