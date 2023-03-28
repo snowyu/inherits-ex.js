@@ -251,6 +251,35 @@ describe("inherits", () => {
     assert.equal(isInheritedFrom(C11, C1), C11, "C11 > C1");
     assert.equal(isInheritedFrom(C11, C), C2, "C11 > C");
   });
+  it('should inherits a parent class after', ()=>{
+    class A1 {}
+    class A2 {}
+    assert.equal(inherits(A2, A1), true)
+    inherits(A1, A)
+    const a = new A2()
+    assert.equal(isInheritedFrom(A2, A), A1)
+    assert.instanceOf(a, A)
+  })
+  it('should inherits a parent function constructor', ()=>{
+    function A() {}
+    function A1() {}
+    function A2() {}
+    assert.equal(inherits(A1, A), true)
+    assert.equal(inherits(A2, A1), true)
+    const a = new A2()
+    assert.equal(isInheritedFrom(A2, A), A1)
+    assert.instanceOf(a, A)
+  })
+  it('should inherits a parent function constructor after', ()=>{
+    function A() {}
+    function A1() {}
+    function A2() {}
+    assert.equal(inherits(A2, A1), true)
+    assert.equal(inherits(A1, A), true)
+    const a = new A2()
+    assert.equal(isInheritedFrom(A2, A), A1)
+    assert.instanceOf(a, A)
+  })
   describe("createObject", () => {
     it('should create plain object', () => {
       let result;
@@ -344,20 +373,6 @@ describe("inherits", () => {
       assert.instanceOf(a, Root);
       assert.equal(a.inited, "Root");
     });
-    /* known issue:
-     * the prototype is copy from parent class, so child class do not known the
-     * parent's changes.
-     *   : aClass.prototype = Object.create(aParentClass.prototype)
-     */
-    it('should inherits a parent class after', ()=>{
-      class A1 {}
-      class A2 {}
-      assert.equal(inherits(A2, A1), true)
-      inherits(A1, A)
-      const a = new A2()
-      assert.equal(isInheritedFrom(A2, A), A1)
-      assert.instanceOf(a, A)
-    })
     it('should pass the correct arguments to init', () => {
       class A2 {};
       assert.equal(inherits(A2, A), true);
