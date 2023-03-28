@@ -41,6 +41,7 @@ module.exports = function getSuper(instance, cache) {
         // let v = typeof proto[prop] === 'function' ? proto[prop] : target[prop];
         return proto[prop];
       },
+      getPrototypeOf() {return proto},
       // disable write access
       set() {}
     });
