@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](isMixinedFromStr.export_.md)
+- [default](isMixinedFromStr.md#default)
 
 ### Functions
 
-- [export&#x3D;](isMixinedFromStr.md#export&#x3D;)
+- [isMixinedFromStr](isMixinedFromStr.md#ismixinedfromstr)
+
+## References
+
+### default
+
+Renames and re-exports [isMixinedFromStr](isMixinedFromStr.md#ismixinedfromstr)
 
 ## Functions
 
-### export&#x3D;
+### isMixinedFromStr
 
-▸ **export=**(`ctor`, `superStr`): `boolean`
+▸ **isMixinedFromStr**(`ctor`, `superStr`): `boolean`
 
 Check if a constructor is mixed from a specific constructor.
 
@@ -35,4 +41,4 @@ Check if a constructor is mixed from a specific constructor.
 
 #### Defined in
 
-[src/isMixinedFromStr.js:7](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isMixinedFromStr.js#L7)
+[src/isMixinedFromStr.js:7](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isMixinedFromStr.js#L7)

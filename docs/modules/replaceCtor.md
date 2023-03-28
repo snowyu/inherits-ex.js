@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](replaceCtor.export_.md)
+- [default](replaceCtor.md#default)
 
 ### Functions
 
-- [export&#x3D;](replaceCtor.md#export&#x3D;)
+- [replaceCtor](replaceCtor.md#replacector)
+
+## References
+
+### default
+
+Renames and re-exports [replaceCtor](replaceCtor.md#replacector)
 
 ## Functions
 
-### export&#x3D;
+### replaceCtor
 
-▸ **export=**(`aObject`, `aClass`): `boolean`
+▸ **replaceCtor**(`aObject`, `aClass`): `boolean`
 
 Replace the prototype of an object with the prototype of a given class
 
@@ -62,4 +68,4 @@ mary.greet(); // logs "Hello, I'm student. My name is Mary"
 
 #### Defined in
 
-[src/replaceCtor.js:38](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/replaceCtor.js#L38)
+[src/replaceCtor.js:38](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/replaceCtor.js#L38)

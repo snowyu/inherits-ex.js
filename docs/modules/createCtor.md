@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](createCtor.md#default)
+
 ### Functions
 
-- [export&#x3D;](createCtor.md#export&#x3D;)
+- [createCtor](createCtor.md#creatector)
+
+## References
+
+### default
+
+Renames and re-exports [createCtor](createCtor.md#creatector)
 
 ## Functions
 
-### export&#x3D;
+### createCtor
 
-▸ **export=**(`name`, `args`, `body`): `Function`
+▸ **createCtor**(`name`, `args`, `body`): `Function`
 
 Creates a constructor function dynamically with the given name, arguments, and body.
 If the arguments are a string, it is assumed to be the body and the arguments are set to an empty array.
@@ -34,4 +44,4 @@ If the body is null or undefined, a default body is created that calls the paren
 
 #### Defined in
 
-[src/createCtor.js:14](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/createCtor.js#L14)
+[src/createCtor.js:15](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/createCtor.js#L15)

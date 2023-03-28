@@ -6,14 +6,25 @@
 
 ### Variables
 
-- [export&#x3D;](setPrototypeOf.md#export&#x3D;)
+- [default](setPrototypeOf.md#default)
+- [setPrototypeOf](setPrototypeOf.md#setprototypeof)
 
 ## Variables
 
-### export&#x3D;
+### default
 
-• **export=**: `any` = `Object.setPrototypeOf`
+• **default**: `any` = `Object.setPrototypeOf`
 
 #### Defined in
 
-[src/setPrototypeOf.js:1](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/setPrototypeOf.js#L1)
+[src/setPrototypeOf.js:2](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/setPrototypeOf.js#L2)
+
+___
+
+### setPrototypeOf
+
+• `Const` **setPrototypeOf**: `any` = `_setPrototypeOf`
+
+#### Defined in
+
+[src/setPrototypeOf.js:12](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/setPrototypeOf.js#L12)

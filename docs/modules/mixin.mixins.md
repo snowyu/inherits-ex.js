@@ -1,14 +1,14 @@
-[inherits-ex](../README.md) / [Exports](../modules.md) / [mixin](mixin.md) / export=
+[inherits-ex](../README.md) / [Exports](../modules.md) / [mixin](mixin.md) / mixins
 
-# Namespace: export=
+# Namespace: mixins
 
-[mixin](mixin.md).export=
+[mixin](mixin.md).mixins
 
 ## Table of contents
 
 ### Variables
 
-- [filterOpts](mixin.export_.md#filteropts)
+- [filterOpts](mixin.mixins.md#filteropts)
 
 ## Variables
 
@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/mixin.js:432](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/mixin.js#L432)
+[src/mixin.js:443](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L443)

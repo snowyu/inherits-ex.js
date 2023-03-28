@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](inheritsDirectly.export_.md)
+- [default](inheritsDirectly.md#default)
 
 ### Functions
 
-- [export&#x3D;](inheritsDirectly.md#export&#x3D;)
+- [inheritsDirectly](inheritsDirectly.md#inheritsdirectly)
+
+## References
+
+### default
+
+Renames and re-exports [inheritsDirectly](inheritsDirectly.md#inheritsdirectly)
 
 ## Functions
 
-### export&#x3D;
+### inheritsDirectly
 
-▸ **export=**(`ctor`, `superCtor`, `staticInherit`): `void`
+▸ **inheritsDirectly**(`ctor`, `superCtor`, `staticInherit`): `void`
 
 Enables dynamic prototypal inheritance between classes, allowing for flexible and reusable code.
 
@@ -39,4 +45,4 @@ The function also supports CoffeeScript-generated classes
 
 #### Defined in
 
-[src/inheritsDirectly.js:18](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/inheritsDirectly.js#L18)
+[src/inheritsDirectly.js:20](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/inheritsDirectly.js#L20)

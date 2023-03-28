@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](get_class_by_name.export_.md)
+- [default](get_class_by_name.md#default)
 
 ### Functions
 
-- [export&#x3D;](get_class_by_name.md#export&#x3D;)
+- [getClassByName](get_class_by_name.md#getclassbyname)
+
+## References
+
+### default
+
+Renames and re-exports [getClassByName](get_class_by_name.md#getclassbyname)
 
 ## Functions
 
-### export&#x3D;
+### getClassByName
 
-▸ **export=**(`aClassName`, `aScope`, `aValues`): `Function`
+▸ **getClassByName**(`aClassName`, `aScope`, `aValues`): `Function`
 
 Retrieve a class from the registered classes in the scope by its name.
 
@@ -36,4 +42,4 @@ return the found class or undefined
 
 #### Defined in
 
-[src/get-class-by-name.js:42](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/get-class-by-name.js#L42)
+[src/get-class-by-name.js:40](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/get-class-by-name.js#L40)

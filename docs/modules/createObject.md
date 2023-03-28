@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](createObject.md#default)
+
 ### Functions
 
-- [export&#x3D;](createObject.md#export&#x3D;)
+- [createObject](createObject.md#createobject)
+
+## References
+
+### default
+
+Renames and re-exports [createObject](createObject.md#createobject)
 
 ## Functions
 
-### export&#x3D;
+### createObject
 
-▸ **export=**(`aClass`, `...args`): `any`
+▸ **createObject**(`aClass`, `...args`): `any`
 
 Creates a new instance of the given class using the specified arguments.
 
@@ -46,4 +56,4 @@ console.log(john); // Output: Person { name: 'John', age: 30 }
 
 #### Defined in
 
-[src/createObject.js:24](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/createObject.js#L24)
+[src/createObject.js:24](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/createObject.js#L24)

@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](isInheritedFromStr.export_.md)
+- [default](isInheritedFromStr.md#default)
 
 ### Functions
 
-- [export&#x3D;](isInheritedFromStr.md#export&#x3D;)
+- [isInheritedFromStr](isInheritedFromStr.md#isinheritedfromstr)
+
+## References
+
+### default
+
+Renames and re-exports [isInheritedFromStr](isInheritedFromStr.md#isinheritedfromstr)
 
 ## Functions
 
-### export&#x3D;
+### isInheritedFromStr
 
-▸ **export=**(`ctor`, `superStr`, `throwError`): `boolean` \| `Function`
+▸ **isInheritedFromStr**(`ctor`, `superStr`, `throwError`): `boolean` \| `Function`
 
 Determines if a constructor(class) is inherited from a given the name of super constructor(class).
 
@@ -37,4 +43,4 @@ Determines if a constructor(class) is inherited from a given the name of super c
 
 #### Defined in
 
-[src/isInheritedFromStr.js:11](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isInheritedFromStr.js#L11)
+[src/isInheritedFromStr.js:13](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isInheritedFromStr.js#L13)

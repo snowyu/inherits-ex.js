@@ -4,9 +4,17 @@
 
 ## Table of contents
 
+### References
+
+- [default](mixin.md#default)
+
 ### Namespaces
 
-- [export&#x3D;](mixin.export_.md)
+- [mixins](mixin.mixins.md)
+
+### Enumerations
+
+- [filterOpts](../enums/mixin.filterOpts.md)
 
 ### Type Aliases
 
@@ -14,7 +22,14 @@
 
 ### Functions
 
-- [export&#x3D;](mixin.md#export&#x3D;)
+- [mixin](mixin.md#mixin)
+- [mixins](mixin.md#mixins)
+
+## References
+
+### default
+
+Renames and re-exports [mixins](mixin.md#mixins)
 
 ## Type Aliases
 
@@ -39,13 +54,37 @@
 
 #### Defined in
 
-[src/mixin.js:310](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/mixin.js#L310)
+[src/mixin.js:317](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L317)
 
 ## Functions
 
-### export&#x3D;
+### mixin
 
-▸ **export=**(`ctor`, `superCtors`, `options`): `boolean`
+▸ **mixin**(`ctor`, `superCtor`, `options`): `boolean`
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ctor` | `Function` | the class that needs to mixin from the `superCtor` class. |
+| `superCtor` | `Function` | The super class that the `ctor` needs to inherit from. |
+| `options` | `any` | - |
+
+#### Returns
+
+`boolean`
+
+return true if successful
+
+#### Defined in
+
+[src/mixin.js:339](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L339)
+
+___
+
+### mixins
+
+▸ **mixins**(`ctor`, `superCtors`, `options`): `boolean`
 
 Mixes the methods and properties from one or more classes to the target class.
 
@@ -109,4 +148,4 @@ return true if successful
 
 #### Defined in
 
-[src/mixin.js:423](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/mixin.js#L423)
+[src/mixin.js:432](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L432)

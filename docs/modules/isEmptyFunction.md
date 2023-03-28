@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](isEmptyFunction.export_.md)
+- [default](isEmptyFunction.md#default)
 
 ### Functions
 
-- [export&#x3D;](isEmptyFunction.md#export&#x3D;)
+- [isEmptyFunction](isEmptyFunction.md#isemptyfunction)
+
+## References
+
+### default
+
+Renames and re-exports [isEmptyFunction](isEmptyFunction.md#isemptyfunction)
 
 ## Functions
 
-### export&#x3D;
+### isEmptyFunction
 
-▸ **export=**(`aFunc`, `istanbul`): `boolean`
+▸ **isEmptyFunction**(`aFunc`): `boolean`
 
 Checks whether a given function is empty or not.
 
@@ -25,7 +31,6 @@ Checks whether a given function is empty or not.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `aFunc` | `Function` | The function to be checked. |
-| `istanbul` | `boolean` | whether has istanbul TODO: remove this! |
 
 #### Returns
 
@@ -35,4 +40,4 @@ Checks whether a given function is empty or not.
 
 #### Defined in
 
-[src/isEmptyFunction.js:9](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isEmptyFunction.js#L9)
+[src/isEmptyFunction.js:8](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isEmptyFunction.js#L8)

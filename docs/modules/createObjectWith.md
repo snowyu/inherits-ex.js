@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](createObjectWith.md#default)
+
 ### Functions
 
-- [export&#x3D;](createObjectWith.md#export&#x3D;)
+- [createObjectWith](createObjectWith.md#createobjectwith)
+
+## References
+
+### default
+
+Renames and re-exports [createObjectWith](createObjectWith.md#createobjectwith)
 
 ## Functions
 
-### export&#x3D;
+### createObjectWith
 
-▸ **export=**(`aClass`, `aArguments`): `any`
+▸ **createObjectWith**(`aClass`, `aArguments`): `any`
 
 Creates a new instance of the given class using the specified arguments.
 
@@ -47,4 +57,4 @@ A new instance of the class.
 
 #### Defined in
 
-[src/createObjectWith.js:26](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/createObjectWith.js#L26)
+[src/createObjectWith.js:27](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/createObjectWith.js#L27)

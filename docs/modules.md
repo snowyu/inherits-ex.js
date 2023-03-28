@@ -6,6 +6,7 @@
 
 ### Modules
 
+- [\_clone](modules/clone.md)
 - [\_extend](modules/extend.md)
 - [createCtor](modules/createCtor.md)
 - [createFunction](modules/createFunction.md)
@@ -16,10 +17,12 @@
 - [get-class-by-name](modules/get_class_by_name.md)
 - [getConstructor](modules/getConstructor.md)
 - [getCtorOfProperty](modules/getCtorOfProperty.md)
+- [getOwnPropValue](modules/getOwnPropValue.md)
 - [getParentClass](modules/getParentClass.md)
 - [getProtoChain](modules/getProtoChain.md)
 - [getPrototypeOf](modules/getPrototypeOf.md)
 - [getSuper](modules/getSuper.md)
+- [getSuperCtor](modules/getSuperCtor.md)
 - [index](modules/index.md)
 - [inherits](modules/inherits.md)
 - [inherits-ex](modules/inherits_ex.md)

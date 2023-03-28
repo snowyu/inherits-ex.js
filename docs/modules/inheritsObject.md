@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](inheritsObject.md#default)
+
 ### Functions
 
-- [export&#x3D;](inheritsObject.md#export&#x3D;)
+- [inheritsObject](inheritsObject.md#inheritsobject)
+
+## References
+
+### default
+
+Renames and re-exports [inheritsObject](inheritsObject.md#inheritsobject)
 
 ## Functions
 
-### export&#x3D;
+### inheritsObject
 
-▸ **export=**(`aObject`, `aClass`, `staticInherit`): `boolean`
+▸ **inheritsObject**(`aObject`, `aClass`, `staticInherit`): `boolean`
 
 Sets the prototype of an object to a new prototype, and inherits from a given class.
 
@@ -57,4 +67,4 @@ jane.sayHello(); // logs "Hello, my name is Jane"
 
 #### Defined in
 
-[src/inheritsObject.js:36](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/inheritsObject.js#L36)
+[src/inheritsObject.js:37](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/inheritsObject.js#L37)

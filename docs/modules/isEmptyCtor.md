@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](isEmptyCtor.md#default)
+
 ### Functions
 
-- [export&#x3D;](isEmptyCtor.md#export&#x3D;)
+- [isEmptyCtor](isEmptyCtor.md#isemptyctor)
+
+## References
+
+### default
+
+Renames and re-exports [isEmptyCtor](isEmptyCtor.md#isemptyctor)
 
 ## Functions
 
-### export&#x3D;
+### isEmptyCtor
 
-▸ **export=**(`vStr`): `boolean`
+▸ **isEmptyCtor**(`vStr`): `boolean`
 
 Determines whether the given string represents an empty constructor.
 
@@ -30,4 +40,4 @@ Determines whether the given string represents an empty constructor.
 
 #### Defined in
 
-[src/isEmptyCtor.js:7](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isEmptyCtor.js#L7)
+[src/isEmptyCtor.js:7](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isEmptyCtor.js#L7)

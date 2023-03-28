@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](newPrototype.export_.md)
+- [default](newPrototype.md#default)
 
 ### Functions
 
-- [export&#x3D;](newPrototype.md#export&#x3D;)
+- [newPrototype](newPrototype.md#newprototype)
+
+## References
+
+### default
+
+Renames and re-exports [newPrototype](newPrototype.md#newprototype)
 
 ## Functions
 
-### export&#x3D;
+### newPrototype
 
-▸ **export=**(`aClass`, `aConstructor?`): `any`
+▸ **newPrototype**(`aClass`, `aConstructor?`): `any`
 
 Creates a new object with a prototype chain from a given class and constructor function.
 
@@ -35,4 +41,4 @@ Creates a new object with a prototype chain from a given class and constructor f
 
 #### Defined in
 
-[src/newPrototype.js:11](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/newPrototype.js#L11)
+[src/newPrototype.js:11](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/newPrototype.js#L11)

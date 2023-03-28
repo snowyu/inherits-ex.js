@@ -4,19 +4,29 @@
 
 ## Table of contents
 
+### References
+
+- [default](inherits_ex.md#default)
+
 ### Namespaces
 
-- [export&#x3D;](inherits_ex.export_.md)
+- [InheritsEx](inherits_ex.InheritsEx.md)
 
 ### Functions
 
-- [export&#x3D;](inherits_ex.md#export&#x3D;)
+- [InheritsEx](inherits_ex.md#inheritsex)
+
+## References
+
+### default
+
+Renames and re-exports [InheritsEx](inherits_ex.md#inheritsex)
 
 ## Functions
 
-### export&#x3D;
+### InheritsEx
 
-▸ **export=**(`aDefaultRequire`): `Function`
+▸ **InheritsEx**(`aDefaultRequire`): `Function`
 
 The enhanced dynamical `inherits` implementation.
 
@@ -62,4 +72,4 @@ the `inherits` function
 
 #### Defined in
 
-[src/inherits-ex.js:51](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/inherits-ex.js#L51)
+[src/inherits-ex.js:51](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/inherits-ex.js#L51)

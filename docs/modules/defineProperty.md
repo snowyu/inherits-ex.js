@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](defineProperty.export_.md)
+- [default](defineProperty.md#default)
 
 ### Functions
 
-- [export&#x3D;](defineProperty.md#export&#x3D;)
+- [defineProperty](defineProperty.md#defineproperty)
+
+## References
+
+### default
+
+Renames and re-exports [defineProperty](defineProperty.md#defineproperty)
 
 ## Functions
 
-### export&#x3D;
+### defineProperty
 
-▸ **export=**(`object`, `key`, `value`, `aOptions`): `any`
+▸ **defineProperty**(`object`, `key`, `value`, `aOptions`): `any`
 
 Define the object's property and value. The property is not enumerable
 by default.
@@ -32,7 +38,7 @@ defineProperty(myObject, "myProperty", 42);
 
 ```ts
 // Define an enumerable accessor property.
-defineProperty(myObject, "myAccessorProperty", null, {
+defineProperty(myObject, "myAccessorProperty", undefined, {
   enumerable: true,
   get: function() {
     return this._myValue;
@@ -79,4 +85,4 @@ The object that was passed to the function, with the specified property added or
 
 #### Defined in
 
-[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/defineProperty.js#L58)
+[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/defineProperty.js#L58)

@@ -140,7 +140,7 @@ const assert = require('assert')
 const inherits = require('inherits-ex/lib/inherits')
 const isInheritedFrom = require('inherits-ex/lib/isInheritedFrom')
 const getParentClass = require('inherits-ex/lib/getParentClass')
-const log = console.log.bind console
+const log = console.log.bind(console)
 
 function getSuper(obj) {
   return getParentClass(obj).prototype

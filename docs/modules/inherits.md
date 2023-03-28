@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](inherits.export_.md)
+- [default](inherits.md#default)
 
 ### Functions
 
-- [export&#x3D;](inherits.md#export&#x3D;)
+- [inherits](inherits.md#inherits)
+
+## References
+
+### default
+
+Renames and re-exports [inherits](inherits.md#inherits)
 
 ## Functions
 
-### export&#x3D;
+### inherits
 
-▸ **export=**(`ctor`, `superCtors`, `staticInherit`): `boolean`
+▸ **inherits**(`ctor`, `superCtors`, `staticInherit`): `boolean`
 
 A powerful tool for implementing class inheritance that supports dynamic inheritance and multiple inheritance.
 
@@ -100,4 +106,4 @@ returns true if inheritance was successful.
 
 #### Defined in
 
-[src/inherits.js:123](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/inherits.js#L123)
+[src/inherits.js:121](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/inherits.js#L121)

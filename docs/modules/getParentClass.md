@@ -4,30 +4,40 @@
 
 ## Table of contents
 
+### References
+
+- [default](getParentClass.md#default)
+
 ### Functions
 
-- [export&#x3D;](getParentClass.md#export&#x3D;)
+- [getParentClass](getParentClass.md#getparentclass)
+
+## References
+
+### default
+
+Renames and re-exports [getParentClass](getParentClass.md#getparentclass)
 
 ## Functions
 
-### export&#x3D;
+### getParentClass
 
-▸ **export=**(`ctor`): `Function`
+▸ **getParentClass**(`ctor`): `Function`
 
-get the parent class(ctor) of the ctor
+Returns the parent class constructor of a given constructor(class) or object.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `ctor` | `Function` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ctor` | `any` | The constructor function or object to get the parent class from. |
 
 #### Returns
 
 `Function`
 
-the parent ctor
+The parent class constructor or undefined/null if there is no parent class.
 
 #### Defined in
 
-[src/getParentClass.js:8](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getParentClass.js#L8)
+[src/getParentClass.js:11](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/getParentClass.js#L11)

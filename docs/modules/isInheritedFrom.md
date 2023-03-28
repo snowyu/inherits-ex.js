@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](isInheritedFrom.export_.md)
+- [default](isInheritedFrom.md#default)
 
 ### Functions
 
-- [export&#x3D;](isInheritedFrom.md#export&#x3D;)
+- [isInheritedFrom](isInheritedFrom.md#isinheritedfrom)
+
+## References
+
+### default
+
+Renames and re-exports [isInheritedFrom](isInheritedFrom.md#isinheritedfrom)
 
 ## Functions
 
-### export&#x3D;
+### isInheritedFrom
 
-▸ **export=**(`ctor`, `superCtor`, `throwError`): `boolean` \| `Function`
+▸ **isInheritedFrom**(`ctor`, `superCtor`, `throwError`): `boolean` \| `Function`
 
 Determines if a constructor(class) is inherited from a given super constructor(class).
 
@@ -37,4 +43,4 @@ Determines if a constructor(class) is inherited from a given super constructor(c
 
 #### Defined in
 
-[src/isInheritedFrom.js:14](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isInheritedFrom.js#L14)
+[src/isInheritedFrom.js:15](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isInheritedFrom.js#L15)

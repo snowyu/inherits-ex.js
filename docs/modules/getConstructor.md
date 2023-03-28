@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](getConstructor.md#default)
+
 ### Functions
 
-- [export&#x3D;](getConstructor.md#export&#x3D;)
+- [getConstructor](getConstructor.md#getconstructor)
+
+## References
+
+### default
+
+Renames and re-exports [getConstructor](getConstructor.md#getconstructor)
 
 ## Functions
 
-### export&#x3D;
+### getConstructor
 
-▸ **export=**(`ctor`): `Function`
+▸ **getConstructor**(`ctor`): `Function`
 
 Returns the first(latest) non-empty constructor in the inheritance chain of the given constructor that has own properties.
 
@@ -30,4 +40,4 @@ The first(latest) non-empty constructor in the inheritance chain of the given co
 
 #### Defined in
 
-[src/getConstructor.js:14](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getConstructor.js#L14)
+[src/getConstructor.js:12](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/getConstructor.js#L12)

@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](getPrototypeOf.md#default)
+
 ### Functions
 
-- [export&#x3D;](getPrototypeOf.md#export&#x3D;)
+- [getPrototypeOf](getPrototypeOf.md#getprototypeof)
+
+## References
+
+### default
+
+Renames and re-exports [getPrototypeOf](getPrototypeOf.md#getprototypeof)
 
 ## Functions
 
-### export&#x3D;
+### getPrototypeOf
 
-▸ **export=**(`o`): `any`
+▸ **getPrototypeOf**(`o`): `any`
 
 Returns the prototype of an object.
 

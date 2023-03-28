@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](isEmptyFunction_cli.export_.md)
+- [default](isEmptyFunction_cli.md#default)
 
 ### Functions
 
-- [export&#x3D;](isEmptyFunction_cli.md#export&#x3D;)
+- [isEmptyFunctionCli](isEmptyFunction_cli.md#isemptyfunctioncli)
+
+## References
+
+### default
+
+Renames and re-exports [isEmptyFunctionCli](isEmptyFunction_cli.md#isemptyfunctioncli)
 
 ## Functions
 
-### export&#x3D;
+### isEmptyFunctionCli
 
-▸ **export=**(`aFunc`): `boolean`
+▸ **isEmptyFunctionCli**(`aFunc`): `boolean`
 
 Determines whether the given string represents an empty constructor.
 
@@ -34,4 +40,4 @@ Determines whether the given string represents an empty constructor.
 
 #### Defined in
 
-[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isEmptyFunction-cli.js#L7)
+[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isEmptyFunction-cli.js#L7)

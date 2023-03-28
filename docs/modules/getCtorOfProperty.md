@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](getCtorOfProperty.export_.md)
+- [default](getCtorOfProperty.md#default)
 
 ### Functions
 
-- [export&#x3D;](getCtorOfProperty.md#export&#x3D;)
+- [getCtorOfOwnProperty](getCtorOfProperty.md#getctorofownproperty)
+
+## References
+
+### default
+
+Renames and re-exports [getCtorOfOwnProperty](getCtorOfProperty.md#getctorofownproperty)
 
 ## Functions
 
-### export&#x3D;
+### getCtorOfOwnProperty
 
-▸ **export=**(`aClass`, `aPropertyName`): `Function`
+▸ **getCtorOfOwnProperty**(`aClass`, `aPropertyName`): `Function`
 
 Traverses the prototype chain of a given class to find the class(ctor) that contains a given property, returning the real class that owns the property.
 
@@ -35,4 +41,4 @@ return the class of OwnProperty, or undefined if not found
 
 #### Defined in
 
-[src/getCtorOfProperty.js:9](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getCtorOfProperty.js#L9)
+[src/getCtorOfProperty.js:9](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/getCtorOfProperty.js#L9)

@@ -4,19 +4,29 @@
 
 ## Table of contents
 
+### References
+
+- [default](getProtoChain.md#default)
+
 ### Namespaces
 
-- [export&#x3D;](getProtoChain.export_.md)
+- [getProtoChain](getProtoChain.getProtoChain.md)
 
 ### Functions
 
-- [export&#x3D;](getProtoChain.md#export&#x3D;)
+- [getProtoChain](getProtoChain.md#getprotochain)
+
+## References
+
+### default
+
+Renames and re-exports [getProtoChain](getProtoChain.md#getprotochain)
 
 ## Functions
 
-### export&#x3D;
+### getProtoChain
 
-▸ **export=**(`ctor`, `depth`): `string`[]
+▸ **getProtoChain**(`ctor`, `depth`): `string`[]
 
 Returns an array of the names of constructors in the prototype chain of the given constructor.
 
@@ -36,7 +46,7 @@ class Cat extends Mammal {}
 
 // Get the prototype chain of the Cat class
 const protoChain = getProtoChain(Cat);
-console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
+console.log(protoChain); // Output: ["Animal", "Mammal","Cat"]
 ```
 
 #### Parameters
@@ -51,9 +61,7 @@ console.log(protoChain); // Output: ["Cat", "Mammal", "Animal", "Base"]
 `string`[]
 
 An array of the names of constructors in the prototype chain of the given constructor.
-  The last element is always the string "Base," which represents the `Object` class that serves as the base for all
-  prototype chains.
 
 #### Defined in
 
-[src/getProtoChain.js:27](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getProtoChain.js#L27)
+[src/getProtoChain.js:23](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/getProtoChain.js#L23)

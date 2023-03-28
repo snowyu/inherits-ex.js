@@ -4,15 +4,25 @@
 
 ## Table of contents
 
+### References
+
+- [default](extend.md#default-1)
+
 ### Functions
 
-- [export&#x3D;](extend.md#export&#x3D;-1)
+- [extend](extend.md#extend)
+
+## References
+
+### default
+
+Renames and re-exports [extend](extend.md#extend)
 
 ## Functions
 
-### export&#x3D;
+### extend
 
-▸ **export=**(`ctor`, `superCtors`): `Function`
+▸ **extend**(`ctor`, `superCtors`): `Function`
 
 Extends the prototype of the given constructor with the prototypes of one or more super constructors.
 
@@ -31,4 +41,4 @@ The extended constructor `ctor`.
 
 #### Defined in
 
-[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/extend.js#L10)
+[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/extend.js#L10)

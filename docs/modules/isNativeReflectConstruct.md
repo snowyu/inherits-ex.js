@@ -4,27 +4,38 @@
 
 ## Table of contents
 
-### Namespaces
-
-- [export&#x3D;](isNativeReflectConstruct.export_.md)
-
 ### Variables
 
-- [export&#x3D;](isNativeReflectConstruct.md#export&#x3D;)
+- [hasNativeReflect](isNativeReflectConstruct.md#hasnativereflect)
+
+### Functions
+
+- [isNativeReflectConstruct](isNativeReflectConstruct.md#isnativereflectconstruct)
 
 ## Variables
 
-### export&#x3D;
+### hasNativeReflect
 
-• **export=**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `hasNativeReflect` | `boolean` |
-| `isNativeReflectConstruct` | () => `boolean` |
+• `Const` **hasNativeReflect**: `boolean`
 
 #### Defined in
 
-[src/isNativeReflectConstruct.js:30](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/isNativeReflectConstruct.js#L30)
+[src/isNativeReflectConstruct.js:32](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isNativeReflectConstruct.js#L32)
+
+## Functions
+
+### isNativeReflectConstruct
+
+▸ **isNativeReflectConstruct**(): `boolean`
+
+Checks if the current environment supports native Reflect.construct method.
+
+#### Returns
+
+`boolean`
+
+True if the current environment supports native Reflect.construct method, false otherwise.
+
+#### Defined in
+
+[src/isNativeReflectConstruct.js:5](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isNativeReflectConstruct.js#L5)

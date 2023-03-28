@@ -4,19 +4,25 @@
 
 ## Table of contents
 
-### Namespaces
+### References
 
-- [export&#x3D;](getSuper.export_.md)
+- [default](getSuper.md#default)
 
 ### Functions
 
-- [export&#x3D;](getSuper.md#export&#x3D;)
+- [getSuper](getSuper.md#getsuper)
+
+## References
+
+### default
+
+Renames and re-exports [getSuper](getSuper.md#getsuper)
 
 ## Functions
 
-### export&#x3D;
+### getSuper
 
-▸ **export=**(`instance`, `cache`): `any`
+▸ **getSuper**(`instance`, `cache`): `any`
 
 Returns a proxy object that provides access to the methods of the given instance's parent class.
 The returned proxy object behaves like `super` keyword in that it allows accessing parent class instance methods.
@@ -28,9 +34,15 @@ The returned proxy object behaves like `super` keyword in that it allows accessi
 **`Example`**
 
 ```ts
-class Animal {
+class Creature {
+  walk() {
+    console.log('Creature walks');
+  }
+}
+class Animal extends Creature {
   walk() {
     console.log('Animal walks');
+    getSuper(this).walk(); // call the parent's walk method
   }
 }
 
@@ -38,7 +50,7 @@ class Rabbit extends Animal {
   walk() {
     console.log('Rabbit hops');
     // super.walk();
-    getSuper(this).walk(); // call the parent's walk method.
+    getSuper(this).walk(); // call the parent's walk method
   }
 }
 
@@ -62,4 +74,4 @@ superRabbit.walk(); // logs 'Animal walks'
 
 #### Defined in
 
-[src/getSuper.js:31](https://github.com/snowyu/inherits-ex.js/blob/5eb21fd/src/getSuper.js#L31)
+[src/getSuper.js:38](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/getSuper.js#L38)
