@@ -1,7 +1,5 @@
-var isEmptyFunction = require('./isEmptyFunction')
-var getPrototypeOf    = require('./getPrototypeOf');
-
-var objectSuperCtor = getPrototypeOf(Object);
+var isEmptyFunction = require('./isEmptyFunction');
+var getSuperCtor    = require('./getSuperCtor');
 
 //get latest non-empty constructor function through inherits link
 
@@ -14,10 +12,10 @@ var objectSuperCtor = getPrototypeOf(Object);
 function getConstructor(ctor) {
   var result = ctor;
   var isEmpty = isEmptyFunction(result);
-  var v  = result.super_ || getPrototypeOf(result);
-  while (isEmpty && v && v !== objectSuperCtor) {
+  var v  = getSuperCtor(result);
+  while (isEmpty && v && v !== Object) {
     result  = v;
-    v  = result.super_ || getPrototypeOf(result);
+    v  = getSuperCtor(result);
     isEmpty = isEmptyFunction(result);
   }
   return result;
