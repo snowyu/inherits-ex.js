@@ -1,5 +1,6 @@
-import {newPrototype} from './newPrototype';
+import {getConstructor}  from './getConstructor';
 import {defineProperty} from './defineProperty';
+import isEmptyFunction from './isEmptyFunction';
 
 const setPrototypeOf = Object.setPrototypeOf;
 
@@ -19,12 +20,10 @@ const setPrototypeOf = Object.setPrototypeOf;
 export function inheritsDirectly(ctor, superCtor, staticInherit) {
   defineProperty(ctor, 'super_', superCtor);
   defineProperty(ctor, '__super__', superCtor.prototype);// for coffeeScript super keyword.
-  const vPrototype = newPrototype(superCtor, ctor);
-  ctor.prototype = vPrototype; // ES6 class can not modify prototype!
-  if (vPrototype !== ctor.prototype) {
-    defineProperty(ctor.prototype, 'constructor', vPrototype.constructor)
-    defineProperty(ctor.prototype, 'Class', ctor)
-  }
+  const nonEmptyCtor = isEmptyFunction(ctor) ? getConstructor(superCtor) : ctor;
+  // ctor.prototype = vPrototype; // ES6 class can not modify prototype!
+  defineProperty(ctor.prototype, 'constructor', nonEmptyCtor)
+  defineProperty(ctor.prototype, 'Class', ctor)
   // console.log('TCL:: ~ file: inheritsDirectly.js ~ line 11 ~ ctor.prototype', ctor.prototype, ctor.prototype.constructor, ctor.prototype.Class);
   setPrototypeOf(ctor.prototype, superCtor.prototype);
   if (staticInherit !== false) {
