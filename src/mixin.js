@@ -4,11 +4,9 @@ var isMixinedFrom     = require('./isMixinedFrom');
 var defineProperty    = require('./defineProperty');
 var setPrototypeOf    = require('./setPrototypeOf');
 var getPrototypeOf    = require('./getPrototypeOf');
-var createCtor        = require('./createCtor');
-var extendPrototype   = require('./extend');
-var getParentCtor     = require('./getParentClass');
+var _clone            = require('./_clone')
+var getSuperCtor      = require('./getSuperCtor');
 
-var getOwnPropertyNames = Object.getOwnPropertyNames;
 /**
  * Enum for filter type
  * @readonly
@@ -185,7 +183,7 @@ function _getFilterFunc(filter){
   }
   return filter;
 }
-
+/*
 function _clone(dest, src, ctor, filter) {
   // filter = _getFilterFunc(filter);
 
@@ -198,8 +196,9 @@ function _clone(dest, src, ctor, filter) {
     if (value !== undefined) dest[k] = value;
   }
 }
+*/
 
-function cloneCtor(dest, src, ctor, filter) {
+function cloneCtor(dest, src, filter) {
   var filterFn = function (name, value) {
     for (var n of [ 'length', 'name', 'arguments', 'caller', 'prototype' ]) {
       if (n === name) {
@@ -210,11 +209,11 @@ function cloneCtor(dest, src, ctor, filter) {
     }
     return value;
   }
-  _clone(dest, src, ctor, filterFn);
+  _clone(dest, src, filterFn);
 }
 
 //clone src(superCtor) to dest(MixinCtor)
-function clonePrototype(dest, src, ctor, filter) {
+function clonePrototype(dest, src, filter) {
   // filter = _getFilterFunc(filter);
   var filterFn = function (name, value) {
     for (var n of [ 'Class', 'constructor' ]) {
@@ -229,7 +228,7 @@ function clonePrototype(dest, src, ctor, filter) {
 
   var sp = src.prototype;
   var dp = dest.prototype;
-  _clone(dp, sp, ctor, filterFn);
+  _clone(dp, sp, filterFn);
   /*
   var names = getOwnPropertyNames(sp);
 
@@ -330,7 +329,7 @@ var objectSuperCtor = getPrototypeOf(Object);
  * @returns return true if successful
  */
 function mixin(ctor, superCtor, options) {
-  var v  = getParentCtor(ctor); // original superCtor
+  var v  = getSuperCtor(ctor); // original superCtor
   var result = false;
   // Check if the two classes are already related in some way to avoid circular or duplicate inheritance
   if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
@@ -340,7 +339,7 @@ function mixin(ctor, superCtor, options) {
     if (!mixinCtor) {
       mixinCtor = function MixinCtor_(){};
       defineProperty(ctor, 'mixinCtor_', mixinCtor);
-      if (v && v !== objectSuperCtor) inheritsDirectly(mixinCtor, v);
+      if (v && v !== Object) inheritsDirectly(mixinCtor, v);
       // defineProperty(mixinCtor, 'chain', shadowCloneCtor(superCtor));
       // inheritsDirectly(mixinCtor.chain, shadowCloneCtor(superCtor));
     // } else {
@@ -353,8 +352,8 @@ function mixin(ctor, superCtor, options) {
     }
     mixinCtors.push(superCtor);//quickly check in isMixinedFrom.
     var filterFn = _getFilterFunc(options && options.filter);
-    cloneCtor(mixinCtor, superCtor, ctor, filterFn);
-    clonePrototype(mixinCtor, superCtor, ctor, filterFn);
+    cloneCtor(mixinCtor, superCtor, filterFn);
+    clonePrototype(mixinCtor, superCtor, filterFn);
     inheritsDirectly(ctor, mixinCtor);
     result = true;
   }
