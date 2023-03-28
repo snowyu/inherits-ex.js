@@ -5,7 +5,7 @@ var getOwnPropertyNames = Object.getOwnPropertyNames;
  * @callback CloneFilterFn
  * @param {string} name
  * @param {any} value
- * @returns {*} return value if include
+ * @returns {any} return value if include
  */
 
 /**
