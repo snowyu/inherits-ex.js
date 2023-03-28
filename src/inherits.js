@@ -3,9 +3,7 @@ var isInheritedFrom   = require('./isInheritedFrom');
 var inheritsDirectly  = require('./inheritsDirectly');
 var getPrototypeOf    = require('./getPrototypeOf');
 var defineProperty    = require('./defineProperty');
-var getParentCtor     = require('./getParentClass');
-
-var objectSuperCtor = getPrototypeOf(Object);
+var getSuperCtor      = require('./getSuperCtor');
 
 /**
  * Inherit the prototype properties and methods from one constructor into another.
@@ -16,22 +14,22 @@ var objectSuperCtor = getPrototypeOf(Object);
  * @returns The function returns true if inheritance was successful.
  */
 function _inherits(ctor, superCtor, staticInherit) {
-  var v  = getParentCtor(ctor);
+  var v  = getSuperCtor(ctor);
   var mixinCtor = ctor.mixinCtor_;
   if (mixinCtor && v === mixinCtor) {
     ctor = mixinCtor;
-    v = getParentCtor(ctor);
+    v = getSuperCtor(ctor);
   }
   var result = false;
   var isInherited = isInheritedFrom(ctor, superCtor)
   if (!isInherited && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor, staticInherit);
     // patch the missing prototype chain if exists ctor.super.
-    while (v != null && v !== objectSuperCtor && superCtor !== v) {
+    while (v != null && v !== Object && superCtor !== v) {
       ctor = superCtor;
       superCtor = v;
       inheritsDirectly(ctor, superCtor, staticInherit);
-      v = getParentCtor(ctor);
+      v = getSuperCtor(ctor);
     }
     result = true;
   } else if (isInherited) {
