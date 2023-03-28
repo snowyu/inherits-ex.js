@@ -3,7 +3,7 @@ import getOwnPropValue from "./getOwnPropValue";
 const getPrototypeOf = Object.getPrototypeOf;
 
 /**
- * Returns the parent class constructor of a given constructor function or object.
+ * Returns the parent class constructor of a given constructor(class) or object.
  *
  * @param {Function|object} ctor The constructor function or object to get the parent class from.
  * @returns {Function|undefined|null} The parent class constructor or undefined/null if there is no parent class.
