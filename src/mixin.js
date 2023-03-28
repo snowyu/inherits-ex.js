@@ -4,6 +4,7 @@ import {isMixinedFrom   } from './isMixinedFrom';
 import {getParentClass  } from './getParentClass';
 import {defineProperty} from './defineProperty';
 import {_clone}         from './_clone';
+import getSuperCtor     from './getSuperCtor';
 
 const setPrototypeOf      = Object.setPrototypeOf;
 const getPrototypeOf      = Object.getPrototypeOf;
@@ -336,7 +337,7 @@ const objectSuperCtor = getPrototypeOf(Object);
  * @returns return true if successful
  */
 export function mixin(ctor, superCtor, options) {
-  const v  = getParentClass(ctor); // original superCtor
+  const v  = getSuperCtor(ctor); // original superCtor
   let result = false;
   // Check if the two classes are already related in some way to avoid circular or duplicate inheritance
   if (!isMixinedFrom(ctor, superCtor) && !isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
@@ -346,7 +347,7 @@ export function mixin(ctor, superCtor, options) {
     if (!mixinCtor) {
       mixinCtor = function MixinCtor_(){};
       defineProperty(ctor, 'mixinCtor_', mixinCtor);
-      if (v && v !== objectSuperCtor) {inheritsDirectly(mixinCtor, v);}
+      if (v && v !== Object) {inheritsDirectly(mixinCtor, v);}
       // defineProperty(mixinCtor, 'chain', shadowCloneCtor(superCtor));
       // inheritsDirectly(mixinCtor.chain, shadowCloneCtor(superCtor));
     // } else {
