@@ -1,4 +1,5 @@
-var newPrototype = require('./newPrototype');
+var getConstructor = require('./getConstructor');
+var isEmptyFunction = require('./isEmptyFunction');
 var setPrototypeOf = require('./setPrototypeOf');
 var defineProperty = require('./defineProperty');
 
@@ -18,12 +19,9 @@ var defineProperty = require('./defineProperty');
 module.exports = function inheritsDirectly(ctor, superCtor, staticInherit) {
   defineProperty(ctor, 'super_', superCtor);
   defineProperty(ctor, '__super__', superCtor.prototype);//for coffeeScript super keyword.
-  var vPrototype = newPrototype(superCtor, ctor);
-  ctor.prototype = vPrototype; // ES6 class can not modify prototype!
-  if (vPrototype !== ctor.prototype) {
-    defineProperty(ctor.prototype, 'constructor', vPrototype.constructor)
-    defineProperty(ctor.prototype, 'Class', ctor)
-  }
+  const nonEmptyCtor = isEmptyFunction(ctor) ? getConstructor(superCtor) : ctor;
+  defineProperty(ctor.prototype, 'constructor', nonEmptyCtor)
+  defineProperty(ctor.prototype, 'Class', ctor)
   // console.log('TCL:: ~ file: inheritsDirectly.js ~ line 11 ~ ctor.prototype', ctor.prototype, ctor.prototype.constructor, ctor.prototype.Class);
   setPrototypeOf(ctor.prototype, superCtor.prototype);
   if (staticInherit !== false) {
