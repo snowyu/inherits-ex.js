@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-alpha.0](https://github.com/snowyu/inherits-ex.js/compare/v1.4.0...v2.1.0-alpha.0) (2023-03-28)
+
+
+### Features
+
+* add _clone function ([22fa8d7](https://github.com/snowyu/inherits-ex.js/commit/22fa8d7326dbca5de0f1f23e8d490fd26feba197))
+* add getOwnPropValue func ([e14b8da](https://github.com/snowyu/inherits-ex.js/commit/e14b8da62a21ab29816d9a417b63756f4282c353))
+* add getSuperCtor function ([6b75e8f](https://github.com/snowyu/inherits-ex.js/commit/6b75e8fb6087bbe57aca6cc5a3a7eaea58893797))
+* getParentClass can get instance or ctor's parent class now ([2b34ce0](https://github.com/snowyu/inherits-ex.js/commit/2b34ce0936caaca88f5b5e141f3eccacffe7abab))
+
+
+### Bug Fixes
+
+* **createObjectWith:** the aArguments parameter should be optional ([f17b1ca](https://github.com/snowyu/inherits-ex.js/commit/f17b1ca1e833d4778510e939b280c5e2526ea4fe))
+* **getConstructor:** use getSuperCtor instead of ctor object chain ([ee70d92](https://github.com/snowyu/inherits-ex.js/commit/ee70d92563c5c6b21077a03f15ed541e2181e67e))
+* **getSuper:** can be used on any parent class now ([4521e09](https://github.com/snowyu/inherits-ex.js/commit/4521e09a9026516b52724ee13927938b5a1ff095))
+* ignore Class and constructor properties from ctor's prototype ([6221396](https://github.com/snowyu/inherits-ex.js/commit/62213965347f4f51a18f1470cd5d73ad308d222a))
+* **inheritsDirectly:** the instanceOf error for dynamic inheritance ([da3d17e](https://github.com/snowyu/inherits-ex.js/commit/da3d17eb30801eb2119a74b1a2959250e0d17f80))
+* minor adjust ([d2150cf](https://github.com/snowyu/inherits-ex.js/commit/d2150cf83eb28a8229ffd762a62de13c903b0c52))
+* **mixin:** use the getSuperCtor instead of ctor object chain ([70a34ab](https://github.com/snowyu/inherits-ex.js/commit/70a34ab024a6d215f66295ccd570cf03964a7916))
+* use prototype chain now to get protoChain ([fd206a9](https://github.com/snowyu/inherits-ex.js/commit/fd206a9c18b794dae2410a1f95ae7986403c51ec))
+* use the prototype chain instead of ctor chain in case no static inheritance ([f6711a1](https://github.com/snowyu/inherits-ex.js/commit/f6711a10eebb1d5b6a75344f89cba56319a3e6ca))
+
 ## [1.4.0](https://github.com/snowyu/inherits-ex.js/compare/v1.3.6...v1.4.0) (2023-03-24)
 
 
