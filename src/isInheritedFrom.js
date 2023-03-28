@@ -1,7 +1,8 @@
-var isInheritedFromStr = require('./isInheritedFromStr');
-var getPrototypeOf     = require('./getPrototypeOf');
+var isInheritedFromStr = require('./isInheritedFromStr')
+var getSuperCtor = require('./getSuperCtor')
 
-var objectSuperCtor = getPrototypeOf(Object);
+var getPrototypeOf      = Object.getPrototypeOf;
+var objectSuperCtor     = getPrototypeOf(Object);
 
 /**
  *   Determines if a constructor(class) is inherited from a given super constructor(class).
@@ -12,32 +13,33 @@ var objectSuperCtor = getPrototypeOf(Object);
  *   Otherwise, returns false.
  */
 module.exports = function isInheritedFrom(ctor, superCtor, throwError) {
-  if (typeof superCtor === 'string') return isInheritedFromStr(ctor, superCtor, throwError);
+  if (typeof superCtor === 'string') {return isInheritedFromStr(ctor, superCtor, throwError);}
   if (ctor === superCtor) {
     if (throwError)
       throw new Error('Circular inherits found!');
     else
       return true;
   }
-  var ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
+  var ctorSuper = getSuperCtor(ctor);
   var result  = ctorSuper === superCtor;
-  var checkeds = [];
-  checkeds.push(ctor);
+  var checked = [];
+  checked.push(ctor);
   while (!result && ((ctor = ctorSuper) != null) && ctorSuper !== objectSuperCtor) {
-    ctorSuper = (ctor.hasOwnProperty('super_') && ctor.super_) || getPrototypeOf(ctor);
-    if (checkeds.indexOf(ctor) >= 0) {
+    ctorSuper = getSuperCtor(ctor);
+
+    if (checked.includes(ctor)) {
       if (throwError)
         throw new Error('Circular inherits found!');
       else
         return true;
     }
-    checkeds.push(ctor);
+    checked.push(ctor);
     result = ctorSuper === superCtor;
   }
   if (result) {
     result = ctor;
-    ctor = checkeds[0];
-    if (ctor.mixinCtor_ === result) result = ctor;
+    ctor = checked[0];
+    if (ctor.mixinCtor_ === result) {result = ctor;}
   }
 
   return result;
