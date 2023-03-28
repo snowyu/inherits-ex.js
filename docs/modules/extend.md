@@ -31,4 +31,4 @@ The extended constructor `ctor`.
 
 #### Defined in
 
-[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/extend.js#L10)
+[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/extend.js#L10)

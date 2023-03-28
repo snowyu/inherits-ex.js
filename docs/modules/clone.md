@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[src/_clone.js:5](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/_clone.js#L5)
+[src/_clone.js:5](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/_clone.js#L5)
 
 ## Functions
 
@@ -65,4 +65,4 @@ the dest object
 
 #### Defined in
 
-[src/_clone.js:19](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/_clone.js#L19)
+[src/_clone.js:19](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/_clone.js#L19)

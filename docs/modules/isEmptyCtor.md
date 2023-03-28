@@ -30,4 +30,4 @@ Determines whether the given string represents an empty constructor.
 
 #### Defined in
 
-[src/isEmptyCtor.js:7](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/isEmptyCtor.js#L7)
+[src/isEmptyCtor.js:7](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/isEmptyCtor.js#L7)

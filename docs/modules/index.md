@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[src/index.js:1](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/index.js#L1)
+[src/index.js:1](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/index.js#L1)

@@ -34,4 +34,4 @@ Determines whether the given string represents an empty constructor.
 
 #### Defined in
 
-[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/isEmptyFunction-cli.js#L7)
+[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/isEmptyFunction-cli.js#L7)

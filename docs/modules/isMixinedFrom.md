@@ -35,4 +35,4 @@ Check if a constructor is mixed from a specific constructor.
 
 #### Defined in
 
-[src/isMixinedFrom.js:9](https://github.com/snowyu/inherits-ex.js/blob/5942071/src/isMixinedFrom.js#L9)
+[src/isMixinedFrom.js:9](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/isMixinedFrom.js#L9)
