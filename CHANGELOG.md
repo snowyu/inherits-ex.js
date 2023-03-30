@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/snowyu/inherits-ex.js/compare/v1.5.0...v1.5.1) (2023-03-30)
+
+
+### Bug Fixes
+
+* module not found error ([#11](https://github.com/snowyu/inherits-ex.js/issues/11)) ([10eb557](https://github.com/snowyu/inherits-ex.js/commit/10eb557cb01342e54dcc6960a267e60036715e37))
+
 ## [1.5.0](https://github.com/snowyu/inherits-ex.js/compare/v1.4.0...v1.5.0) (2023-03-28)
 
 
