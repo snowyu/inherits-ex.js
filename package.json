@@ -59,7 +59,7 @@
     "clean.lib": "rm -fr lib",
     "doc": "typedoc --plugin none --out web ./src",
     "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs ./src",
-    "release": "npx standard-version",
+    "release": "npm run build && npx standard-version",
     "release.alpha": "npx standard-version --prerelease alpha",
     "test": "mocha"
   },
