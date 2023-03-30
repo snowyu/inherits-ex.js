@@ -1,8 +1,8 @@
-export * from './src/inherits'
-export * from './src/inheritsDirectly'
-export * from './src/isInheritedFrom'
-export * from './src/mixin'
-export * from './src/isMixinedFrom'
-export * from './src/inheritsObject'
+export * from './inherits.js'
+export * from './inheritsDirectly.js'
+export * from './isInheritedFrom.js'
+export * from './mixin.js'
+export * from './isMixinedFrom.js'
+export * from './inheritsObject.js'
 
 
