@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import sinon from 'sinon';
 
 import getParentClass from '../src/getParentClass'
 
