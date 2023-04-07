@@ -18,7 +18,7 @@ if (!_defineProperty) {
  * @param {object} object The object to define the property on.
  * @param {string} key the property name.
  * @param {*} value the property value.
- * @param {*} aOptions the property descriptor.
+ * @param {*} [aOptions] the property descriptor.
  * @param {boolean} [aOptions.enumerable=false] - Whether the property is enumerable.
  * @param {boolean} [aOptions.configurable=true] - Whether the property is configurable.
  * @param {boolean} [aOptions.writable=true] - Whether the property is writable.

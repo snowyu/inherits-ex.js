@@ -15,7 +15,7 @@ const setPrototypeOf = Object.setPrototypeOf;
  *
  * @param {Function} ctor  The child class that will inherit from the parent class.
  * @param {Function} superCtor The parent class from which the child class will inherit.
- * @param {boolean=} staticInherit Optional A boolean flag indicating whether the child class should also inherit static properties and methods from the parent class. The default value is `true`.
+ * @param {boolean} [staticInherit=true] Optional A boolean flag indicating whether the child class should also inherit static properties and methods from the parent class. The default value is `true`.
  */
 export function inheritsDirectly(ctor, superCtor, staticInherit) {
   defineProperty(ctor, 'super_', superCtor);

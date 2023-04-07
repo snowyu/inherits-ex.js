@@ -10,7 +10,7 @@ const isArray           = Array.isArray;
  *
  * @param {function} ctor the class which needs to inherit the prototype.
  * @param {function} superCtor the parent class to inherit prototype from.
- * @param {boolean=true} staticInherit whether allow static members inheritance, defaults to true.
+ * @param {boolean} [staticInherit=true] whether allow static members inheritance, defaults to true.
  * @returns The function returns true if inheritance was successful.
  */
 function _inherits(ctor, superCtor, staticInherit) {
@@ -77,7 +77,7 @@ function _inherits(ctor, superCtor, staticInherit) {
  * @param {Function|Function[]} superCtors the parent class that the child class needs to inherit from.
  *   The first class is the parent of child class ctor, the left classes will be chained(inherits) one by one,
  *   if `superCtors` is an array of classes.
- * @param {boolean=true} staticInherit optional indicating whether or not the static properties of the parent class should be inherited as well.
+ * @param {boolean} [staticInherit=true] optional indicating whether or not the static properties of the parent class should be inherited as well. The default value is `true`.
  * @returns {boolean} returns true if inheritance was successful.
  *
  * @example

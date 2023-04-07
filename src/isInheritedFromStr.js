@@ -4,7 +4,7 @@ import getSuperCtor from './getSuperCtor.js';
  *   Determines if a constructor(class) is inherited from a given the name of super constructor(class).
  *   @param {Function} ctor - The constructor function to check.
  *   @param {string} superStr - The super constructor's name to check for inheritance.
- *   @param {boolean=false} throwError - If true, an error will be thrown if a circular inheritance is found.
+ *   @param {boolean} [throwError=false] - If true, an error will be thrown if a circular inheritance is found. defaults to false.
  *   @returns {boolean|Function} - If the constructor is inherited from the super constructor, returns the constructor.
  *   Otherwise, returns false.
  */

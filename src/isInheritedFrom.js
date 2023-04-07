@@ -8,7 +8,7 @@ const objectSuperCtor     = getPrototypeOf(Object);
  *   Determines if a constructor(class) is inherited from a given super constructor(class).
  *   @param {Function} ctor - The constructor function to check.
  *   @param {Function|string} superCtor - The super constructor to check for inheritance. Can be the name of the super constructor.
- *   @param {boolean=false} throwError - If true, an error will be thrown if a circular inheritance is found.
+ *   @param {boolean} [throwError=false] - If true, an error will be thrown if a circular inheritance is found. defaults to false.
  *   @returns {boolean|Function} - If the constructor is inherited from the super constructor, returns the constructor.
  *   Otherwise, returns false.
  */

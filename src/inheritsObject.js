@@ -10,7 +10,7 @@ const setPrototypeOf = Object.setPrototypeOf;
  *
  * @param {Object} aObject - The object whose prototype needs to be set.
  * @param {Function} aClass - The class to inherit from.
- * @param {boolean} staticInherit - Whether to inherit static properties or not.
+ * @param {boolean} [staticInherit=true] - Whether to inherit static properties or not. defaults to true
  * @returns {boolean} - Whether the prototype was successfully set or not.
  * @example
  * ```js
