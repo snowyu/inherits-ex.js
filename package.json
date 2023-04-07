@@ -10,7 +10,6 @@
   "main": "./lib/index.js",
   "module": "./src/index.js",
   "type": "commonjs",
-  "types": "./types",
   "files": [
     "README.md",
     "LICENSE-MIT",
@@ -67,7 +66,7 @@
   "scripts": {
     "build": "npm run build.cjs && npm run build.ts && npm run doc.md",
     "build.cjs": "babel src --out-dir lib --config-file ./.babelrc",
-    "build.ts": "tsc",
+    "build.ts": "tsc --outDir lib",
     "clean": "rm -fr web docs types lib",
     "clean.doc": "rm -fr web docs",
     "clean.ts": "rm -fr types",
