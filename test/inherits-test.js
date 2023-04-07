@@ -14,7 +14,7 @@ import {isInheritedFrom}  from '../src/isInheritedFrom'
 import {isMixinedFrom}    from '../src/isMixinedFrom'
 import {createObject}     from '../src/createObject'
 import {createObjectWith} from '../src/createObjectWith'
-import {getProtoChain, getProtoChain2}    from '../src/getProtoChain'
+import {getProtoChain}    from '../src/getProtoChain'
 import {getSuper}    from '../src/getSuper'
 import getParentClass from '../src/getParentClass';
 
@@ -199,7 +199,7 @@ describe("inherits", () => {
     function C() {
       return "C";
     };
-    C.name = "C";
+    // C.name = "C"; the name property is readonly now.
     C.prototype.cMethod = cMethod;
     const b = new B();
     assert.equal(inheritsObject(b, C), true);
@@ -221,20 +221,16 @@ describe("inherits", () => {
     function R() {
       return "R";
     };
-    R.name = "R";
     function C() {
       return "C";
     };
-    C.name = "C";
     C.prototype.cMethod = cMethod;
     function C1() {
       return "C1";
     };
-    C1.name = "C1";
     function C11() {
       return "C11";
     };
-    C11.name = "C11";
     function C2() {
       return "C2";
     };
