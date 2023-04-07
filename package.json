@@ -8,7 +8,8 @@
     "email": "snowyu.lee@gmail.com"
   },
   "main": "./lib/index.js",
-  "module": "./lib/esm/index.mjs",
+  "module": "./src/index.js",
+  "type": "commonjs",
   "types": "./types",
   "files": [
     "README.md",
@@ -40,31 +41,32 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=12"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.3",
+    "@antfu/eslint-config": "^0.38.4",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/register": "^7.21.0",
     "chai": "~4.3.7",
-    "esbuild-register": "^3.4.2",
-    "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-tsdoc": "^0.2.17",
-    "mkdist": "^1.1.2",
-    "mocha": "~10.2.0",
-    "prettier": "^2.8.4",
-    "sinon": "~15.0.2",
+    "mocha": "^10.2.0",
+    "prettier": "^2.8.7",
+    "sinon": "~15.0.3",
     "sinon-chai": "~3.7.0",
     "typedoc": "^0.23.28",
     "typedoc-plugin-markdown": "^3.14.0",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.3"
   },
   "pre-commit": [
     "test"
   ],
   "scripts": {
-    "build": "npm run build.cjs && npm run build.mjs && npm run build.ts",
-    "build.cjs": "mkdist --src=src --pattern=*.js --dist=lib --format=cjs",
-    "build.mjs": "mkdist --src=src --pattern=*.js --dist=lib/esm --format=esm --ext=mjs",
+    "build": "npm run build.cjs && npm run build.ts && npm run doc.md",
+    "build.cjs": "babel src --out-dir lib --config-file ./.babelrc",
     "build.ts": "tsc",
     "clean": "rm -fr web docs types lib",
     "clean.doc": "rm -fr web docs",
@@ -72,7 +74,9 @@
     "clean.lib": "rm -fr lib",
     "doc": "typedoc --plugin none --out web ./src",
     "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs ./src",
-    "release": "npx standard-version",
+    "lint": "npx eslint --config .eslintrc.yml src",
+    "lint.fix": "npm run lint -- --fix",
+    "release": "npm run clean && npm run build && npx standard-version",
     "release.alpha": "npx standard-version --prerelease alpha",
     "test": "mocha"
   },

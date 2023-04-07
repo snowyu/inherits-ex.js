@@ -15,6 +15,7 @@ rules:
   prefer-rest-params: off
   no-prototype-builtins: off
   prefer-spread: off
+  prefer-arrow-callback: off
   # curly: [error, multi, consistent]
   # curly: [error, multi-line]
   # max-statements-per-line: off
