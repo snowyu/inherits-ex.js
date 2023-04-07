@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-alpha.1](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.0...v2.1.0-alpha.1) (2023-04-07)
+
+
+### Bug Fixes
+
+* module not found error ([0f004d0](https://github.com/snowyu/inherits-ex.js/commit/0f004d08a44d2d3a976d102326d24a031deb68a0))
+
 ## [2.1.0-alpha.0](https://github.com/snowyu/inherits-ex.js/compare/v1.4.0...v2.1.0-alpha.0) (2023-03-28)
 
 
