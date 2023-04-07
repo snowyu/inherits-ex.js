@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[src/isNativeReflectConstruct.js:32](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isNativeReflectConstruct.js#L32)
+[src/isNativeReflectConstruct.js:32](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/isNativeReflectConstruct.js#L32)
 
 ## Functions
 
@@ -38,4 +38,4 @@ True if the current environment supports native Reflect.construct method, false 
 
 #### Defined in
 
-[src/isNativeReflectConstruct.js:5](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isNativeReflectConstruct.js#L5)
+[src/isNativeReflectConstruct.js:5](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/isNativeReflectConstruct.js#L5)

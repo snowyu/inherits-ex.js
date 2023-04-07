@@ -68,4 +68,4 @@ mary.greet(); // logs "Hello, I'm student. My name is Mary"
 
 #### Defined in
 
-[src/replaceCtor.js:38](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/replaceCtor.js#L38)
+[src/replaceCtor.js:38](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/replaceCtor.js#L38)

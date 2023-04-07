@@ -24,7 +24,7 @@ Include all members from the superCtor
 
 #### Defined in
 
-[src/mixin.js:21](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L21)
+[src/mixin.js:20](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/mixin.js#L20)
 
 ___
 
@@ -36,7 +36,7 @@ Throw error if the method of superCtor using the `super()`
 
 #### Defined in
 
-[src/mixin.js:25](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L25)
+[src/mixin.js:24](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/mixin.js#L24)
 
 ___
 
@@ -48,4 +48,4 @@ Skip the method if the method of superCtor using the `super()`
 
 #### Defined in
 
-[src/mixin.js:29](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/mixin.js#L29)
+[src/mixin.js:28](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/mixin.js#L28)

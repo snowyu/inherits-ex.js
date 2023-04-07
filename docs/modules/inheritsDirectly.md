@@ -45,4 +45,4 @@ The function also supports CoffeeScript-generated classes
 
 #### Defined in
 
-[src/inheritsDirectly.js:20](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/inheritsDirectly.js#L20)
+[src/inheritsDirectly.js:20](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/inheritsDirectly.js#L20)

@@ -43,4 +43,4 @@ Determines if a constructor(class) is inherited from a given super constructor(c
 
 #### Defined in
 
-[src/isInheritedFrom.js:15](https://github.com/snowyu/inherits-ex.js/blob/fe6c4cf/src/isInheritedFrom.js#L15)
+[src/isInheritedFrom.js:15](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/isInheritedFrom.js#L15)
