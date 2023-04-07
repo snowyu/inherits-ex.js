@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-alpha.2](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.1...v2.1.0-alpha.2) (2023-04-07)
+
+
+### Features
+
+* export all functions on index.js ([43098fd](https://github.com/snowyu/inherits-ex.js/commit/43098fd5102b5e02d369135d379ef179248315b7))
+
+
+### Bug Fixes
+
+* the optional arguments for ts declarations ([c27a9d9](https://github.com/snowyu/inherits-ex.js/commit/c27a9d9c819c099e69f7d6e4bfb52b628e94d785))
+* **ts:** put the ts delcaration files into same lib folder ([4691f9d](https://github.com/snowyu/inherits-ex.js/commit/4691f9dee009488c958305a2d023c75ff1567a12))
+
 ## [2.1.0-alpha.1](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.0...v2.1.0-alpha.1) (2023-04-07)
 
 
