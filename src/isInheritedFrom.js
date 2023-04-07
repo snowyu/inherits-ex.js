@@ -1,5 +1,5 @@
-import {isInheritedFromStr} from './isInheritedFromStr';
-import getSuperCtor from './getSuperCtor';
+import {isInheritedFromStr} from './isInheritedFromStr.js';
+import getSuperCtor from './getSuperCtor.js';
 
 const getPrototypeOf      = Object.getPrototypeOf;
 const objectSuperCtor     = getPrototypeOf(Object);

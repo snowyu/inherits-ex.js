@@ -1,6 +1,6 @@
-import {getConstructor}  from './getConstructor';
-import {defineProperty} from './defineProperty';
-import isEmptyFunction from './isEmptyFunction';
+import {getConstructor}  from './getConstructor.js';
+import {defineProperty} from './defineProperty.js';
+import isEmptyFunction from './isEmptyFunction.js';
 
 const setPrototypeOf = Object.setPrototypeOf;
 

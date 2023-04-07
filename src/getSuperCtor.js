@@ -1,4 +1,4 @@
-import getOwnPropValue from "./getOwnPropValue";
+import getOwnPropValue from "./getOwnPropValue.js";
 
 const getPrototypeOf      = Object.getPrototypeOf;
 

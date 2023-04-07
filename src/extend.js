@@ -1,4 +1,4 @@
-import {_extend} from './_extend';
+import {_extend} from './_extend.js';
 
 /**
  * Extends the prototype of the given constructor with the prototypes of one or more super constructors.

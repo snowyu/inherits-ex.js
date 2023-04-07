@@ -1,4 +1,4 @@
-import {inherits} from './inherits';
+import {inherits} from './inherits.js';
 
 const getPrototypeOf = Object.getPrototypeOf;
 const setPrototypeOf = Object.setPrototypeOf;

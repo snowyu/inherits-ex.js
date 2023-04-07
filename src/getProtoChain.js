@@ -1,4 +1,4 @@
-import getSuperCtor from "./getSuperCtor";
+import getSuperCtor from "./getSuperCtor.js";
 
 /**
  * Returns an array of the names of constructors in the prototype chain of the given constructor.

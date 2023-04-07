@@ -1,4 +1,4 @@
-import { createFunction } from './createFunction'
+import { createFunction } from './createFunction.js'
 
 function isString(v){return typeof v === 'string';};
 

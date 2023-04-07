@@ -1,6 +1,6 @@
-import {getConstructor}  from './getConstructor';
-import {isEmptyFunction} from './isEmptyFunction';
-import {_clone}          from './_clone';
+import {getConstructor}  from './getConstructor.js';
+import {isEmptyFunction} from './isEmptyFunction.js';
+import {_clone}          from './_clone.js';
 
 /**
  *  Creates a new object with a prototype chain from a given class and constructor function.
@@ -41,7 +41,7 @@ export function newPrototype(aClass, aConstructor) {
     result = new Obj();
   }
   _clone(result, aConstructor.prototype, function(k,v){
-    if (['Class', 'constructor'].includes(k)) return;
+    if (['Class', 'constructor'].includes(k)) {return;}
     return v;
   });
   return result;

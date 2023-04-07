@@ -1,5 +1,5 @@
-import getSuperCtor from './getSuperCtor';
-import { isEmptyFunction } from './isEmptyFunction'
+import getSuperCtor from './getSuperCtor.js';
+import { isEmptyFunction } from './isEmptyFunction.js'
 
 // get latest non-empty constructor function through inherits link
 

@@ -1,4 +1,4 @@
-import {hasNativeReflect} from './isNativeReflectConstruct'
+import {hasNativeReflect} from './isNativeReflectConstruct.js'
 
 const defineProperty = Object.defineProperty;
 const arraySlice = Array.prototype.slice;

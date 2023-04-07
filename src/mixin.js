@@ -1,10 +1,9 @@
-import {inheritsDirectly} from './inheritsDirectly';
-import {isInheritedFrom } from './isInheritedFrom';
-import {isMixinedFrom   } from './isMixinedFrom';
-import {getParentClass  } from './getParentClass';
-import {defineProperty} from './defineProperty';
-import {_clone}         from './_clone';
-import getSuperCtor     from './getSuperCtor';
+import {inheritsDirectly} from './inheritsDirectly.js';
+import {isInheritedFrom } from './isInheritedFrom.js';
+import {isMixinedFrom   } from './isMixinedFrom.js';
+import {defineProperty} from './defineProperty.js';
+import {_clone}         from './_clone.js';
+import getSuperCtor     from './getSuperCtor.js';
 
 const setPrototypeOf      = Object.setPrototypeOf;
 const getPrototypeOf      = Object.getPrototypeOf;
@@ -203,7 +202,7 @@ function _clone(dest, src, ctor, filter) {
 
 function cloneCtor(dest, src, filter) {
   const filterFn = function (name, value) {
-    if ([ 'length', 'name', 'arguments', 'caller', 'prototype'].includes(name)) return;
+    if ([ 'length', 'name', 'arguments', 'caller', 'prototype'].includes(name)) {return;}
     if (value !== undefined) {value = filter(name, value);}
 
     // for (const n of [ 'length', 'name', 'arguments', 'caller', 'prototype']) {
@@ -222,7 +221,7 @@ function cloneCtor(dest, src, filter) {
 function clonePrototype(dest, src, filter) {
   // filter = _getFilterFunc(filter);
   const filterFn = function (name, value) {
-    if (['Class', 'constructor'].includes(name)) return;
+    if (['Class', 'constructor'].includes(name)) {return;}
     if (value !== undefined) {value = filter(name, value);}
     // for (const n of [ 'Class', 'constructor' ]) {
     //   if (n === name) {
@@ -311,7 +310,7 @@ function clonePrototype(dest, src, filter) {
 //   return result;
 // }
 
-const objectSuperCtor = getPrototypeOf(Object);
+// const objectSuperCtor = getPrototypeOf(Object);
 
 /**
  * @callback FilterFn

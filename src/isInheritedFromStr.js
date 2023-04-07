@@ -1,6 +1,4 @@
-import getSuperCtor from './getSuperCtor';
-
-const getPrototypeOf     = Object.getPrototypeOf;
+import getSuperCtor from './getSuperCtor.js';
 
 /**
  *   Determines if a constructor(class) is inherited from a given the name of super constructor(class).

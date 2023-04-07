@@ -1,4 +1,4 @@
-import {isMixinedFromStr} from './isMixinedFromStr';
+import {isMixinedFromStr} from './isMixinedFromStr.js';
 
 /**
  * Check if a constructor is mixed from a specific constructor.

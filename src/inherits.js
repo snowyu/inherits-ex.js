@@ -1,7 +1,7 @@
-import { isInheritedFrom  } from './isInheritedFrom';
-import { inheritsDirectly } from './inheritsDirectly';
-import {defineProperty} from './defineProperty';
-import getSuperCtor from './getSuperCtor';
+import { isInheritedFrom  } from './isInheritedFrom.js';
+import { inheritsDirectly } from './inheritsDirectly.js';
+import {defineProperty} from './defineProperty.js';
+import getSuperCtor from './getSuperCtor.js';
 
 const isArray           = Array.isArray;
 

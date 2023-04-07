@@ -1,5 +1,5 @@
-import { getClassByName } from './get-class-by-name';
-import { inherits } from './inherits';
+import { getClassByName } from './get-class-by-name.js';
+import { inherits } from './inherits.js';
 
 function isFunction(value) {
   return typeof value === 'function';

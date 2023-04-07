@@ -1,4 +1,4 @@
-import getOwnPropValue from "./getOwnPropValue";
+import getOwnPropValue from "./getOwnPropValue.js";
 
 const getPrototypeOf = Object.getPrototypeOf;
 
@@ -22,7 +22,7 @@ export function getParentClass(ctor) {
       result = getPrototypeOf(ctor.prototype);
       if (result) {
         result = getOwnPropValue(result, 'Class') || result.constructor;
-        if (result === Function || result === Object) result = null;
+        if (result === Function || result === Object) {result = null;}
       }
     }
   }

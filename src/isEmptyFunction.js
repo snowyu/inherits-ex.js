@@ -1,4 +1,4 @@
-import {isEmptyCtor} from './isEmptyCtor';
+import isEmptyCtor from './isEmptyCtor.js';
 
 /**
  * Checks whether a given function is empty or not.
