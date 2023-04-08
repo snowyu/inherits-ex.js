@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-alpha.3](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.2...v2.1.0-alpha.3) (2023-04-08)
+
+
+### Bug Fixes
+
+* minor changes to avoid transpiler bug ([cbe5d6f](https://github.com/snowyu/inherits-ex.js/commit/cbe5d6fa67369f11851d5924ada55ba49ec04c4f))
+
 ## [2.1.0-alpha.2](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.1...v2.1.0-alpha.2) (2023-04-07)
 
 
