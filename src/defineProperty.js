@@ -1,7 +1,7 @@
-let _defineProperty = Object.defineProperty;
+let definePropertyFn = Object.defineProperty;
 
-if (!_defineProperty) {
-  _defineProperty = function(obj, key, descriptor) {
+if (!definePropertyFn) {
+  definePropertyFn = function(obj, key, descriptor) {
     let value;
     if (descriptor) {
       value = descriptor.value;
@@ -83,7 +83,7 @@ export function defineProperty(object, key, value, aOptions) {
     descriptor.value = value;
   }
 
-  return _defineProperty(object, key, descriptor);
+  return definePropertyFn(object, key, descriptor);
 };
 
 export default defineProperty
