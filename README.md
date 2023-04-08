@@ -66,7 +66,7 @@ The function is compatible with both ES5 and ES6, as well as older browsers that
 versions of JavaScript. The function also supports CoffeeScript-generated classes.
 
 ```js
-const inherits = require('inherits-ex/lib/inherits')
+import inherits from 'inherits-ex/lib/inherits'
 ```
 
 **Note**:
@@ -85,9 +85,9 @@ The default constructor chain in ES6 Class may fail if the constructor is empty,
 
 
 ```javascript
-const inherits = require('inherits-ex/lib/inherits')
-const getPrototypeOf = require('inherits-ex/lib/getPrototypeOf')
-const defineProperty = require('inherits-ex/lib/defineProperty')
+import inherits from 'inherits-ex/lib/inherits'
+import getPrototypeOf from 'inherits-ex/lib/getPrototypeOf'
+import defineProperty from 'inherits-ex/lib/defineProperty'
 
 // Or use function class instead of ES6 class:
 // function Root() {this.initialize.apply(this, arguments)}
@@ -135,15 +135,13 @@ const obj = new A() // Bug: The initialize method can not be executed.
 #### Usage
 
 ```javascript
-const assert = require('assert')
-const inherits = require('inherits-ex/lib/inherits')
-const isInheritedFrom = require('inherits-ex/lib/isInheritedFrom')
-const getParentClass = require('inherits-ex/lib/getParentClass')
-const log = console.log.bind(console)
+import assert from 'assert'
+import inherits from 'inherits-ex/lib/inherits'
+import isInheritedFrom from 'inherits-ex/lib/isInheritedFrom'
+import getParentClass  from 'inherits-ex/lib/getParentClass'
+import getSuper from 'inherits-ex/lib/getSuper'
 
-function getSuper(obj) {
-  return getParentClass(obj).prototype
-}
+const log = console.log.bind(console)
 
 class Root{
   m() {log('root')}
@@ -227,7 +225,7 @@ Enables dynamic prototypal inheritance between classes, allowing for flexible an
 * `staticInherit` (*boolean*): whether static inheritance,defaults to true.
 
 ```js
-  var inheritsDirectly = require('inherits-ex/lib/inheritsDirectly')
+  import inheritsDirectly from 'inherits-ex/lib/inheritsDirectly'
 ```
 
 The `inheritsDirectly` function is compatible with both ES5 and ES6, as well as older browsers that do not support these versions of JavaScript.
@@ -242,7 +240,7 @@ Determines if a constructor(class) is inherited from a given super constructor(c
 `isInheritedFrom(ctor, superCtor|superCtorName, raiseError=false)`
 
 ```js
-  var isInheritedFrom = require('inherits-ex/lib/isInheritedFrom')
+  import isInheritedFrom from 'inherits-ex/lib/isInheritedFrom'
 ```
 
 return the superCtor's son if ctor is inherited from superCtor.
@@ -277,7 +275,7 @@ If the target class does not already have a `mixinCtor_` constructor it'll creat
       * `value`: the property value.
 
 ```js
-  var mixin = require('inherits-ex/lib/mixin')
+  import mixin from 'inherits-ex/lib/mixin'
 ```
 
 mixin all superCtors to ctor.
@@ -340,7 +338,7 @@ All mixins will be added to `MixinCtor_`.
 Check if a constructor(`ctor`) is mixed from a specific constructor(`superCtor`).
 
 ```js
-  var isMixinedFrom = require('inherits-ex/lib/isMixinedFrom')
+  import isMixinedFrom from 'inherits-ex/lib/isMixinedFrom'
 ```
 
 ### createCtor
@@ -359,7 +357,7 @@ Create a constructor(class) dynamically.
 * `body`(*string*): the optional constructor function body.
 
 ```js
-  const createClass = require('inherits-ex/lib/createCtor')
+  import createClass from 'inherits-ex/lib/createCtor'
   const MyClass = createClass('MyClass', ['a', 'b'], 'this.sum = a + b');
   var my = new MyClass(1, 2);
   console.log(my.sum);
@@ -372,7 +370,7 @@ Create a constructor(class) dynamically.
 The helper function to create the object dynamically and arguments provided individually.
 
 ```js
-  var createObject = require('inherits-ex/lib/createObject')
+  import createObject from 'inherits-ex/lib/createObject'
   class MyClass {
     constructor(a,b) {
       this.sum = a + b;
@@ -385,8 +383,8 @@ The helper function to create the object dynamically and arguments provided indi
 NOTE: It will call the parent constructor if the class is the Empty constructor.
 
 ```javascript
-var inherits        = require('inherits-ex/lib/inherits')
-var createObject    = require('inherits-ex/lib/createObject')
+import inherits        from 'inherits-ex/lib/inherits'
+import createObject    from 'inherits-ex/lib/createObject'
 
 class Root {
   constructor() {
@@ -430,8 +428,8 @@ assert.equal(obj.b, "b")
 The helper function to create the object dynamically. provides the arguments as an array (or an array-like object).
 
 ```js
-var createObjectWith = require('inherits-ex/lib/createObjectWith')
-var obj = createObjectWith(MyObject, ['a', 'b'])
+import createObjectWith from 'inherits-ex/lib/createObjectWith'
+const obj = createObjectWith(MyObject, ['a', 'b'])
 ```
 
 NOTE: It will call the parent constructor if the class is the Empty constructor.
@@ -452,5 +450,5 @@ NOTE: It will call the parent constructor if the class is the Empty constructor.
 The helper function to create the function dynamically.
 
 ```js
-  var createFunction = require('inherits-ex/lib/createFunction')
+  import createFunction from 'inherits-ex/lib/createFunction'
 ```
