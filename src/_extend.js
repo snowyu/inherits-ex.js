@@ -17,13 +17,13 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  */
 export function _extend(target) {
   for (let i = 1; i < arguments.length; i++) {
-      const source = arguments[i]
+    const source = arguments[i]
 
-      for (const key in source) {
-          if (hasOwnProperty.call(source, key)) {
-              target[key] = source[key]
-          }
+    for (const key in source) {
+      if (hasOwnProperty.call(source, key)) {
+        target[key] = source[key]
       }
+    }
   }
 
   return target
