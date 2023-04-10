@@ -1,5 +1,5 @@
-const hasOwnProperty = Object.prototype.hasOwnProperty;
-// var isArray = Array.isArray;
+const defineProperties          = Object.defineProperties
+const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors
 
 
 /**
@@ -19,11 +19,14 @@ export function _extend(target) {
   for (let i = 1; i < arguments.length; i++) {
     const source = arguments[i]
 
+    defineProperties(target, getOwnPropertyDescriptors(source))
+    /*
     for (const key in source) {
       if (hasOwnProperty.call(source, key)) {
         target[key] = source[key]
       }
     }
+    */
   }
 
   return target

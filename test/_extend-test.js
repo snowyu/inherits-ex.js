@@ -2,7 +2,7 @@ import assert from 'assert';
 // import sinon from 'sinon'
 import {_extend} from '../src/_extend'
 
-describe('extend', () => {
+describe('_extend', () => {
   it('should extend the target object with the properties of the source object', () => {
     const target = { a: 1 };
     const source = { b: 2 };
