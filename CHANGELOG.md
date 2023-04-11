@@ -1,6 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [1.5.3](https://github.com/snowyu/inherits-ex.js/compare/v1.5.2...v1.5.3) (2023-04-11)
+
+
+### Bug Fixes
+
+* **extend:** can not extends multiple superCtors ([e72e866](https://github.com/snowyu/inherits-ex.js/commit/e72e86669f3538261cc8e4eaf6141f64b4413cb3))
+* **ts:** export multi-entries ts declaration files in the same folder ([86e1440](https://github.com/snowyu/inherits-ex.js/commit/86e1440096105c04a89a45e34adda988930bfef6))
 
 ### [1.5.2](https://github.com/snowyu/inherits-ex.js/compare/v1.5.1...v1.5.2) (2023-03-30)
 
