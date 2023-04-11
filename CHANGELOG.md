@@ -1,6 +1,18 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [2.1.0-alpha.4](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.3...v2.1.0-alpha.4) (2023-04-11)
+
+
+### Bug Fixes
+
+* **extend:** Can not extend multiple superCtors and the ctor should not be changed on prototype. ([e4a89d6](https://github.com/snowyu/inherits-ex.js/commit/e4a89d649f6c0ff41c6ae65964dcaa07cdc40fac))
+
+
+### Refactor
+
+* **_extend:** use defineProperties and getOwnPropertyDescriptors to extend objects ([ca60a08](https://github.com/snowyu/inherits-ex.js/commit/ca60a08fc02d24ce1944149c1b951fd84338f064))
 
 ## [2.1.0-alpha.3](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.2...v2.1.0-alpha.3) (2023-04-08)
 
