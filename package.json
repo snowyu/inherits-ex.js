@@ -52,15 +52,15 @@
   ],
   "scripts": {
     "build": "npm run build.ts && mkdir -p lib && cp src/*.js lib/",
-    "build.ts": "tsc",
+    "build.ts": "tsc --declaration --emitDeclarationOnly --outDir lib",
     "clean": "rm -fr web docs types lib",
     "clean.doc": "rm -fr web docs",
     "clean.ts": "rm -fr types",
     "clean.lib": "rm -fr lib",
     "doc": "typedoc --plugin none --out web ./src",
     "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs ./src",
-    "release": "npm run build && npx standard-version",
-    "release.alpha": "npx standard-version --prerelease alpha",
+    "release": "npm run build && npx commit-and-tag-version -s",
+    "release.alpha": "npm run release -- --prerelease alpha",
     "test": "mocha"
   },
   "browser": {
