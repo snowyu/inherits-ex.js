@@ -7,8 +7,9 @@ import {_extend} from './_extend.js';
  * @param {...function} superCtors - The super constructors whose prototypes should be copied onto the extended prototype.
  * @returns {function} The extended constructor `ctor`.
  */
-export function extend(ctor, superCtors) {
-  _extend(ctor.prototype, superCtors.prototype);
+export function extend(ctor, ...superCtors) {
+  _extend(ctor.prototype, ...superCtors.map(c => c.prototype));
+  ctor.prototype.constructor = ctor;
   return ctor;
 };
 
