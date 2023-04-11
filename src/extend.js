@@ -7,8 +7,13 @@ var _extend = require('./_extend');
  * @param {...function} superCtors - The super constructors whose prototypes should be copied onto the extended prototype.
  * @returns {function} The extended constructor `ctor`.
  */
-function extend(ctor, superCtors) {
-  _extend(ctor.prototype, superCtors.prototype);
+function extend(ctor) {
+  var prototypes = []
+  for (var i = 0; i < arguments.length; i++) {
+    prototypes.push(arguments[i].prototype)
+  }
+  _extend.apply(undefined, prototypes)
+  ctor.prototype.constructor = ctor
   return ctor;
 };
 
