@@ -22,7 +22,7 @@ Renames and re-exports [isInheritedFrom](isInheritedFrom.md#isinheritedfrom)
 
 ### isInheritedFrom
 
-▸ **isInheritedFrom**(`ctor`, `superCtor`, `throwError`): `boolean` \| `Function`
+▸ **isInheritedFrom**(`ctor`, `superCtor`, `throwError?`): `boolean` \| `Function`
 
 Determines if a constructor(class) is inherited from a given super constructor(class).
 
@@ -32,7 +32,7 @@ Determines if a constructor(class) is inherited from a given super constructor(c
 | :------ | :------ | :------ |
 | `ctor` | `Function` | The constructor function to check. |
 | `superCtor` | `string` \| `Function` | The super constructor to check for inheritance. Can be the name of the super constructor. |
-| `throwError` | `any` | If true, an error will be thrown if a circular inheritance is found. |
+| `throwError?` | `boolean` | If true, an error will be thrown if a circular inheritance is found. defaults to false. |
 
 #### Returns
 
@@ -43,4 +43,4 @@ Determines if a constructor(class) is inherited from a given super constructor(c
 
 #### Defined in
 
-[src/isInheritedFrom.js:15](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/isInheritedFrom.js#L15)
+[src/isInheritedFrom.js:15](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/isInheritedFrom.js#L15)

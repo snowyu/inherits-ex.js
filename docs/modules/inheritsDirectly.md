@@ -22,7 +22,7 @@ Renames and re-exports [inheritsDirectly](inheritsDirectly.md#inheritsdirectly)
 
 ### inheritsDirectly
 
-▸ **inheritsDirectly**(`ctor`, `superCtor`, `staticInherit`): `void`
+▸ **inheritsDirectly**(`ctor`, `superCtor`, `staticInherit?`): `void`
 
 Enables dynamic prototypal inheritance between classes, allowing for flexible and reusable code.
 
@@ -37,7 +37,7 @@ The function also supports CoffeeScript-generated classes
 | :------ | :------ | :------ |
 | `ctor` | `Function` | The child class that will inherit from the parent class. |
 | `superCtor` | `Function` | The parent class from which the child class will inherit. |
-| `staticInherit` | `boolean` | Optional A boolean flag indicating whether the child class should also inherit static properties and methods from the parent class. The default value is `true`. |
+| `staticInherit?` | `boolean` | Optional A boolean flag indicating whether the child class should also inherit static properties and methods from the parent class. The default value is `true`. |
 
 #### Returns
 
@@ -45,4 +45,4 @@ The function also supports CoffeeScript-generated classes
 
 #### Defined in
 
-[src/inheritsDirectly.js:20](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/inheritsDirectly.js#L20)
+[src/inheritsDirectly.js:20](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/inheritsDirectly.js#L20)

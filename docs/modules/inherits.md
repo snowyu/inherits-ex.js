@@ -22,7 +22,7 @@ Renames and re-exports [inherits](inherits.md#inherits)
 
 ### inherits
 
-▸ **inherits**(`ctor`, `superCtors`, `staticInherit`): `boolean`
+▸ **inherits**(`ctor`, `superCtors`, `staticInherit?`): `boolean`
 
 A powerful tool for implementing class inheritance that supports dynamic inheritance and multiple inheritance.
 
@@ -96,7 +96,7 @@ fluffy.meow(); // Output: Fluffy meows.
 | :------ | :------ | :------ |
 | `ctor` | `Function` | the child class that needs to inherit from the parent class. |
 | `superCtors` | `Function` \| `Function`[] | the parent class that the child class needs to inherit from. The first class is the parent of child class ctor, the left classes will be chained(inherits) one by one, if `superCtors` is an array of classes. |
-| `staticInherit` | `any` | optional indicating whether or not the static properties of the parent class should be inherited as well. |
+| `staticInherit?` | `boolean` | optional indicating whether or not the static properties of the parent class should be inherited as well. The default value is `true`. |
 
 #### Returns
 
@@ -106,4 +106,4 @@ returns true if inheritance was successful.
 
 #### Defined in
 
-[src/inherits.js:121](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/inherits.js#L121)
+[src/inherits.js:121](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/inherits.js#L121)

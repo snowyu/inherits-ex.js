@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[src/setPrototypeOf.js:2](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/setPrototypeOf.js#L2)
+[src/setPrototypeOf.js:2](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/setPrototypeOf.js#L2)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[src/setPrototypeOf.js:12](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/setPrototypeOf.js#L12)
+[src/setPrototypeOf.js:12](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/setPrototypeOf.js#L12)

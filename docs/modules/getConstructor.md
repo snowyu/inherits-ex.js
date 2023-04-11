@@ -40,4 +40,4 @@ The first(latest) non-empty constructor in the inheritance chain of the given co
 
 #### Defined in
 
-[src/getConstructor.js:12](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/getConstructor.js#L12)
+[src/getConstructor.js:12](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/getConstructor.js#L12)

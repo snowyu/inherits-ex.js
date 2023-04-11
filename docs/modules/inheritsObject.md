@@ -22,7 +22,7 @@ Renames and re-exports [inheritsObject](inheritsObject.md#inheritsobject)
 
 ### inheritsObject
 
-▸ **inheritsObject**(`aObject`, `aClass`, `staticInherit`): `boolean`
+▸ **inheritsObject**(`aObject`, `aClass`, `staticInherit?`): `boolean`
 
 Sets the prototype of an object to a new prototype, and inherits from a given class.
 
@@ -57,7 +57,7 @@ jane.sayHello(); // logs "Hello, my name is Jane"
 | :------ | :------ | :------ |
 | `aObject` | `any` | The object whose prototype needs to be set. |
 | `aClass` | `Function` | The class to inherit from. |
-| `staticInherit` | `boolean` | Whether to inherit static properties or not. |
+| `staticInherit?` | `boolean` | Whether to inherit static properties or not. defaults to true |
 
 #### Returns
 
@@ -67,4 +67,4 @@ jane.sayHello(); // logs "Hello, my name is Jane"
 
 #### Defined in
 
-[src/inheritsObject.js:37](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/inheritsObject.js#L37)
+[src/inheritsObject.js:37](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/inheritsObject.js#L37)

@@ -22,7 +22,7 @@ Renames and re-exports [extend](extend.md#extend)
 
 ### extend
 
-▸ **extend**(`ctor`, `superCtors`): `Function`
+▸ **extend**(`ctor`, `...superCtors`): `Function`
 
 Extends the prototype of the given constructor with the prototypes of one or more super constructors.
 
@@ -31,7 +31,7 @@ Extends the prototype of the given constructor with the prototypes of one or mor
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `ctor` | `Function` | The constructor to extend the prototype of. |
-| `superCtors` | `Function` | The super constructors whose prototypes should be copied onto the extended prototype. |
+| `...superCtors` | `Function`[] | The super constructors whose prototypes should be copied onto the extended prototype. |
 
 #### Returns
 
@@ -41,4 +41,4 @@ The extended constructor `ctor`.
 
 #### Defined in
 
-[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/extend.js#L10)
+[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/extend.js#L10)

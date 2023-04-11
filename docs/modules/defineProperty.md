@@ -22,7 +22,7 @@ Renames and re-exports [defineProperty](defineProperty.md#defineproperty)
 
 ### defineProperty
 
-▸ **defineProperty**(`object`, `key`, `value`, `aOptions`): `any`
+▸ **defineProperty**(`object`, `key`, `value`, `aOptions?`): `any`
 
 Define the object's property and value. The property is not enumerable
 by default.
@@ -75,7 +75,7 @@ defineProperty(myObject, "myConfigurableProperty", 42, {
 | `object` | `any` | The object to define the property on. |
 | `key` | `string` | the property name. |
 | `value` | `any` | the property value. |
-| `aOptions` | `any` | the property descriptor. |
+| `aOptions?` | `any` | the property descriptor. |
 
 #### Returns
 
@@ -85,4 +85,4 @@ The object that was passed to the function, with the specified property added or
 
 #### Defined in
 
-[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/a0c491f/src/defineProperty.js#L58)
+[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/defineProperty.js#L58)
