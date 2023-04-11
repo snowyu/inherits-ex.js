@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.5](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.4...v2.1.0-alpha.5) (2023-04-11)
+
+
+### Bug Fixes
+
+* **ts:** typescript declaration errors ([716ae31](https://github.com/snowyu/inherits-ex.js/commit/716ae3114bcdbeea9375ca145fcba1fd3b9047b7))
+
 ## [2.1.0-alpha.4](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.3...v2.1.0-alpha.4) (2023-04-11)
 
 

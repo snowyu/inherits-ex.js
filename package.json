@@ -2,7 +2,7 @@
   "name": "inherits-ex",
   "description": "Enhanced inheritance for dynamic inheritance and mixin.",
   "homepage": "https://github.com/snowyu/inherits-ex.js",
-  "version": "2.1.0-alpha.4",
+  "version": "2.1.0-alpha.5",
   "author": {
     "name": "Riceball LEE",
     "email": "snowyu.lee@gmail.com"
@@ -75,7 +75,7 @@
     "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs ./src",
     "lint": "npx eslint --config .eslintrc.yml src",
     "lint.fix": "npm run lint -- --fix",
-    "release": "npm run clean && npm run build && npx commit-and-tag-version -s",
+    "release": "npm run clean && npm run build && git add docs && npx commit-and-tag-version -s",
     "release.alpha": "npm run release -- --prerelease alpha",
     "test": "mocha"
   },
