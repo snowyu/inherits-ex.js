@@ -75,7 +75,7 @@
     "doc.md": "typedoc --plugin typedoc-plugin-markdown --out docs ./src",
     "lint": "npx eslint --config .eslintrc.yml src",
     "lint.fix": "npm run lint -- --fix",
-    "release": "npm run clean && npm run build && npx standard-version",
+    "release": "npm run clean && npm run build && npx commit-and-tag-version -s",
     "release.alpha": "npm run release -- --prerelease alpha",
     "test": "mocha"
   },
