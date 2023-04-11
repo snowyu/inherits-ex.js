@@ -6,7 +6,7 @@ const gCache = new WeakMap();
  * The returned proxy object behaves like `super` keyword in that it allows accessing parent class instance methods.
  *
  * @param {object} instance - The instance to get the parent class instance methods from.
- * @param {WeakMap|boolean=} cache - An optional WeakMap object to cache the proxy object for better performance. defaults to false
+ * @param {WeakMap<any,any>|boolean} [cache] - An optional WeakMap object to cache the proxy object for better performance. defaults to false
  * @returns {object} - A proxy object that provides access to the methods of the given instance's parent class.
  * @throws {TypeError} - If the given instance is not an object or is null.
  *
