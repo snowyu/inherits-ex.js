@@ -22,7 +22,7 @@ Renames and re-exports [getSuper](getSuper.md#getsuper)
 
 ### getSuper
 
-▸ **getSuper**(`instance`, `cache`): `any`
+▸ **getSuper**(`instance`, `cache?`): `any`
 
 Returns a proxy object that provides access to the methods of the given instance's parent class.
 The returned proxy object behaves like `super` keyword in that it allows accessing parent class instance methods.
@@ -64,7 +64,7 @@ superRabbit.walk(); // logs 'Animal walks'
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `instance` | `any` | The instance to get the parent class instance methods from. |
-| `cache` | `any` | An optional WeakMap object to cache the proxy object for better performance. defaults to false |
+| `cache?` | `any` | An optional WeakMap object to cache the proxy object for better performance. defaults to false |
 
 #### Returns
 
@@ -74,4 +74,4 @@ superRabbit.walk(); // logs 'Animal walks'
 
 #### Defined in
 
-[src/getSuper.js:38](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/getSuper.js#L38)
+[src/getSuper.js:38](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/getSuper.js#L38)

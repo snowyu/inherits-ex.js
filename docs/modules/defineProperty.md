@@ -85,4 +85,4 @@ The object that was passed to the function, with the specified property added or
 
 #### Defined in
 
-[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/d55cbee/src/defineProperty.js#L58)
+[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/defineProperty.js#L58)
