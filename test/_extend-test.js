@@ -51,4 +51,13 @@ describe('_extend', () => {
     const result = _extend(target, source);
     assert.deepStrictEqual(result, { a: 1, c: 3 });
   });
+  it('should only extend the exists source object', () => {
+    const target = { a: 1 };
+    const source = Object.create(null, {
+      b: { value: 2 },
+      c: { value: 3, enumerable: true }
+    });
+    const result = _extend(target, source, null, undefined);
+    assert.deepStrictEqual(result, { a: 1, c: 3 });
+  });
 });

@@ -19,7 +19,7 @@ export function _extend(target) {
   for (let i = 1; i < arguments.length; i++) {
     const source = arguments[i]
 
-    defineProperties(target, getOwnPropertyDescriptors(source))
+    if (source) defineProperties(target, getOwnPropertyDescriptors(source))
     /*
     for (const key in source) {
       if (hasOwnProperty.call(source, key)) {
