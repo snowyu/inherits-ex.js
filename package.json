@@ -2,12 +2,11 @@
   "name": "inherits-ex",
   "description": "Enhanced inheritance for dynamic inheritance and mixin.",
   "homepage": "https://github.com/snowyu/inherits-ex.js",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "author": {
     "name": "Riceball LEE",
     "email": "snowyu.lee@gmail.com"
   },
-  "types": "./types",
   "files": [
     "README.md",
     "LICENSE-MIT",

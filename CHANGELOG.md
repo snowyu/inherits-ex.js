@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.5.4](https://github.com/snowyu/inherits-ex.js/compare/v1.5.3...v1.5.4) (2023-04-12)
+
+
+### Bug Fixes
+
+* **_extend:** should only extend exists source ([4754739](https://github.com/snowyu/inherits-ex.js/commit/475473919ae5ffc6ca12c1e77bca83a7e0ba615c))
+
 ## [1.5.3](https://github.com/snowyu/inherits-ex.js/compare/v1.5.2...v1.5.3) (2023-04-11)
 
 
