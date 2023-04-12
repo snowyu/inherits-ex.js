@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.6](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.5...v2.1.0-alpha.6) (2023-04-12)
+
+
+### Bug Fixes
+
+* **_extend:** should only extend exists source ([d037817](https://github.com/snowyu/inherits-ex.js/commit/d03781756cd1d6877d6090ef56e81aa4da3d1ab2))
+
 ## [2.1.0-alpha.5](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.4...v2.1.0-alpha.5) (2023-04-11)
 
 
