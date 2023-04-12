@@ -34,7 +34,7 @@ if (!getOwnPropertyDescriptors) {
 function extend(target) {
   for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i]
-      defineProperties(target, getOwnPropertyDescriptors(source))
+      if (source) defineProperties(target, getOwnPropertyDescriptors(source))
 
       /*
       for (var key in source) {
