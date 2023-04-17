@@ -41,4 +41,4 @@ Returns the value of an own property of an object.
 
 #### Defined in
 
-[src/getOwnPropValue.js:10](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/getOwnPropValue.js#L10)
+[src/getOwnPropValue.js:10](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/getOwnPropValue.js#L10)

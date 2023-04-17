@@ -19,12 +19,14 @@
 - [extend](index.md#extend)
 - [filterOpts](index.md#filteropts)
 - [getClassByName](index.md#getclassbyname)
+- [getClosestCommonAncestorCtor](index.md#getclosestcommonancestorctor)
 - [getConstructor](index.md#getconstructor)
 - [getCtorOfOwnProperty](index.md#getctorofownproperty)
 - [getOwnPropValue](index.md#getownpropvalue)
 - [getParentClass](index.md#getparentclass)
 - [getProtoChain](index.md#getprotochain)
 - [getPrototypeOf](index.md#getprototypeof)
+- [getRootCtor](index.md#getrootctor)
 - [getSuper](index.md#getsuper)
 - [getSuperCtor](index.md#getsuperctor)
 - [hasNativeReflect](index.md#hasnativereflect)
@@ -124,6 +126,12 @@ Re-exports [getClassByName](get_class_by_name.md#getclassbyname)
 
 ___
 
+### getClosestCommonAncestorCtor
+
+Re-exports [getClosestCommonAncestorCtor](getClosestCommonAncestorCtor.md#getclosestcommonancestorctor)
+
+___
+
 ### getConstructor
 
 Re-exports [getConstructor](getConstructor.md#getconstructor)
@@ -157,6 +165,12 @@ ___
 ### getPrototypeOf
 
 Re-exports [getPrototypeOf](getPrototypeOf.md#getprototypeof)
+
+___
+
+### getRootCtor
+
+Re-exports [getRootCtor](getRootCtor.md#getrootctor)
 
 ___
 

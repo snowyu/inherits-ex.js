@@ -45,7 +45,7 @@ Renames and re-exports [_clone](clone.md#_clone)
 
 #### Defined in
 
-[src/_clone.js:5](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/_clone.js#L5)
+[src/_clone.js:5](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/_clone.js#L5)
 
 ## Functions
 
@@ -71,4 +71,4 @@ the dest object
 
 #### Defined in
 
-[src/_clone.js:19](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/_clone.js#L19)
+[src/_clone.js:19](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/_clone.js#L19)

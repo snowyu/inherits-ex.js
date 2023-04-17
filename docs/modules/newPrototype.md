@@ -41,4 +41,4 @@ Creates a new object with a prototype chain from a given class and constructor f
 
 #### Defined in
 
-[src/newPrototype.js:11](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/newPrototype.js#L11)
+[src/newPrototype.js:11](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/newPrototype.js#L11)

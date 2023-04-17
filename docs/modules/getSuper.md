@@ -64,7 +64,7 @@ superRabbit.walk(); // logs 'Animal walks'
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `instance` | `any` | The instance to get the parent class instance methods from. |
-| `cache?` | `any` | An optional WeakMap object to cache the proxy object for better performance. defaults to false |
+| `cache?` | `boolean` \| `WeakMap`<`any`, `any`\> | An optional WeakMap object to cache the proxy object for better performance. defaults to false |
 
 #### Returns
 
@@ -74,4 +74,4 @@ superRabbit.walk(); // logs 'Animal walks'
 
 #### Defined in
 
-[src/getSuper.js:38](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/getSuper.js#L38)
+[src/getSuper.js:38](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/getSuper.js#L38)

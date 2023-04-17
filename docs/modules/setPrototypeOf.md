@@ -4,27 +4,53 @@
 
 ## Table of contents
 
-### Variables
+### Functions
 
 - [default](setPrototypeOf.md#default)
 - [setPrototypeOf](setPrototypeOf.md#setprototypeof)
 
-## Variables
+## Functions
 
 ### default
 
-• **default**: `any` = `Object.setPrototypeOf`
+▸ **default**(`o`, `proto`): `any`
+
+Sets the prototype of a specified object o to object proto or null. Returns the object o.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `o` | `any` | The object to change its prototype. |
+| `proto` | `object` | The value of the new prototype or null. |
+
+#### Returns
+
+`any`
 
 #### Defined in
 
-[src/setPrototypeOf.js:2](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/setPrototypeOf.js#L2)
+node_modules/typescript/lib/lib.es2015.core.d.ts:337
 
 ___
 
 ### setPrototypeOf
 
-• `Const` **setPrototypeOf**: `any` = `_setPrototypeOf`
+▸ **setPrototypeOf**(`o`, `proto`): `any`
+
+Sets the prototype of a specified object o to object proto or null. Returns the object o.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `o` | `any` | The object to change its prototype. |
+| `proto` | `object` | The value of the new prototype or null. |
+
+#### Returns
+
+`any`
 
 #### Defined in
 
-[src/setPrototypeOf.js:12](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/setPrototypeOf.js#L12)
+node_modules/typescript/lib/lib.es2015.core.d.ts:337

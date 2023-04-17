@@ -54,7 +54,7 @@ Renames and re-exports [mixins](mixin.md#mixins)
 
 #### Defined in
 
-[src/mixin.js:316](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/mixin.js#L316)
+[src/mixin.js:316](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/mixin.js#L316)
 
 ## Functions
 
@@ -78,7 +78,7 @@ return true if successful
 
 #### Defined in
 
-[src/mixin.js:338](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/mixin.js#L338)
+[src/mixin.js:338](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/mixin.js#L338)
 
 ___
 
@@ -148,4 +148,4 @@ return true if successful
 
 #### Defined in
 
-[src/mixin.js:431](https://github.com/snowyu/inherits-ex.js/blob/716ae31/src/mixin.js#L431)
+[src/mixin.js:431](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/mixin.js#L431)
