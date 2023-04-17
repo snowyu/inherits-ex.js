@@ -30,8 +30,8 @@ var compareProtoChain = function(o, list){
 
 describe("inheritsES6", function() {
 
-  aMethod = () => "aMethod"
-  a1Method = () => "a1Method"
+  function aMethod() {return "aMethod"}
+  const a1Method = () => "a1Method"
 
   class Root {
     // static test= 1;
@@ -137,7 +137,7 @@ describe("inheritsES6", function() {
     assert.equal(isInheritedFrom(A1, A), A1)
     assert.equal(isInheritedFrom(A1, B), false, "A1 is not inherited from B")
     assert.equal(isInheritedFrom(A, B), false, "A is not inherited from B")
-    o = new A()
+    let o = new A()
     assert.equal(o.rootMethod, Root.prototype.rootMethod)
     o = new A1()
     assert.equal(o.rootMethod, Root.prototype.rootMethod)
@@ -164,7 +164,11 @@ describe("inheritsES6", function() {
   it("should multi-inheritances and void circular inherit", function(){
     class C{}
     class MyClass{}
-    assert.equal(inherits(C, Root), true)
+    class B{}
+    // C -> Root
+    assert.equal(inherits(C, Root), true);
+    // B -> Root
+    assert.equal(inherits(B, Root), true);
 
     //# MyClass -> B -> Root
     assert.equal(inherits(MyClass, B), true)
@@ -177,6 +181,26 @@ describe("inheritsES6", function() {
     assert.equal(isInheritedFrom(MyClass, 'C'), MyClass)
     assert.equal(isInheritedFrom(MyClass, 'B'), C)
   })
+  it("should multi-inheritances and void circular inherit2", () => {
+    class Ctor {}
+    class CtorParent {}
+    class CtorRoot {}
+    inherits(Ctor, [CtorParent, CtorRoot])
+    class SuperCtor {}
+    class SuperParent {}
+    inherits(SuperCtor, SuperParent)
+    assert.equal(inherits(Ctor, SuperCtor), true);
+    assert.deepEqual(getProtoChain(Ctor), ['CtorRoot', 'CtorParent', 'SuperParent', 'SuperCtor', 'Ctor']);
+  });
+  it("should multi-inheritances and void circular inherit3", () => {
+    class CtorRoot {}
+    class CtorParent extends CtorRoot{}
+    class Ctor extends CtorParent{}
+    class SuperParent {}
+    class SuperCtor extends SuperParent{}
+    assert.equal(inherits(Ctor, SuperCtor), true);
+    assert.deepEqual(getProtoChain(Ctor), ['CtorRoot', 'CtorParent', 'SuperParent', 'SuperCtor', 'Ctor']);
+  });
   it("test isInheritedFrom with class name", function(){
     assert.equal(isInheritedFrom(A, 'Root'), A)
     assert.equal(isInheritedFrom(A1, 'Root'), A)
@@ -187,14 +211,14 @@ describe("inheritsES6", function() {
 
   it("test inheritsObject", function(){
     var cMethod = ()=> "cMethod"
-    var C = function(){return  "C"}
+    function C(){return  "C"}
 
-    C.name = "C"
+    // C.name = "C"
     C.prototype.cMethod = cMethod
     var b = new B()
     assert.equal(inheritsObject(b, C), true)
     // bProto = b.__proto__
-    bProto = getPrototypeOf(b)
+    let bProto = getPrototypeOf(b)
     assert.equal(bProto.cMethod, cMethod)
     assert.equal(bProto.constructor, C)
     assert.equal(C.super_, B)
@@ -210,15 +234,15 @@ describe("inheritsES6", function() {
   it("test inheritsDirectly and isInheritedFrom", function(){
     var cMethod = ()=> "cMethod"
     var R = function(){return  "R"}
-    R.name = "R"
+    // R.name = "R"
     function C(){return  "C"}
-    C.name = "C"
+    // C.name = "C"
     C.prototype.cMethod = cMethod
 
     var C1 = function(){ return "C1"}
-    C1.name = "C1"
+    // C1.name = "C1"
     var C11 = function() {return "C11"}
-    C11.name = "C11"
+    // C11.name = "C11"
     var C2 = function()  {return "C2"}
 
     assert.ok(inherits(C, R), "C inherits from R")
@@ -226,7 +250,7 @@ describe("inheritsES6", function() {
     assert.ok(inherits(C11, C1), "C11 inherits from C1")
     assert.ok(inherits(C2, C), "C2 inherits from C")
     //# C11 > C1 > C
-    baseClass = isInheritedFrom(C11, C)
+    const baseClass = isInheritedFrom(C11, C)
     assert.equal(baseClass, C1)
     inheritsDirectly(baseClass, C2)
     //# C11 > C1 > C2 > C
@@ -241,7 +265,7 @@ describe("inheritsES6", function() {
     class C11 extends C1{}
     class C2 extends C{}
     //# C11 > C1 > C
-    baseClass = isInheritedFrom(C11, C)
+    const baseClass = isInheritedFrom(C11, C)
     assert.equal(baseClass, C1)
     inheritsDirectly(baseClass, C2)
     //# C11 > C1 > C2 > C
@@ -318,14 +342,14 @@ describe("inheritsES6", function() {
 
     it('should create object with ES6 class', function(){
       class A {}
-      result = createObject(A)
+      const result = createObject(A)
       result.should.be.instanceof(A)
       A.should.not.have.ownProperty('Class')
     })
     it('should call the parent\'s constructor method if it no constructor', function(){
       function A12() {}
       assert.equal(inherits(A12, A1), true)
-      a = createObject(A12)
+      const a = createObject(A12)
       assert.equal(a.Class, A12)
       assert.instanceOf(a, A12)
       assert.instanceOf(a, A1)
@@ -338,7 +362,7 @@ describe("inheritsES6", function() {
       //the class X defined, toString should be 'class X{}', not 'function X(){}'
       function A2(){}
       assert.equal(inherits(A2, A), true)
-      a = createObject(A2)
+      const a = createObject(A2)
       assert.equal(a.Class, A2)
       assert.instanceOf(a, A2)
       assert.instanceOf(a, A)
@@ -353,7 +377,7 @@ describe("inheritsES6", function() {
         }
       }
       assert.equal(inherits(A2, A), true)
-      a = createObject(A2, "hiFirst", 1881)
+      const a = createObject(A2, "hiFirst", 1881)
       assert.instanceOf(a, A2)
       assert.instanceOf(a, A)
       assert.instanceOf(a, Root)
@@ -362,7 +386,7 @@ describe("inheritsES6", function() {
     })
     it('should add new "Class" property to the class prototype', function() {
       class A2{}
-      a = createObject(A2)
+      const a = createObject(A2)
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)
     })
@@ -417,7 +441,7 @@ describe("inheritsES6", function() {
         }
       }
       inherits(A2, R)
-      a = createObject(A2)
+      const a = createObject(A2)
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)
       a.should.have.property('inited')
@@ -437,7 +461,7 @@ describe("inheritsES6", function() {
         }
       }
       inherits(A2, R).should.be.ok
-      a = createObject(A2)
+      const a = createObject(A2)
       assert.instanceOf(a, A2)
       a.should.have.property('Class', A2)
       a.should.have.property('inited')

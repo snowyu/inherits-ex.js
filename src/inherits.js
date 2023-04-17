@@ -2,12 +2,25 @@ import { isInheritedFrom  } from './isInheritedFrom.js';
 import { inheritsDirectly } from './inheritsDirectly.js';
 import {defineProperty} from './defineProperty.js';
 import getSuperCtor from './getSuperCtor.js';
+import getRootCtor from './getRootCtor.js';
+import getClosestCommonAncestorCtor from './getClosestCommonAncestorCtor.js';
 
 const isArray           = Array.isArray;
 
 /**
  * Inherit the prototype properties and methods from one constructor into another.
  *
+ * **Note**:
+ *
+ *   The `superCtor`'s root will be inherited from the `ctor`'s parent class if the `ctor` has already inherited from others.
+ *
+ * ```
+ * ctor -> ctorParent -> ctorRoot
+ * superCtor -> superParent
+ * ------------------------
+ * ctor -> superCtor -> superParent -> ctorParent -> ctorRoot
+ *
+ * ```
  * @param {function} ctor the class which needs to inherit the prototype.
  * @param {function} superCtor the parent class to inherit prototype from.
  * @param {boolean} [staticInherit=true] whether allow static members inheritance, defaults to true.
@@ -24,13 +37,23 @@ function _inherits(ctor, superCtor, staticInherit) {
   const isInherited = isInheritedFrom(ctor, superCtor)
   if (!isInherited && !isInheritedFrom(superCtor, ctor)) {
     inheritsDirectly(ctor, superCtor, staticInherit);
+    let rootCtor = getClosestCommonAncestorCtor(v, superCtor)
+    // if (!rootCtor || rootCtor === Object) {
+    //   rootCtor = undefined
+    // }
+    superCtor = getRootCtor(superCtor, rootCtor)
+    if (v && v !== Object) inheritsDirectly(superCtor, v)
+    /*
     // patch the missing prototype chain if exists ctor.super.
     while (v != null && v !== Object && superCtor !== v) {
       ctor = superCtor;
       superCtor = v;
-      inheritsDirectly(ctor, superCtor, staticInherit);
+      if (!isInheritedFrom(ctor, superCtor) && !isInheritedFrom(superCtor, ctor)) {
+        inheritsDirectly(ctor, superCtor, staticInherit);
+      }
       v = getSuperCtor(ctor);
     }
+    */
     result = true;
   } else if (isInherited) {
     // additional properties

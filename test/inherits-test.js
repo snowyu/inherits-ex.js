@@ -155,26 +155,30 @@ describe("inherits", () => {
     assert.deepEqual(getProtoChain(A1), ['Root', 'A', 'A1']);
   });
   it("should not inheritances dead circular", () => {
-    class C1 {};
-    class C2 {};
-    class C3 {};
+    function C1() {};
+    function C2() {};
+    function C3() {};
     assert.equal(inherits(C1, C2), true);
     assert.equal(inherits(C2, C3), true);
     assert.equal(inherits(C3, C1), false);
   });
   it("should multi-inheritances", () => {
-    class C {};
-    class D {};
-    class E {};
-    class MyClass {};
+    function C() {};
+    function D() {};
+    function E() {};
+    function MyClass() {};
     // MyClass -> C -> D -> E
     assert.equal(inherits(MyClass, [C, D, E]), true);
     assert.deepEqual(getProtoChain(MyClass), ['E', 'D', 'C', 'MyClass']);
   });
   it("should multi-inheritances and void circular inherit", () => {
-    class C {};
-    class MyClass {};
+    function C() {};
+    function MyClass() {};
+    function B() {};
+    // C -> Root
     assert.equal(inherits(C, Root), true);
+    // B -> Root
+    assert.equal(inherits(B, Root), true);
     // MyClass -> B -> Root
     assert.equal(inherits(MyClass, B), true);
     // MyClass -> C -> B -> Root
@@ -184,6 +188,19 @@ describe("inherits", () => {
     assert.equal(isInheritedFrom(MyClass, B), C);
     assert.equal(isInheritedFrom(MyClass, 'C'), MyClass);
     assert.equal(isInheritedFrom(MyClass, 'B'), C);
+  });
+  it("should multi-inheritances and void circular inherit2", () => {
+    function Ctor() {}
+    function CtorParent() {}
+    function CtorRoot() {}
+    function SuperCtor() {}
+    function SuperParent() {}
+    // Ctor -> CtorParent -> CtorRoot
+    inherits(Ctor, [CtorParent, CtorRoot])
+    // SuperCtor -> SuperParent
+    inherits(SuperCtor, SuperParent)
+    assert.equal(inherits(Ctor, SuperCtor), true);
+    assert.deepEqual(getProtoChain(Ctor), ['CtorRoot', 'CtorParent', 'SuperParent', 'SuperCtor', 'Ctor']);
   });
   it("test isInheritedFrom with class name", () => {
     assert.equal(isInheritedFrom(A, 'Root'), A);
