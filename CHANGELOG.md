@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.6.0](https://github.com/snowyu/inherits-ex.js/compare/v1.5.4...v1.6.0) (2023-04-17)
+
+
+### Features
+
+* add getClosestCommonAncestorCtor and getRootCtor functions ([3460e26](https://github.com/snowyu/inherits-ex.js/commit/3460e266b066a67b39101638e654f2162187022b))
+
 ## [1.5.4](https://github.com/snowyu/inherits-ex.js/compare/v1.5.3...v1.5.4) (2023-04-12)
 
 
