@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.7](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.6...v2.1.0-alpha.7) (2023-04-17)
+
+
+### Features
+
+* add getClosestCommonAncestorCtor and getRootCtor functions ([285aee2](https://github.com/snowyu/inherits-ex.js/commit/285aee271b6dbb1550176dfbdbcd266ba4891ba3))
+
+
+### Bug Fixes
+
+* **inherits:** The superCtor's root will be inherited from the ctor's parent class if the ctor has already inherited from others ([bcdffd4](https://github.com/snowyu/inherits-ex.js/commit/bcdffd41d96f19813d35552b63b8d740df22d967))
+
 ## [2.1.0-alpha.6](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.5...v2.1.0-alpha.6) (2023-04-12)
 
 
