@@ -165,7 +165,11 @@ describe("inherits", function() {
   it("should multi-inheritances and void circular inherit", function() {
     function C      () {};
     function MyClass() {};
+    function B() {};
+    // C -> Root
     assert.equal(inherits(C, Root), true);
+    // B -> Root
+    assert.equal(inherits(B, Root), true);
     // MyClass -> B -> Root
     assert.equal(inherits(MyClass, B), true);
     // MyClass -> C -> B -> Root
@@ -175,6 +179,19 @@ describe("inherits", function() {
     assert.equal(isInheritedFrom(MyClass, B), C);
     assert.equal(isInheritedFrom(MyClass, 'C'), MyClass);
     assert.equal(isInheritedFrom(MyClass, 'B'), C);
+  });
+  it("should multi-inheritances and void circular inherit2", () => {
+    function Ctor() {}
+    function CtorParent() {}
+    function CtorRoot() {}
+    function SuperCtor() {}
+    function SuperParent() {}
+    // Ctor -> CtorParent -> CtorRoot
+    inherits(Ctor, [CtorParent, CtorRoot])
+    // SuperCtor -> SuperParent
+    inherits(SuperCtor, SuperParent)
+    assert.equal(inherits(Ctor, SuperCtor), true);
+    assert.deepEqual(getProtoChain(Ctor), ['CtorRoot', 'CtorParent', 'SuperParent', 'SuperCtor', 'Ctor']);
   });
   it("test isInheritedFrom with class name", function() {
     assert.equal(isInheritedFrom(A, 'Root'), A);

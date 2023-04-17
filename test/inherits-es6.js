@@ -166,7 +166,11 @@ describe("inheritsES6", function() {
   it("should multi-inheritances and void circular inherit", function(){
     class C{}
     class MyClass{}
-    assert.equal(inherits(C, Root), true)
+    class B{}
+    // C -> Root
+    assert.equal(inherits(C, Root), true);
+    // B -> Root
+    assert.equal(inherits(B, Root), true);
 
     //# MyClass -> B -> Root
     assert.equal(inherits(MyClass, B), true)
@@ -179,6 +183,26 @@ describe("inheritsES6", function() {
     assert.equal(isInheritedFrom(MyClass, 'C'), MyClass)
     assert.equal(isInheritedFrom(MyClass, 'B'), C)
   })
+  it("should multi-inheritances and void circular inherit2", () => {
+    class Ctor {}
+    class CtorParent {}
+    class CtorRoot {}
+    inherits(Ctor, [CtorParent, CtorRoot])
+    class SuperCtor {}
+    class SuperParent {}
+    inherits(SuperCtor, SuperParent)
+    assert.equal(inherits(Ctor, SuperCtor), true);
+    assert.deepEqual(getProtoChain(Ctor), ['CtorRoot', 'CtorParent', 'SuperParent', 'SuperCtor', 'Ctor']);
+  });
+  it("should multi-inheritances and void circular inherit3", () => {
+    class CtorRoot {}
+    class CtorParent extends CtorRoot{}
+    class Ctor extends CtorParent{}
+    class SuperParent {}
+    class SuperCtor extends SuperParent{}
+    assert.equal(inherits(Ctor, SuperCtor), true);
+    assert.deepEqual(getProtoChain(Ctor), ['CtorRoot', 'CtorParent', 'SuperParent', 'SuperCtor', 'Ctor']);
+  });
   it("test isInheritedFrom with class name", function(){
     isInheritedFrom = isInheritedFrom
     assert.equal(isInheritedFrom(A, 'Root'), A)
