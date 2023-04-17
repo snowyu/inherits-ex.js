@@ -12,7 +12,7 @@
 
 ### export&#x3D;
 
-▸ **export=**(`ctor`, `superCtors`): `Function`
+▸ **export=**(`ctor`, `...args`): `Function`
 
 Extends the prototype of the given constructor with the prototypes of one or more super constructors.
 
@@ -21,7 +21,7 @@ Extends the prototype of the given constructor with the prototypes of one or mor
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `ctor` | `Function` | The constructor to extend the prototype of. |
-| `superCtors` | `Function` | The super constructors whose prototypes should be copied onto the extended prototype. |
+| `...args` | `any` | - |
 
 #### Returns
 
@@ -31,4 +31,4 @@ The extended constructor `ctor`.
 
 #### Defined in
 
-[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/extend.js#L10)
+[src/extend.js:10](https://github.com/snowyu/inherits-ex.js/blob/3460e26/src/extend.js#L10)

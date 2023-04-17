@@ -57,4 +57,4 @@ jane.sayHello(); // logs "Hello, my name is Jane"
 
 #### Defined in
 
-[src/inheritsObject.js:36](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/inheritsObject.js#L36)
+[src/inheritsObject.js:36](https://github.com/snowyu/inherits-ex.js/blob/3460e26/src/inheritsObject.js#L36)

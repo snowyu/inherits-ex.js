@@ -27,4 +27,4 @@
 
 #### Defined in
 
-[src/isNativeReflectConstruct.js:30](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/isNativeReflectConstruct.js#L30)
+[src/isNativeReflectConstruct.js:30](https://github.com/snowyu/inherits-ex.js/blob/3460e26/src/isNativeReflectConstruct.js#L30)

@@ -35,4 +35,4 @@ Returns the value of an own property of an object.
 
 #### Defined in
 
-[src/getOwnPropValue.js:10](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/getOwnPropValue.js#L10)
+[src/getOwnPropValue.js:10](https://github.com/snowyu/inherits-ex.js/blob/3460e26/src/getOwnPropValue.js#L10)

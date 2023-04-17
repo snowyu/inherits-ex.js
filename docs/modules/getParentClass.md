@@ -30,4 +30,4 @@ The parent class constructor or undefined/null if there is no parent class.
 
 #### Defined in
 
-[src/getParentClass.js:10](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/getParentClass.js#L10)
+[src/getParentClass.js:10](https://github.com/snowyu/inherits-ex.js/blob/3460e26/src/getParentClass.js#L10)

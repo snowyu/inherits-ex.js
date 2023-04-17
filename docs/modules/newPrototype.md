@@ -37,4 +37,4 @@ Creates a new object with a prototype chain from a given class and constructor f
 
 #### Defined in
 
-[src/newPrototype.js:13](https://github.com/snowyu/inherits-ex.js/blob/2bbec9d/src/newPrototype.js#L13)
+[src/newPrototype.js:13](https://github.com/snowyu/inherits-ex.js/blob/3460e26/src/newPrototype.js#L13)
