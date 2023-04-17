@@ -1,6 +1,3 @@
-try{
-  eval('class A{}')
-  require('./inherits-es6')
-  require('./mixin-es6')
-}catch(err){
-}
+import './inherits-es6'
+import './mixin-es6'
+

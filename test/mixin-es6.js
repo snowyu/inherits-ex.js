@@ -55,7 +55,7 @@ describe("mixin es6", function(){
 
     mixin(B1, A1).should.be.equal(true, 'mixin');
     // log(getProtoChain(B1))
-    o = new B1()
+    const o = new B1()
     expect(o.prop1).to.be.equal(2)
     // o.should.have.property('prop1', 2)
     o.m("a", 12) // call chain:  B1::m -> A1::m -> A::m
