@@ -1,7 +1,7 @@
 import getSuperCtor from './getSuperCtor.js';
 import { isEmptyFunction } from './isEmptyFunction.js'
 
-// get latest non-empty constructor function through inherits link
+// get latest non-empty constructor function through inherits chain
 
 /**
  * Returns the first(latest) non-empty constructor in the inheritance chain of the given constructor that has own properties.
