@@ -7,12 +7,14 @@ export * from './createObjectWith.js';
 export * from './defineProperty.js';
 export * from './extend.js';
 export * from './get-class-by-name.js';
+export * from './getClosestCommonAncestorCtor.js'
 export * from './getConstructor.js';
 export * from './getCtorOfProperty.js';
 export * from './getOwnPropValue.js';
 export * from './getParentClass.js';
 export * from './getProtoChain.js';
 export * from './getPrototypeOf.js';
+export * from './getRootCtor.js';
 export * from './getSuper.js';
 export * from './getSuperCtor.js';
 export * from './inherits-ex.js';
