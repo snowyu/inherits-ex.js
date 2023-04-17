@@ -7,6 +7,7 @@
       "allowJs": true,
       // Generate d.ts files
       "declaration": true,
+      "target": "ES6",
       // This compiler run should
       // only output d.ts files
       "emitDeclarationOnly": true,
