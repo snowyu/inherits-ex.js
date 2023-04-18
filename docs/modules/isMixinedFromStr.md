@@ -41,4 +41,4 @@ Check if a constructor is mixed from a specific constructor.
 
 #### Defined in
 
-[src/isMixinedFromStr.js:7](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/isMixinedFromStr.js#L7)
+[src/isMixinedFromStr.js:7](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/isMixinedFromStr.js#L7)

@@ -15,6 +15,8 @@
 ### Functions
 
 - [\_clone](clone.md#_clone)
+- [cloneCtor](clone.md#clonector)
+- [clonePrototype](clone.md#cloneprototype)
 
 ## References
 
@@ -45,7 +47,7 @@ Renames and re-exports [_clone](clone.md#_clone)
 
 #### Defined in
 
-[src/_clone.js:5](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/_clone.js#L5)
+[src/_clone.js:8](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L8)
 
 ## Functions
 
@@ -71,4 +73,48 @@ the dest object
 
 #### Defined in
 
-[src/_clone.js:19](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/_clone.js#L19)
+[src/_clone.js:22](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L22)
+
+___
+
+### cloneCtor
+
+▸ **cloneCtor**(`dest`, `src`, `filter`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dest` | `any` |
+| `src` | `any` |
+| `filter` | `any` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/_clone.js:38](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L38)
+
+___
+
+### clonePrototype
+
+▸ **clonePrototype**(`dest`, `src`, `filter`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dest` | `any` |
+| `src` | `any` |
+| `filter` | `any` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/_clone.js:47](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L47)

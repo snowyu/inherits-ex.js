@@ -11,6 +11,8 @@
 - [InheritsEx](index.md#inheritsex)
 - [\_clone](index.md#_clone)
 - [\_extend](index.md#_extend)
+- [cloneCtor](index.md#clonector)
+- [clonePrototype](index.md#cloneprototype)
 - [createCtor](index.md#creatector)
 - [createFunction](index.md#createfunction)
 - [createObject](index.md#createobject)
@@ -75,6 +77,18 @@ ___
 ### \_extend
 
 Re-exports [_extend](extend.md#_extend)
+
+___
+
+### cloneCtor
+
+Re-exports [cloneCtor](clone.md#clonector)
+
+___
+
+### clonePrototype
+
+Re-exports [clonePrototype](clone.md#cloneprototype)
 
 ___
 

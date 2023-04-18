@@ -56,4 +56,4 @@ console.log(john); // Output: Person { name: 'John', age: 30 }
 
 #### Defined in
 
-[src/createObject.js:24](https://github.com/snowyu/inherits-ex.js/blob/c5e1b22/src/createObject.js#L24)
+[src/createObject.js:24](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/createObject.js#L24)
