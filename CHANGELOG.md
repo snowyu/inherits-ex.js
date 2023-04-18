@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.9](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.8...v2.1.0-alpha.9) (2023-04-18)
+
+
+### Bug Fixes
+
+* **_clone:** should skip __proto__ attribute ([44c1f65](https://github.com/snowyu/inherits-ex.js/commit/44c1f65d1241959a690fa3e96d6844e1b656891a))
+
 ## [2.1.0-alpha.8](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.7...v2.1.0-alpha.8) (2023-04-18)
 
 
