@@ -1,4 +1,7 @@
 const getOwnPropertyNames = Object.getOwnPropertyNames;
+const defineProperty      = Object.defineProperty;
+const getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
 
 /**
  *
@@ -22,7 +25,10 @@ export function _clone(dest, src, filter) {
   for (let i = 0; i < names.length; i++ ) {
     const k = names[i];
     const value = filter(k, src[k]);
-    if (value !== undefined) {dest[k] = value;}
+    if (value !== undefined) {
+      const desc = getOwnPropertyDescriptor(src, k);
+      defineProperty(dest, k, desc);
+    }
   }
   return dest;
 }
