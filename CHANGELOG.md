@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.8](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.7...v2.1.0-alpha.8) (2023-04-18)
+
+
+### Features
+
+* **_clone:** extract the cloneCtor and clonePrototype functions from mixin.js ([d144ef4](https://github.com/snowyu/inherits-ex.js/commit/d144ef44f7b042bcea50595ee2d2fcb504387dc9))
+
+
+### Bug Fixes
+
+* **_clone:** clone attributes with descriptor ([289ac9b](https://github.com/snowyu/inherits-ex.js/commit/289ac9b1413a04d36a42f598304a6ecb223a740d))
+
 ## [2.1.0-alpha.7](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.6...v2.1.0-alpha.7) (2023-04-17)
 
 
