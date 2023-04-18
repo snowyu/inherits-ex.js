@@ -45,7 +45,7 @@ export default _clone;
  */
 export function cloneCtor(dest, src, filter) {
   const filterFn = function (name, value) {
-    if (['length', 'name', 'arguments', 'caller', 'prototype', 'super_', '__super__'].includes(name)) {return}
+    if (['length', 'name', 'arguments', 'caller', 'prototype', 'super_', '__super__', '__proto__'].includes(name)) {return}
     if (value !== undefined && filter) {value = filter(name, value)}
     return value;
   }
@@ -62,7 +62,7 @@ export function cloneCtor(dest, src, filter) {
  */
 export function clonePrototype(dest, src, filter) {
   const filterFn = function (name, value) {
-    if (['Class', 'constructor'].includes(name)) {return}
+    if (['Class', 'constructor', '__proto__'].includes(name)) {return}
     if (value !== undefined && filter) {value = filter(name, value)}
     return value;
   }
