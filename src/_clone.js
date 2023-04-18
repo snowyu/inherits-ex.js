@@ -35,6 +35,14 @@ export function _clone(dest, src, filter) {
 
 export default _clone;
 
+/**
+ * Clone the constructor(static members) to dest
+ *
+ * **Note**: 'length', 'name', 'arguments', 'caller', 'prototype', 'super_', '__super__' members are not cloned.
+ * @param {Function} dest
+ * @param {Function} src
+ * @param {Function} [filter]
+ */
 export function cloneCtor(dest, src, filter) {
   const filterFn = function (name, value) {
     if (['length', 'name', 'arguments', 'caller', 'prototype', 'super_', '__super__'].includes(name)) {return}
@@ -44,6 +52,14 @@ export function cloneCtor(dest, src, filter) {
   _clone(dest, src, filterFn);
 }
 
+/**
+ * Clone the constructor's prototype to dest
+ *
+ * **Note**: 'Class', 'constructor' members are not cloned.
+ * @param {Function} dest
+ * @param {Function} src
+ * @param {Function} [filter]
+ */
 export function clonePrototype(dest, src, filter) {
   const filterFn = function (name, value) {
     if (['Class', 'constructor'].includes(name)) {return}
