@@ -47,7 +47,7 @@ Renames and re-exports [_clone](clone.md#_clone)
 
 #### Defined in
 
-[src/_clone.js:8](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L8)
+[src/_clone.js:8](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/_clone.js#L8)
 
 ## Functions
 
@@ -73,21 +73,25 @@ the dest object
 
 #### Defined in
 
-[src/_clone.js:22](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L22)
+[src/_clone.js:22](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/_clone.js#L22)
 
 ___
 
 ### cloneCtor
 
-▸ **cloneCtor**(`dest`, `src`, `filter`): `void`
+▸ **cloneCtor**(`dest`, `src`, `filter?`): `void`
+
+Clone the constructor(static members) to dest
+
+**Note**: 'length', 'name', 'arguments', 'caller', 'prototype', 'super_', '__super__' members are not cloned.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `dest` | `any` |
-| `src` | `any` |
-| `filter` | `any` |
+| `dest` | `Function` |
+| `src` | `Function` |
+| `filter?` | `Function` |
 
 #### Returns
 
@@ -95,21 +99,25 @@ ___
 
 #### Defined in
 
-[src/_clone.js:38](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L38)
+[src/_clone.js:46](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/_clone.js#L46)
 
 ___
 
 ### clonePrototype
 
-▸ **clonePrototype**(`dest`, `src`, `filter`): `void`
+▸ **clonePrototype**(`dest`, `src`, `filter?`): `void`
+
+Clone the constructor's prototype to dest
+
+**Note**: 'Class', 'constructor' members are not cloned.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `dest` | `any` |
-| `src` | `any` |
-| `filter` | `any` |
+| `dest` | `Function` |
+| `src` | `Function` |
+| `filter?` | `Function` |
 
 #### Returns
 
@@ -117,4 +125,4 @@ ___
 
 #### Defined in
 
-[src/_clone.js:47](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/_clone.js#L47)
+[src/_clone.js:63](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/_clone.js#L63)

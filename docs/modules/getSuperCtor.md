@@ -38,4 +38,4 @@ Return the Super Constructor of the ctor
 
 #### Defined in
 
-[src/getSuperCtor.js:10](https://github.com/snowyu/inherits-ex.js/blob/696e49c/src/getSuperCtor.js#L10)
+[src/getSuperCtor.js:10](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/getSuperCtor.js#L10)
