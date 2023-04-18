@@ -46,7 +46,7 @@ return the found class or undefined
 
 #### Defined in
 
-[src/inherits-ex.js:58](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/inherits-ex.js#L58)
+[src/inherits-ex.js:58](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/inherits-ex.js#L58)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[src/inherits-ex.js:60](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/inherits-ex.js#L60)
+[src/inherits-ex.js:60](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/inherits-ex.js#L60)
 
 ## Functions
 
@@ -79,7 +79,7 @@ Add the class to the scope
 
 #### Defined in
 
-[src/inherits-ex.js:133](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/inherits-ex.js#L133)
+[src/inherits-ex.js:133](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/inherits-ex.js#L133)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[src/inherits-ex.js:97](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/inherits-ex.js#L97)
+[src/inherits-ex.js:97](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/inherits-ex.js#L97)
 
 ___
 
@@ -128,7 +128,7 @@ the found class or undefined.
 
 #### Defined in
 
-[src/inherits-ex.js:85](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/inherits-ex.js#L85)
+[src/inherits-ex.js:85](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/inherits-ex.js#L85)
 
 ___
 
@@ -148,4 +148,4 @@ ___
 
 #### Defined in
 
-[src/inherits-ex.js:62](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/inherits-ex.js#L62)
+[src/inherits-ex.js:62](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/inherits-ex.js#L62)

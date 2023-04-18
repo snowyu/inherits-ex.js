@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/mixin.js:442](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/mixin.js#L442)
+[src/mixin.js:442](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/mixin.js#L442)

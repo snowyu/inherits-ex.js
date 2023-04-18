@@ -41,4 +41,4 @@ Lowest Common Ancestor class or undefined
 
 #### Defined in
 
-[src/getClosestCommonAncestorCtor.js:12](https://github.com/snowyu/inherits-ex.js/blob/505b794/src/getClosestCommonAncestorCtor.js#L12)
+[src/getClosestCommonAncestorCtor.js:12](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/getClosestCommonAncestorCtor.js#L12)
