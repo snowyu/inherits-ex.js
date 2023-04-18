@@ -28,3 +28,24 @@ export function _clone(dest, src, filter) {
 }
 
 export default _clone;
+
+export function cloneCtor(dest, src, filter) {
+  const filterFn = function (name, value) {
+    if (['length', 'name', 'arguments', 'caller', 'prototype', 'super_', '__super__'].includes(name)) {return}
+    if (value !== undefined && filter) {value = filter(name, value)}
+    return value;
+  }
+  _clone(dest, src, filterFn);
+}
+
+export function clonePrototype(dest, src, filter) {
+  const filterFn = function (name, value) {
+    if (['Class', 'constructor'].includes(name)) {return}
+    if (value !== undefined && filter) {value = filter(name, value)}
+    return value;
+  }
+
+  const sp = src.prototype;
+  const dp = dest.prototype;
+  _clone(dp, sp, filterFn);
+}

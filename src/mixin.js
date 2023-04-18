@@ -2,7 +2,7 @@ import {inheritsDirectly} from './inheritsDirectly.js';
 import {isInheritedFrom } from './isInheritedFrom.js';
 import {isMixinedFrom   } from './isMixinedFrom.js';
 import {defineProperty} from './defineProperty.js';
-import {_clone}         from './_clone.js';
+import {_clone, cloneCtor, clonePrototype} from './_clone.js';
 import getSuperCtor     from './getSuperCtor.js';
 
 const setPrototypeOf      = Object.setPrototypeOf;
@@ -180,7 +180,7 @@ function _getFilterFunc(filter){
       }
     }
   } else if (typeof filter !== 'function') {
-    throw new TypeError(`filter option value error:${  filter}`);
+    throw new TypeError(`filter option value error:${filter}`);
   }
   return filter;
 }
@@ -200,7 +200,7 @@ function _clone(dest, src, ctor, filter) {
 }
 */
 
-function cloneCtor(dest, src, filter) {
+function _cloneCtor(dest, src, filter) {
   const filterFn = function (name, value) {
     if ([ 'length', 'name', 'arguments', 'caller', 'prototype'].includes(name)) {return;}
     if (value !== undefined) {value = filter(name, value);}
@@ -218,7 +218,7 @@ function cloneCtor(dest, src, filter) {
 }
 
 // clone src(superCtor) to dest(MixinCtor)
-function clonePrototype(dest, src, filter) {
+function _clonePrototype(dest, src, filter) {
   // filter = _getFilterFunc(filter);
   const filterFn = function (name, value) {
     if (['Class', 'constructor'].includes(name)) {return;}
