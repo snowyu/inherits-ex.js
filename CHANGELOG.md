@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.10](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.9...v2.1.0-alpha.10) (2023-04-19)
+
+
+### Bug Fixes
+
+* **isEmptyFunction:** should test empty function expression and method ([81559ee](https://github.com/snowyu/inherits-ex.js/commit/81559ee64b09ad5ae241b864481f0131f2e22cd4))
+
 ## [2.1.0-alpha.9](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.8...v2.1.0-alpha.9) (2023-04-18)
 
 
