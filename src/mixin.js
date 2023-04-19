@@ -158,25 +158,25 @@ function _mixinGenMethodES6(aMixinSuper, aMethod, src) {
 
 function _getFilterFunc(filter){
   if (!filter) {
-    filter = function all(name, value){return value};
+    filter = function all(name, desc){return desc};
   } else if (filter === 1) {
-    filter = function raiseErrorOnSuper(name, value) {
-      if (typeof value === 'function' && isSuperInFunction(value)) {
+    filter = function raiseErrorOnSuper(name, desc) {
+      if (typeof desc.value === 'function' && isSuperInFunction(desc.value)) {
         throw new Error(`${name  } method: should not use super`);
       }
-      return value;
+      return desc;
     }
   } else if (filter === 2) {
-    filter = function skipOnSuper(name, value) {
-      if (typeof value !== 'function' || !isSuperInFunction(value)) {
-        return value;
+    filter = function skipOnSuper(name, desc) {
+      if (typeof desc.value !== 'function' || !isSuperInFunction(desc.value)) {
+        return desc;
       }
     }
   } else if (Array.isArray(filter) && filter.length) {
     const inFilter = filter;
-    filter = function allowedInFilter(name, value) {
+    filter = function allowedInFilter(name, desc) {
       if (inFilter.includes(name)) {
-        return value;
+        return desc;
       }
     }
   } else if (typeof filter !== 'function') {
@@ -315,7 +315,7 @@ function _clonePrototype(dest, src, filter) {
 /**
  * @callback FilterFn
  * @param {string} name
- * @param {any} value
+ * @param {PropertyDescriptor} descriptor
  * @returns {any} include it return value directly or return undefined
  */
 
@@ -392,7 +392,7 @@ export function mixin(ctor, superCtor, options) {
  * @param {FilterFn|string[]|filterOpts=} options.filter (optional) A filter that specifies which members to include
  *   from the `superCtor`. If no filter is specified, all properties and methods from `superCtor` will be mixed in.
  *
- *   * It could be a function that takes a `name` and `value` parameter and returns a value to include or `undefined`
+ *   * It could be a function that takes a `name` and `descriptor` parameter and returns true to include or `undefined`
  *   * Or an array of strings that represent member names to include
  *   * Or the filter options (`filterOpts`) available (`all`, `errSuper`, or `skipSuper`)
  *     * `all`: include all members from the superCtor without check whether the method used the `super()`.

@@ -24,9 +24,9 @@ export function _clone(dest, src, filter) {
 
   for (let i = 0; i < names.length; i++ ) {
     const k = names[i];
-    const value = filter(k, src[k]);
+    const desc = getOwnPropertyDescriptor(src, k);
+    const value = filter(k, desc);
     if (value !== undefined) {
-      const desc = getOwnPropertyDescriptor(src, k);
       defineProperty(dest, k, desc);
     }
   }
