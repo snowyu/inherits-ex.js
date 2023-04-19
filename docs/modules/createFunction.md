@@ -51,4 +51,4 @@ var fn = createFunction('yourFuncName', ['arg1', 'arg2'], 'return log(arg1+arg2)
 
 #### Defined in
 
-[src/createFunction.js:32](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/createFunction.js#L32)
+[src/createFunction.js:32](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/createFunction.js#L32)

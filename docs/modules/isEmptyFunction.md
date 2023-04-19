@@ -47,4 +47,4 @@ isEmptyFunction(()=>{}); // -> true
 
 #### Defined in
 
-[src/isEmptyFunction.js:12](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/isEmptyFunction.js#L12)
+[src/isEmptyFunction.js:12](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/isEmptyFunction.js#L12)

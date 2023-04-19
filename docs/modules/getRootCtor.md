@@ -39,4 +39,4 @@ Get the "root" class of the ctor
 
 #### Defined in
 
-[src/getRootCtor.js:10](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/getRootCtor.js#L10)
+[src/getRootCtor.js:10](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/getRootCtor.js#L10)
