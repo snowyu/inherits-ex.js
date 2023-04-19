@@ -47,7 +47,7 @@ Renames and re-exports [_clone](clone.md#_clone)
 
 #### Defined in
 
-[src/_clone.js:8](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/_clone.js#L8)
+[src/_clone.js:8](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/_clone.js#L8)
 
 ## Functions
 
@@ -73,7 +73,7 @@ the dest object
 
 #### Defined in
 
-[src/_clone.js:22](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/_clone.js#L22)
+[src/_clone.js:22](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/_clone.js#L22)
 
 ___
 
@@ -99,7 +99,7 @@ Clone the constructor(static members) to dest
 
 #### Defined in
 
-[src/_clone.js:46](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/_clone.js#L46)
+[src/_clone.js:46](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/_clone.js#L46)
 
 ___
 
@@ -125,4 +125,4 @@ Clone the constructor's prototype to dest
 
 #### Defined in
 
-[src/_clone.js:63](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/_clone.js#L63)
+[src/_clone.js:63](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/_clone.js#L63)

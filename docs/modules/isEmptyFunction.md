@@ -26,6 +26,13 @@ Renames and re-exports [isEmptyFunction](isEmptyFunction.md#isemptyfunction)
 
 Checks whether a given function is empty or not.
 
+**`Example`**
+
+```ts
+isEmptyFunction(Array.prototype.push); // -> false
+isEmptyFunction(()=>{}); // -> true
+```
+
 #### Parameters
 
 | Name | Type | Description |
@@ -40,4 +47,4 @@ Checks whether a given function is empty or not.
 
 #### Defined in
 
-[src/isEmptyFunction.js:8](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/isEmptyFunction.js#L8)
+[src/isEmptyFunction.js:12](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/isEmptyFunction.js#L12)

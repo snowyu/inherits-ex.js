@@ -18,4 +18,4 @@
 
 #### Defined in
 
-[src/getProtoChain.js:50](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/getProtoChain.js#L50)
+[src/getProtoChain.js:50](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/getProtoChain.js#L50)

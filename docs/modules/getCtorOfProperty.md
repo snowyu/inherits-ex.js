@@ -41,4 +41,4 @@ return the class of OwnProperty, or undefined if not found
 
 #### Defined in
 
-[src/getCtorOfProperty.js:9](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/getCtorOfProperty.js#L9)
+[src/getCtorOfProperty.js:9](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/getCtorOfProperty.js#L9)

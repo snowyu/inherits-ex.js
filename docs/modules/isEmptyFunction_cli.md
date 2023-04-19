@@ -24,20 +24,20 @@ Renames and re-exports [isEmptyFunctionCli](isEmptyFunction_cli.md#isemptyfuncti
 
 ▸ **isEmptyFunctionCli**(`aFunc`): `boolean`
 
-Determines whether the given string represents an empty constructor.
+Determines whether the given function is empty.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `aFunc` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `aFunc` | `Function` | The function to check. |
 
 #### Returns
 
 `boolean`
 
-- Returns true if the string represents an empty constructor, otherwise false
+- Returns true if it's empty, otherwise false
 
 #### Defined in
 
-[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/44c1f65/src/isEmptyFunction-cli.js#L7)
+[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/81559ee/src/isEmptyFunction-cli.js#L7)
