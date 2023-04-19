@@ -1,11 +1,13 @@
 /**
- * Determines whether the given string represents an empty constructor.
+ * Determines whether the given function is empty.
  *
- * @param {string} vStr - The string to check.
- * @returns {boolean} - Returns true if the string represents an empty constructor, otherwise false
+ * @param {Function} aFunc - The function to check.
+ * @returns {boolean} - Returns true if it's empty, otherwise false
  */
 export function isEmptyFunctionCli(aFunc) {
-  return /^function\s*\S*\s*\((.|[\n\r\u2028\u2029])*\)\s*{[\s;]*}$/g.test(aFunc.toString());
+  aFunc = aFunc.toString()
+  return /^(function\s+)?\S*\s*\((.|[\n\r\u2028\u2029])*\)\s*{[\s;\n\r]*}$/g.test(aFunc) ||
+    /^\((.|[\n\r\u2028\u2029])*\)\s*=>\s*{[\s;]*}$/g.test(aFunc);
 };
 
 export default isEmptyFunctionCli;
