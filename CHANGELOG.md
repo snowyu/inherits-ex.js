@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.11](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.10...v2.1.0-alpha.11) (2023-04-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* mixin and _clone callback filter function pass property descriptor instead value
+
+### Features
+
+* mixin and _clone callback filter function pass property descriptor instead value ([eff18e3](https://github.com/snowyu/inherits-ex.js/commit/eff18e3b06ceb009bccbb3eeb667f6530022c3b3))
+
 ## [2.1.0-alpha.10](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.9...v2.1.0-alpha.10) (2023-04-19)
 
 
