@@ -27,6 +27,21 @@ Renames and re-exports [defineProperty](defineProperty.md#defineproperty)
 Define the object's property and value. The property is not enumerable
 by default.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `object` | `any` | The object to define the property on. |
+| `key` | `string` | the property name. |
+| `value` | `any` | the property value. |
+| `aOptions?` | `any` | the property descriptor. |
+
+#### Returns
+
+`any`
+
+The object that was passed to the function, with the specified property added or modified.
+
 **`Example`**
 
 ```ts
@@ -68,21 +83,6 @@ defineProperty(myObject, "myConfigurableProperty", 42, {
 });
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `object` | `any` | The object to define the property on. |
-| `key` | `string` | the property name. |
-| `value` | `any` | the property value. |
-| `aOptions?` | `any` | the property descriptor. |
-
-#### Returns
-
-`any`
-
-The object that was passed to the function, with the specified property added or modified.
-
 #### Defined in
 
-[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/defineProperty.js#L58)
+[src/defineProperty.js:58](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/defineProperty.js#L58)

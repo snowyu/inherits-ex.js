@@ -32,6 +32,19 @@ Returns an array of the names of constructors in the prototype chain of the give
 
 **Note**: the `getProtoChain.maxDepth` for `mixinCtors` is 10, You can change it.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ctor` | `Function` | The constructor to get the prototype chain of. |
+| `depth` | `any` | - |
+
+#### Returns
+
+`string`[]
+
+An array of the names of constructors in the prototype chain of the given constructor.
+
 **`Throws`**
 
 If the maximum depth of nesting is reached.
@@ -49,19 +62,6 @@ const protoChain = getProtoChain(Cat);
 console.log(protoChain); // Output: ["Animal", "Mammal","Cat"]
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ctor` | `Function` | The constructor to get the prototype chain of. |
-| `depth` | `any` | - |
-
-#### Returns
-
-`string`[]
-
-An array of the names of constructors in the prototype chain of the given constructor.
-
 #### Defined in
 
-[src/getProtoChain.js:23](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/getProtoChain.js#L23)
+[src/getProtoChain.js:23](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/getProtoChain.js#L23)

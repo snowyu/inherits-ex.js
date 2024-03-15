@@ -26,6 +26,19 @@ Renames and re-exports [createObject](createObject.md#createobject)
 
 Creates a new instance of the given class using the specified arguments.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `aClass` | `Function` | The class to instantiate. |
+| `...args` | `any` | The arguments to pass to the constructor of the class. |
+
+#### Returns
+
+`any`
+
+- A new instance of the class.
+
 **`Example`**
 
 ```ts
@@ -41,19 +54,6 @@ const john = createObject(Person, 'John', 30);
 console.log(john); // Output: Person { name: 'John', age: 30 }
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `aClass` | `Function` | The class to instantiate. |
-| `...args` | `any` | The arguments to pass to the constructor of the class. |
-
-#### Returns
-
-`any`
-
-- A new instance of the class.
-
 #### Defined in
 
-[src/createObject.js:24](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/createObject.js#L24)
+[src/createObject.js:24](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/createObject.js#L24)

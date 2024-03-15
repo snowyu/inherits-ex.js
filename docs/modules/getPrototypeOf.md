@@ -38,4 +38,4 @@ Returns the prototype of an object.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:167
+node_modules/.pnpm/typescript@5.4.2/node_modules/typescript/lib/lib.es5.d.ts:167

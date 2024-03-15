@@ -26,6 +26,19 @@ Renames and re-exports [createObjectWith](createObjectWith.md#createobjectwith)
 
 Creates a new instance of the given class using the specified arguments.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `aClass` | `Function` | The class to create an instance of. |
+| `aArguments` | `any`[] | Arguments to pass to the class constructor. |
+
+#### Returns
+
+`any`
+
+A new instance of the class.
+
 **`Example`**
 
 ```ts
@@ -42,19 +55,6 @@ const john = createObjectWith(Person, ['John', 30]);
 console.log(john); // Output: Person { name: 'John', age: 30 }
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `aClass` | `Function` | The class to create an instance of. |
-| `aArguments` | `any`[] | Arguments to pass to the class constructor. |
-
-#### Returns
-
-`any`
-
-A new instance of the class.
-
 #### Defined in
 
-[src/createObjectWith.js:27](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/createObjectWith.js#L27)
+[src/createObjectWith.js:27](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/createObjectWith.js#L27)

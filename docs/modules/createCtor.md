@@ -44,4 +44,4 @@ If the body is null or undefined, a default body is created that calls the paren
 
 #### Defined in
 
-[src/createCtor.js:15](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/createCtor.js#L15)
+[src/createCtor.js:15](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/createCtor.js#L15)

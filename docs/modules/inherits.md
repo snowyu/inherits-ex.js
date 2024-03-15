@@ -50,6 +50,20 @@ versions of JavaScript. The function also supports CoffeeScript-generated classe
   * It is important to note that for the empty constructor, the instance of `ctor` may not be the current class,
     but the `Class` property is always set to the current class for instance.
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ctor` | `Function` | the child class that needs to inherit from the parent class. |
+| `superCtors` | `Function` \| `Function`[] | the parent class that the child class needs to inherit from. The first class is the parent of child class ctor, the left classes will be chained(inherits) one by one, if `superCtors` is an array of classes. |
+| `staticInherit?` | `boolean` | optional indicating whether or not the static properties of the parent class should be inherited as well. The default value is `true`. |
+
+#### Returns
+
+`boolean`
+
+returns true if inheritance was successful.
+
 **`Example`**
 
 ```ts
@@ -90,20 +104,6 @@ fluffy.speak(); // Output: Fluffy makes a noise.
 fluffy.meow(); // Output: Fluffy meows.
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ctor` | `Function` | the child class that needs to inherit from the parent class. |
-| `superCtors` | `Function` \| `Function`[] | the parent class that the child class needs to inherit from. The first class is the parent of child class ctor, the left classes will be chained(inherits) one by one, if `superCtors` is an array of classes. |
-| `staticInherit?` | `boolean` | optional indicating whether or not the static properties of the parent class should be inherited as well. The default value is `true`. |
-
-#### Returns
-
-`boolean`
-
-returns true if inheritance was successful.
-
 #### Defined in
 
-[src/inherits.js:144](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits.js#L144)
+[src/inherits.js:144](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits.js#L144)

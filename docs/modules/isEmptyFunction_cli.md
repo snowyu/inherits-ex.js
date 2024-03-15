@@ -40,4 +40,4 @@ Determines whether the given function is empty.
 
 #### Defined in
 
-[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/isEmptyFunction-cli.js#L7)
+[src/isEmptyFunction-cli.js:7](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/isEmptyFunction-cli.js#L7)

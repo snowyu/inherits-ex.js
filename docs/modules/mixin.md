@@ -35,11 +35,11 @@ Renames and re-exports [mixins](mixin.md#mixins)
 
 ### FilterFn
 
-Ƭ **FilterFn**<\>: <\>(`name`: `string`, `descriptor`: `PropertyDescriptor`) => `any`
+Ƭ **FilterFn**\<\>: \<\>(`name`: `string`, `descriptor`: `PropertyDescriptor`) => `any`
 
 #### Type declaration
 
-▸ <\>(`name`, `descriptor`): `any`
+▸ \<\>(`name`, `descriptor`): `any`
 
 ##### Parameters
 
@@ -54,7 +54,7 @@ Renames and re-exports [mixins](mixin.md#mixins)
 
 #### Defined in
 
-[src/mixin.js:316](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/mixin.js#L316)
+[src/mixin.js:316](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/mixin.js#L316)
 
 ## Functions
 
@@ -78,7 +78,7 @@ return true if successful
 
 #### Defined in
 
-[src/mixin.js:338](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/mixin.js#L338)
+[src/mixin.js:338](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/mixin.js#L338)
 
 ___
 
@@ -102,6 +102,20 @@ If the target class does not already have a `mixinCtor_` constructor it'll creat
 2. the `mixin` does not create a prototype chain between "`superCtors`"(just copy the members from `superCtors`), so
    you cannot clone these methods of `superCtor` which use the `super()`. If you need to use `super()` in these
    methods, you should use `inherits` instead of `mixin`.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ctor` | `Function` | the target class that needs to mixin from the `superCtors` class. |
+| `superCtors` | `Function` \| `Function`[] | The class(es) to be used as sources of properties and methods. |
+| `options` | `any` | - |
+
+#### Returns
+
+`boolean`
+
+return true if successful
 
 **`Example`**
 
@@ -132,20 +146,6 @@ myObj.methodA(); // logs 'Method A called'
 myObj.methodB(); // logs 'Method B called'
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ctor` | `Function` | the target class that needs to mixin from the `superCtors` class. |
-| `superCtors` | `Function` \| `Function`[] | The class(es) to be used as sources of properties and methods. |
-| `options` | `any` | - |
-
-#### Returns
-
-`boolean`
-
-return true if successful
-
 #### Defined in
 
-[src/mixin.js:431](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/mixin.js#L431)
+[src/mixin.js:431](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/mixin.js#L431)

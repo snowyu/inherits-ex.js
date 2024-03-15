@@ -22,7 +22,7 @@
 
 ### requireClass
 
-• **requireClass**: (`aClassName`: `string` \| `Function`, `aScope`: `Function` \| `string`[] \| `Function`[] \| { `[name: string]`: `Function`;  }, `aValues`: `Function`[]) => `Function`
+• **requireClass**: (`aClassName`: `string` \| `Function`, `aScope`: `Function` \| `string`[] \| `Function`[] \| \{ `[name: string]`: `Function`;  }, `aValues`: `Function`[]) => `Function`
 
 #### Type declaration
 
@@ -35,7 +35,7 @@ Retrieve a class from the registered classes in the scope by its name.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `aClassName` | `string` \| `Function` | The class name or class. if it's class return it directly. |
-| `aScope` | `Function` \| `string`[] \| `Function`[] \| { `[name: string]`: `Function`;  } | The scope with all registered classes. it'll be called to find the class if the aScope is a `function(className):Function` |
+| `aScope` | `Function` \| `string`[] \| `Function`[] \| \{ `[name: string]`: `Function`;  } | The scope with all registered classes. it'll be called to find the class if the aScope is a `function(className):Function` |
 | `aValues` | `Function`[] | If `aScope` is an array of strings, then `aValues` must exist and can only be an array of corresponding classes. |
 
 ##### Returns
@@ -46,7 +46,7 @@ return the found class or undefined
 
 #### Defined in
 
-[src/inherits-ex.js:58](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits-ex.js#L58)
+[src/inherits-ex.js:58](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits-ex.js#L58)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[src/inherits-ex.js:60](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits-ex.js#L60)
+[src/inherits-ex.js:60](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits-ex.js#L60)
 
 ## Functions
 
@@ -79,7 +79,7 @@ Add the class to the scope
 
 #### Defined in
 
-[src/inherits-ex.js:133](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits-ex.js#L133)
+[src/inherits-ex.js:133](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits-ex.js#L133)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[src/inherits-ex.js:97](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits-ex.js#L97)
+[src/inherits-ex.js:97](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits-ex.js#L97)
 
 ___
 
@@ -117,7 +117,7 @@ Get the class from class name in scope
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `aClassName` | `any` | the class name to find |
-| `aScope` | `Function` \| `string`[] \| `Function`[] \| { `[name: string]`: `Function`;  } | The optional additional scope with all registered classes. It'll be called to find the class if the aScope is a `function(className):Function`. |
+| `aScope` | `Function` \| `string`[] \| `Function`[] \| \{ `[name: string]`: `Function`;  } | The optional additional scope with all registered classes. It'll be called to find the class if the aScope is a `function(className):Function`. |
 | `aValues` | `Function`[] | If `aScope` is an array of strings, then `aValues` must exist and can only be an array of corresponding classes. |
 
 #### Returns
@@ -128,7 +128,7 @@ the found class or undefined.
 
 #### Defined in
 
-[src/inherits-ex.js:85](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits-ex.js#L85)
+[src/inherits-ex.js:85](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits-ex.js#L85)
 
 ___
 
@@ -148,4 +148,4 @@ ___
 
 #### Defined in
 
-[src/inherits-ex.js:62](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/inherits-ex.js#L62)
+[src/inherits-ex.js:62](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inherits-ex.js#L62)

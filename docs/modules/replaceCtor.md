@@ -26,6 +26,19 @@ Renames and re-exports [replaceCtor](replaceCtor.md#replacector)
 
 Replace the prototype of an object with the prototype of a given class
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `aObject` | `any` | The object whose prototype needs to be replaced |
+| `aClass` | `Function` | The class whose prototype should be used to replace the object's prototype |
+
+#### Returns
+
+`boolean`
+
+- Returns true if the object's prototype was successfully replaced, otherwise returns false
+
 **`Example`**
 
 ```ts
@@ -53,19 +66,6 @@ replaceCtor(mary, Student); // returns true
 mary.greet(); // logs "Hello, I'm student. My name is Mary"
 ```
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `aObject` | `any` | The object whose prototype needs to be replaced |
-| `aClass` | `Function` | The class whose prototype should be used to replace the object's prototype |
-
-#### Returns
-
-`boolean`
-
-- Returns true if the object's prototype was successfully replaced, otherwise returns false
-
 #### Defined in
 
-[src/replaceCtor.js:38](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/replaceCtor.js#L38)
+[src/replaceCtor.js:38](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/replaceCtor.js#L38)

@@ -31,7 +31,7 @@ Retrieve a class from the registered classes in the scope by its name.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `aClassName` | `string` \| `Function` | The class name or class. if it's class return it directly. |
-| `aScope` | `Function` \| `string`[] \| `Function`[] \| { `[name: string]`: `Function`;  } | The scope with all registered classes. it'll be called to find the class if the aScope is a `function(className):Function` |
+| `aScope` | `Function` \| `string`[] \| `Function`[] \| \{ `[name: string]`: `Function`;  } | The scope with all registered classes. it'll be called to find the class if the aScope is a `function(className):Function` |
 | `aValues` | `Function`[] | If `aScope` is an array of strings, then `aValues` must exist and can only be an array of corresponding classes. |
 
 #### Returns
@@ -42,4 +42,4 @@ return the found class or undefined
 
 #### Defined in
 
-[src/get-class-by-name.js:40](https://github.com/snowyu/inherits-ex.js/blob/eff18e3/src/get-class-by-name.js#L40)
+[src/get-class-by-name.js:40](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/get-class-by-name.js#L40)

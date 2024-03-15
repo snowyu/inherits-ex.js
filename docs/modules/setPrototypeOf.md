@@ -30,7 +30,7 @@ Sets the prototype of a specified object o to object proto or null. Returns the 
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.core.d.ts:337
+node_modules/.pnpm/typescript@5.4.2/node_modules/typescript/lib/lib.es2015.core.d.ts:337
 
 ___
 
@@ -53,4 +53,4 @@ Sets the prototype of a specified object o to object proto or null. Returns the 
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es2015.core.d.ts:337
+node_modules/.pnpm/typescript@5.4.2/node_modules/typescript/lib/lib.es2015.core.d.ts:337
