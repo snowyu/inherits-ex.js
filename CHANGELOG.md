@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0-alpha.12](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.11...v2.1.0-alpha.12) (2024-03-15)
+
+
+### Bug Fixes
+
+* webpack5 Module parse failed: 'import' and 'export' may appear only with 'sourceType: module' ([ec2431d](https://github.com/snowyu/inherits-ex.js/commit/ec2431d048f5fddc05c0d996fa8aa511189627c3))
+
 ## [2.1.0-alpha.11](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.10...v2.1.0-alpha.11) (2023-04-19)
 
 
