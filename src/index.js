@@ -1,3 +1,4 @@
+// @sourceType: module
 export * from './_clone.js';
 export * from './_extend.js';
 export * from './createCtor.js';
