@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.1.0](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.12...v2.1.0) (2024-08-29)
+
 ## [2.1.0-alpha.12](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.11...v2.1.0-alpha.12) (2024-03-15)
 
 
