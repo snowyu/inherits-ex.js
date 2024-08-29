@@ -26,6 +26,12 @@ Renames and re-exports [createFunction](createFunction.md#createfunction)
 
 Creates a new function with the given name, arguments, body, scope, and values.
 
+**`Example`**
+
+```ts
+var fn = createFunction('yourFuncName', ['arg1', 'arg2'], 'return log(arg1+arg2);', {log:console.log.bind(console)});
+```
+
 #### Parameters
 
 | Name | Type | Description |
@@ -43,12 +49,6 @@ Creates a new function with the given name, arguments, body, scope, and values.
 
 - The created function.
 
-**`Example`**
-
-```ts
-var fn = createFunction('yourFuncName', ['arg1', 'arg2'], 'return log(arg1+arg2);', {log:console.log.bind(console)});
-```
-
 #### Defined in
 
-[src/createFunction.js:32](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/createFunction.js#L32)
+[src/createFunction.js:32](https://github.com/snowyu/inherits-ex.js/blob/962aaeb/src/createFunction.js#L32)

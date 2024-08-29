@@ -28,20 +28,6 @@ Sets the prototype of an object to a new prototype, and inherits from a given cl
 
 make sure the aClass.prototype hook to the aObject instance.
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `aObject` | `any` | The object whose prototype needs to be set. |
-| `aClass` | `Function` | The class to inherit from. |
-| `staticInherit?` | `boolean` | Whether to inherit static properties or not. defaults to true |
-
-#### Returns
-
-`boolean`
-
-- Whether the prototype was successfully set or not.
-
 **`Example`**
 
 ```js
@@ -65,6 +51,20 @@ inheritsObject(jane, Person);
 jane.sayHello(); // logs "Hello, my name is Jane"
 ```
 
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `aObject` | `any` | The object whose prototype needs to be set. |
+| `aClass` | `Function` | The class to inherit from. |
+| `staticInherit?` | `boolean` | Whether to inherit static properties or not. defaults to true |
+
+#### Returns
+
+`boolean`
+
+- Whether the prototype was successfully set or not.
+
 #### Defined in
 
-[src/inheritsObject.js:37](https://github.com/snowyu/inherits-ex.js/blob/ec2431d/src/inheritsObject.js#L37)
+[src/inheritsObject.js:37](https://github.com/snowyu/inherits-ex.js/blob/962aaeb/src/inheritsObject.js#L37)

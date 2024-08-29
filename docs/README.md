@@ -86,9 +86,7 @@ import inherits from 'inherits-ex/lib/inherits'
 The default constructor chain in ES6 Class may fail if the constructor is empty, because the constructor cannot be directly called if the `Reflect.construct(target, args, newTarget)` native method is not supported. In such a case, you may need to manually define a constructor or use a polyfill to support the `Reflect.construct()` method.
 
 ```javascript
-import inherits from 'inherits-ex/lib/inherits'
-import getPrototypeOf from 'inherits-ex/lib/getPrototypeOf'
-import defineProperty from 'inherits-ex/lib/defineProperty'
+import { defineProperty, getOwnPropValue, getPrototypeOf, inherits } from 'inherits-ex'
 
 // Or use function class instead of ES6 class:
 // function Root() {this.initialize.apply(this, arguments)}
@@ -108,7 +106,8 @@ class A {
    */
   constructor() {
     // this `Class` prop is only created by the `inherits` function or `newPrototype` function.
-    if (!this.Class) {
+    // make sure the current `constructor.prototype` whether has the property 'Class'
+    if (!getOwnPropValue(getPrototypeOf(this), 'Class')) {
       const proto = getPrototypeOf(this)
       const cls = proto.constructor
       defineProperty(this, 'Class', cls)
@@ -130,7 +129,7 @@ class A {
 
 inherits(A, Root)
 
-const obj = new A() // Bug: The initialize method can not be executed.
+const obj = new A() // Bug: The initialize method can not be executed if no process in constructor.
 ```
 
 #### Usage
