@@ -8,7 +8,7 @@ import {getSuperCtor} from "./getSuperCtor";
  * @returns {Function}
  */
 export function getRootCtor(ctor, rootCtor) {
-  if (rootCtor == null) rootCtor = Object
+  if (rootCtor == null) {rootCtor = Object}
   let superCtor = getSuperCtor(ctor)
   while (superCtor && superCtor !== rootCtor && superCtor !== Object) {
     ctor = superCtor
