@@ -41,6 +41,51 @@ Differs from the standard implementation is:
 The standard `inherits` implementation is in `inherits-ex/lib/inheritsDirectly`,
 of cause it's the coffee-script supports and browser-friendly.
 
+## Installation
+
+```bash
+npm install inherits-ex
+```
+
+## ESM Import
+
+This package provides both **CommonJS** (`.js` in `lib/`) and **ES Module** (`.mjs` in `lib/`) builds.
+
+> ⚠️ The existing code examples in this README use extensionless subpath imports (e.g., `'inherits-ex/lib/inherits'`).
+> These work with bundlers and CommonJS, but **in native Node.js ESM** you must use `.mjs` extension or the main entry import below.
+
+### Main entry (recommended)
+
+Import the functions you need from the package entry point — resolves correctly for both ESM and CJS consumers:
+
+```js
+import { inherits, inheritsDirectly, isInheritedFrom, mixin } from 'inherits-ex'
+```
+
+Or use CommonJS:
+
+```js
+const { inherits, inheritsDirectly, isInheritedFrom, mixin } = require('inherits-ex')
+```
+
+### Subpath imports
+
+You can also import individual modules. In **native Node.js ESM**, the full path with `.mjs` extension is required:
+
+```js
+import inherits from 'inherits-ex/lib/inherits.mjs'
+import isInheritedFrom from 'inherits-ex/lib/isInheritedFrom.mjs'
+```
+
+In **CommonJS**, the extensionless path continues to work:
+
+```js
+const inherits = require('inherits-ex/lib/inherits')
+```
+
+> **Note**: Most bundlers (webpack, rollup) resolve the extensionless subpath imports automatically.
+> For native Node.js ESM (`"type": "module"` in your `package.json`), use the `.mjs` extension for subpath imports.
+
 ## API
 
 Full API see the folder: [docs](docs/modules.md)

@@ -64,4 +64,4 @@ An array of the names of constructors in the prototype chain of the given constr
 
 #### Defined in
 
-[src/getProtoChain.js:23](https://github.com/snowyu/inherits-ex.js/blob/962aaeb/src/getProtoChain.js#L23)
+[src/getProtoChain.js:23](https://github.com/snowyu/inherits-ex.js/blob/f0a70a8/src/getProtoChain.js#L23)
