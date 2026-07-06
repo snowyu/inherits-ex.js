@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.2.0](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0...v2.2.0) (2026-07-06)
+
+
+### Features
+
+* add ESM dual-package support via lib/*.mjs ([dafcefb](https://github.com/snowyu/inherits-ex.js/commit/dafcefb9f7503aa64cac1644b40bec9f65e59dd7))
+
 ## [2.1.0](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.12...v2.1.0) (2024-08-29)
 
 ## [2.1.0-alpha.12](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0-alpha.11...v2.1.0-alpha.12) (2024-03-15)
