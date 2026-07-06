@@ -42,4 +42,4 @@ return the found class or undefined
 
 #### Defined in
 
-[src/get-class-by-name.js:40](https://github.com/snowyu/inherits-ex.js/blob/f0a70a8/src/get-class-by-name.js#L40)
+[src/get-class-by-name.js:40](https://github.com/snowyu/inherits-ex.js/blob/4bef580/src/get-class-by-name.js#L40)
