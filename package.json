@@ -8,7 +8,7 @@
     "email": "snowyu.lee@gmail.com"
   },
   "main": "./lib/index.js",
-  "module": "./src/index.js",
+  "module": "./lib/index.mjs",
   "files": [
     "README.md",
     "LICENSE-MIT",
@@ -64,7 +64,7 @@
   ],
   "scripts": {
     "build": "npm run build.cjs && npm run build.ts && npm run doc.md",
-    "build.cjs": "babel src --out-dir lib --config-file ./.babelrc",
+    "build.cjs": "babel src --out-dir lib --config-file ./.babelrc && node scripts/copy-to-mjs.mjs",
     "build.ts": "tsc --declaration --emitDeclarationOnly --outDir lib",
     "clean": "rm -fr web docs types lib",
     "clean.doc": "rm -fr web docs",
@@ -76,9 +76,18 @@
     "lint.fix": "npm run lint -- --fix",
     "release": "npm run clean && npm run build && git add docs && git ci -m 'docs: update API docs' && npx commit-and-tag-version -s",
     "release.alpha": "npm run release -- --prerelease alpha",
-    "test": "mocha"
+    "test": "mocha",
+    "test.esm": "node --test test/esm-test.mjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./*": "./*"
   },
   "browser": {
-    "./lib/isEmptyFunction.js": "./lib/isEmptyFunction-cli.js"
+    "./lib/isEmptyFunction.js": "./lib/isEmptyFunction-cli.js",
+    "./lib/isEmptyFunction.mjs": "./lib/isEmptyFunction-cli.mjs"
   }
 }
