@@ -84,7 +84,10 @@
       "import": "./lib/index.mjs",
       "require": "./lib/index.js"
     },
-    "./*": "./*"
+    "./*": {
+      "import": "./*.mjs",
+      "require": "./*.js"
+    }
   },
   "browser": {
     "./lib/isEmptyFunction.js": "./lib/isEmptyFunction-cli.js",
