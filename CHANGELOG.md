@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.2.1](https://github.com/snowyu/inherits-ex.js/compare/v2.2.0...v2.2.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* esm import ([4bef580](https://github.com/snowyu/inherits-ex.js/commit/4bef580f0912049c8da1725fd8f478cf9578d4f5))
+
 ## [2.2.0](https://github.com/snowyu/inherits-ex.js/compare/v2.1.0...v2.2.0) (2026-07-06)
 
 
