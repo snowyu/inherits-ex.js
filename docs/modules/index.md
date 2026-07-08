@@ -238,7 +238,7 @@ ___
 
 ### isEmptyFunctionCli
 
-Re-exports [isEmptyFunctionCli](isEmptyFunction_cli.md#isemptyfunctioncli)
+Renames and re-exports [isEmptyFunction](isEmptyFunction.md#isemptyfunction)
 
 ___
 

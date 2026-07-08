@@ -106,4 +106,4 @@ returns true if inheritance was successful.
 
 #### Defined in
 
-[src/inherits.js:144](https://github.com/snowyu/inherits-ex.js/blob/4bef580/src/inherits.js#L144)
+[src/inherits.js:144](https://github.com/snowyu/inherits-ex.js/blob/f8d9a62/src/inherits.js#L144)
