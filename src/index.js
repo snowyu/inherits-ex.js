@@ -23,7 +23,7 @@ export * from './inherits.js';
 export * from './inheritsDirectly.js';
 export * from './inheritsObject.js';
 export * from './isEmptyCtor.js';
-export * from './isEmptyFunction-cli.js';
+export { isEmptyFunctionCli } from './isEmptyFunction-cli.js';
 export * from './isEmptyFunction.js';
 export * from './isInheritedFrom.js';
 export * from './isInheritedFromStr.js';

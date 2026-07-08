@@ -236,13 +236,17 @@ describe('ESM - isEmptyFunction', () => {
   });
 });
 
-describe('ESM - isEmptyFunctionCli (browser variant)', () => {
+describe('ESM - isEmptyFunctionCli (backward-compat alias)', () => {
   it('should detect empty function', () => {
     assert.strictEqual(isEmptyFunctionCli(function() {}), true);
   });
 
   it('should detect non-empty function', () => {
     assert.ok(!isEmptyFunctionCli(function() { return 1; }));
+  });
+
+  it('should be identical to isEmptyFunction', () => {
+    assert.strictEqual(isEmptyFunctionCli, isEmptyFunction);
   });
 });
 
