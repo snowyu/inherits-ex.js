@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.2.2](https://github.com/snowyu/inherits-ex.js/compare/v2.2.1...v2.2.2) (2026-07-08)
+
+
+### Bug Fixes
+
+* unify isEmptyFunction implementations and fix esbuild exports resolution ([f8d9a62](https://github.com/snowyu/inherits-ex.js/commit/f8d9a620d5dd30cb3e3b410067fefb1df3f11924))
+
 ## [2.2.1](https://github.com/snowyu/inherits-ex.js/compare/v2.2.0...v2.2.1) (2026-07-06)
 
 
